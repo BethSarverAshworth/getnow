@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pay with Zelle — IT Repository Pro</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <style>
+      .pay-wrap {
+        padding: 2rem 0 3rem;
+      }
+      .pay-grid {
+        display: grid;
+        gap: 1.25rem;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: start;
+      }
+      @media (max-width: 800px) {
+        .pay-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .pay-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.35rem;
+        box-shadow: var(--shadow);
+      }
+      .pay-card h1 {
+        margin: 0 0 0.4rem;
+        font-size: 1.45rem;
+      }
+      .pay-card h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1.05rem;
+      }
+      .pay-card p,
+      .pay-card li {
+        color: var(--muted);
+      }
+      .pay-card ol {
+        margin: 0.5rem 0 1rem;
+        padding-left: 1.2rem;
+      }
+      .amount {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin: 0.5rem 0 1rem;
+      }
+      .qr-box {
+        text-align: center;
+        background: #fff;
+        border-radius: 14px;
+        padding: 1rem;
+        border: 1px solid #e5e7eb;
+      }
+      .qr-box img {
+        width: min(280px, 100%);
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+      .payee {
+        margin: 0.85rem 0 0;
+        color: #111;
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+      .memo {
+        margin: 0.35rem 0 0;
+        font-size: 0.9rem;
+        color: #4b5563;
+      }
+      .warn {
+        margin-top: 1rem;
+        padding: 0.85rem 1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(245, 158, 11, 0.4);
+        background: var(--pro-bg);
+        color: #fbbf24;
+        font-size: 0.9rem;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./">
+          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <span>IT Repository</span>
+        </a>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="./">Back to library</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container pay-wrap">
+      <div class="pay-grid">
+        <section class="pay-card">
+          <h1>Get Pro with Zelle</h1>
+          <p>
+            One-time access to Home Lab Blueprints, Interview Bank, Incident Runbooks,
+            and the Script Vault.
+          </p>
+          <div class="amount">
+            <span id="price-label">$12</span>
+            <small id="price-period" style="font-size: 1rem; font-weight: 500; color: var(--muted)"
+              > one-time</small
+            >
+          </div>
+
+          <h2>How to pay</h2>
+          <ol>
+            <li>Open your banking app → Zelle</li>
+            <li>Scan the QR code (or send to the name shown)</li>
+            <li>
+              Amount: <strong id="amount-text" style="color: var(--text)">$12</strong> · Memo:
+              <strong id="memo-text" style="color: var(--text)">IT Repository Pro</strong>
+            </li>
+            <li>
+              Message the seller that you paid (name + amount). They will reply with your
+              <strong style="color: var(--text)">personal unlock link</strong>.
+            </li>
+          </ol>
+
+          <div class="warn">
+            Zelle does not auto-unlock the site. After payment is confirmed, you receive a private
+            unlock link. Do not share that link publicly.
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="./">Browse free resources</a>
+            <a class="btn btn-pro" href="./success.html" id="have-link">I already have an unlock link</a>
+          </div>
+        </section>
+
+        <aside class="pay-card">
+          <h2>Scan to pay</h2>
+          <div class="qr-box">
+            <img
+              id="zelle-qr"
+              src="./assets/zelle-qr.jpg"
+              alt="Zelle QR code to pay Steven Ashworth"
+            />
+            <p class="payee" id="zelle-name">STEVEN ASHWORTH</p>
+            <p class="memo">Send Money with Zelle®</p>
+          </div>
+          <p class="note" style="margin-top: 0.9rem">
+            Only send money to people you trust. Confirm the name matches before paying.
+          </p>
+        </aside>
+      </div>
+    </main>
+
+    <script src="./js/config.js"></script>
+    <script>
+      (function () {
+        const cfg = window.IT_REPO_CONFIG || {};
+        const set = (id, val) => {
+          const el = document.getElementById(id);
+          if (el && val != null) el.textContent = val;
+        };
+        set("price-label", cfg.priceLabel || "$12");
+        set("price-period", cfg.pricePeriod || " one-time");
+        set("amount-text", cfg.priceLabel || "$12");
+        set("memo-text", cfg.zelleNote || "IT Repository Pro");
+        set("zelle-name", cfg.zelleName || "STEVEN ASHWORTH");
+        const img = document.getElementById("zelle-qr");
+        if (img && cfg.zelleQrImage) img.src = cfg.zelleQrImage;
+      })();
+    </script>
+  </body>
+</html>

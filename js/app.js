@@ -76,26 +76,27 @@ function closeModal() {
 }
 
 function checkoutOrSetup() {
-  const url = window.ITRepoAccess.getCheckoutUrl();
-  if (url) {
-    window.location.href = url;
+  const cfg = window.ITRepoAccess.getConfig();
+  const method = (cfg.paymentMethod || "zelle").toLowerCase();
+
+  // Prefer Stripe auto-checkout when configured
+  if (method === "stripe" || method === "both") {
+    const url = window.ITRepoAccess.getCheckoutUrl();
+    if (url) {
+      window.location.href = url;
+      return;
+    }
+  }
+
+  // Default / Zelle: payment instructions + QR
+  if (method === "zelle" || method === "both" || !window.ITRepoAccess.getCheckoutUrl()) {
+    window.location.href = "./pay.html";
     return;
   }
 
-  const cfg = window.ITRepoAccess.getConfig();
   openModal(
-    "Almost ready to take payments",
-    `Your site is live-ready, but Stripe is not connected yet.\n\n` +
-      `Do this once (about 15 minutes):\n\n` +
-      `1. Create a free Stripe account: https://dashboard.stripe.com/register\n` +
-      `2. Create a Payment Link for ${cfg.priceLabel || "$12"}\n` +
-      `3. Set success redirect to:\n` +
-      `   ${window.location.origin}/success.html?token=${cfg.unlockToken || "YOUR_TOKEN"}\n` +
-      `4. Paste the Payment Link into js/config.js → stripePaymentLink\n` +
-      `5. Redeploy / refresh\n\n` +
-      `Demo Pro unlock (local testing only):\n` +
-      `${window.location.origin}/?demo_pro=1\n\n` +
-      `Full steps: see LAUNCH.md in the project folder.`
+    "Payments not configured",
+    `Add a Stripe Payment Link or set paymentMethod to "zelle" in js/config.js.`
   );
 }
 
@@ -105,7 +106,7 @@ async function openProPack(resource) {
       "Pro content locked",
       `${resource.title}\n\n${resource.description}\n\n` +
         `Unlock Pro to read the full pack.\n` +
-        `Click "Get Pro" to purchase (or finish Stripe setup).`
+        `Click "Get Pro" to pay with Zelle, then open the unlock link you receive after payment.`
     );
     return;
   }

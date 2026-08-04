@@ -6,33 +6,37 @@ window.IT_REPO_CONFIG = {
   siteName: "IT Repository",
   ownerName: "Beth Sarver-Ashworth",
 
-  // PRICE shown on site (match your Stripe Payment Link)
+  // PRICE shown on site
   priceLabel: "$12",
-  pricePeriod: "/ month",
-  // Or one-time: pricePeriod: " one-time"
+  pricePeriod: " one-time",
 
   /**
-   * STRIPE PAYMENT LINK (required to take money)
-   * 1. Create free account: https://dashboard.stripe.com/register
-   * 2. Products → Payment Links → New → price $12 (or one-time pack)
-   * 3. After payment, redirect customers to:
-   *    https://YOUR-LIVE-URL/success.html?token=CHANGE_THIS_SECRET
-   * 4. Paste the Payment Link URL below:
+   * Payment method: "zelle" | "stripe" | "both"
+   * Zelle = QR + name (manual). Stripe = automatic unlock after checkout.
+   */
+  paymentMethod: "zelle",
+
+  // Zelle (from your QR)
+  zelleName: "STEVEN ASHWORTH",
+  zelleNote: "IT Repository Pro",
+  zelleQrImage: "./assets/zelle-qr.jpg",
+  // Optional contact after payment (email or social — NOT full phone on the public web if you prefer)
+  supportContact: "",
+
+  /**
+   * STRIPE PAYMENT LINK (optional later for automatic unlock)
+   * Success redirect:
+   *   https://it-repository-cyan.vercel.app/success.html?token=ITPRO-BETH-2026-LAUNCH
    */
   stripePaymentLink: "",
 
   /**
-   * Shared unlock token — must match the ?token= on your Stripe success URL.
-   * Change this before you go live. Anyone with the token can unlock Pro
-   * in their browser (fine for v1; upgrade to real auth later).
+   * After you confirm a Zelle payment, send the buyer this unlock link:
+   *   https://it-repository-cyan.vercel.app/success.html?token=ITPRO-BETH-2026-LAUNCH
+   * Change this token if it ever leaks publicly.
    */
   unlockToken: "ITPRO-BETH-2026-LAUNCH",
 
-  // Optional: free Formspree form for waitlist/leads
-  // https://formspree.io → new form → paste endpoint
   formspreeEndpoint: "",
-
-  // Optional analytics (leave blank if none)
-  // Plausible: set domain only, e.g. "it-repository.vercel.app"
   plausibleDomain: "",
 };
