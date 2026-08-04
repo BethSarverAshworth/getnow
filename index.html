@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="IT Repository — free and Pro library of networking, Linux, security, cloud, certs, scripts, and cheatsheets. Learn IT skills and unlock Pro packs."
+    />
+    <meta name="theme-color" content="#0b0f14" />
+    <meta property="og:title" content="IT Repository — Free + Pro IT Knowledge Library" />
+    <meta
+      property="og:description"
+      content="Searchable IT library: networking, Linux, security, certs, scripts. Free resources + Pro packs."
+    />
+    <meta property="og:type" content="website" />
+    <title>IT Repository — Free + Pro IT Knowledge Library</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./">
+          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <span>IT Repository</span>
+        </a>
+        <div class="nav-actions">
+          <span class="pro-pill" id="pro-status">Free plan</span>
+          <a class="btn btn-ghost" href="#browse">Browse</a>
+          <button class="btn btn-pro" type="button" data-buy-pro>Get Pro</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <h1>IT knowledge that <em>pays you back</em></h1>
+            <p class="hero-lead">
+              A searchable repository of networking, Linux, security, cloud, certifications,
+              scripts, and cheatsheets — built by
+              <strong id="owner-name">Beth Sarver-Ashworth</strong>. Free library for everyone.
+              Pro packs for people serious about landing IT roles.
+            </p>
+            <div class="hero-stats">
+              <div class="stat">
+                <strong id="stat-total">—</strong>
+                <span>Total resources</span>
+              </div>
+              <div class="stat">
+                <strong id="stat-free">—</strong>
+                <span>Free</span>
+              </div>
+              <div class="stat">
+                <strong id="stat-pro">—</strong>
+                <span>Pro packs</span>
+              </div>
+              <div class="stat">
+                <strong id="stat-cats">—</strong>
+                <span>Categories</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="pricing-card" id="pro">
+            <h2>Pro Membership</h2>
+            <div class="price">
+              <span id="price-label">$12</span>
+              <small id="price-period">/ month</small>
+            </div>
+            <ul>
+              <li>Home lab blueprints</li>
+              <li>Interview question bank</li>
+              <li>Incident response runbooks</li>
+              <li>Automation script vault</li>
+              <li>Unlock on this device after checkout</li>
+            </ul>
+            <button class="btn btn-pro" type="button" id="pro-cta" data-buy-pro>
+              Get Pro — start earning
+            </button>
+            <p class="note">
+              Payments via Stripe (you keep most of each sale). Free hosting on Vercel/GitHub Pages.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="container" id="browse">
+        <div class="controls">
+          <div class="search-wrap">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <label class="sr-only" for="search">Search resources</label>
+            <input
+              id="search"
+              type="search"
+              placeholder="Search Linux, subnetting, OAuth, Network+, scripts…"
+              autocomplete="off"
+            />
+          </div>
+          <div class="filters">
+            <div id="category-filters" aria-label="Filter by category"></div>
+            <div class="tier-toggle" id="tier-filters" aria-label="Filter by tier"></div>
+          </div>
+        </div>
+
+        <div class="results-bar">
+          <span id="result-count">Loading…</span>
+          <span>Free opens instantly · Pro unlocks after purchase</span>
+        </div>
+
+        <div class="grid" id="resource-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="container launch-strip" id="earn">
+        <div class="launch-card">
+          <h2>How you get paid</h2>
+          <ol>
+            <li>Site goes live (free hosting)</li>
+            <li>You create a Stripe Payment Link (~15 min)</li>
+            <li>Customers pay → redirected to unlock Pro packs</li>
+            <li>Money lands in your Stripe account (payouts to your bank)</li>
+          </ol>
+          <p class="note">
+            Step-by-step: open <code>LAUNCH.md</code> in this project. Share free resources on LinkedIn,
+            Reddit (r/ITCareerQuestions, r/sysadmin — follow rules), Discord, and classmates.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <strong style="color: var(--text)">IT Repository</strong>
+          · Free to learn · Pro to go deeper
+        </div>
+        <div>
+          <button class="btn btn-ghost" type="button" data-buy-pro>Get Pro</button>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      class="modal-backdrop"
+      id="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="modal-title"
+    >
+      <div class="modal">
+        <header>
+          <h3 id="modal-title">Resource</h3>
+          <button class="icon-btn" type="button" id="modal-close" aria-label="Close">
+            ×
+          </button>
+        </header>
+        <pre id="modal-body"></pre>
+      </div>
+    </div>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/access.js"></script>
+    <script src="./js/app.js" defer></script>
+  </body>
+</html>

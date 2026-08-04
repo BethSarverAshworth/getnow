@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pro unlocked — IT Repository</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <style>
+      .success-wrap {
+        min-height: 70vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem 1rem;
+      }
+      .success-card {
+        width: min(520px, 100%);
+        background: var(--bg-card);
+        border: 1px solid rgba(34, 197, 94, 0.4);
+        border-radius: 16px;
+        padding: 1.75rem;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+      .success-card h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.6rem;
+      }
+      .success-card p {
+        color: var(--muted);
+        margin: 0 0 1.25rem;
+      }
+      .success-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        justify-content: center;
+      }
+      .err {
+        border-color: rgba(248, 113, 113, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="./">
+          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <span>IT Repository</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="success-wrap">
+      <div class="success-card" id="card">
+        <h1 id="title">Unlocking Pro…</h1>
+        <p id="message">Please wait.</p>
+        <div class="success-actions">
+          <a class="btn btn-primary" href="./">Go to library</a>
+          <a class="btn btn-pro" href="./?tier=pro#browse">Open Pro packs</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/access.js"></script>
+    <script>
+      (function () {
+        const title = document.getElementById("title");
+        const message = document.getElementById("message");
+        const card = document.getElementById("card");
+        const ok = window.ITRepoAccess.tryUnlockFromUrl();
+
+        if (ok || window.ITRepoAccess.isProUnlocked()) {
+          window.ITRepoAccess.unlockPro();
+          title.textContent = "Pro unlocked ✓";
+          message.textContent =
+            "Thank you! Pro packs are now unlocked on this browser. Bookmark this site and open Home Lab, Interview Bank, Runbooks, and Script Vault.";
+          // strip token from URL
+          const clean = new URL(window.location.href);
+          clean.search = "";
+          window.history.replaceState({}, "", clean.pathname);
+        } else {
+          card.classList.add("err");
+          title.textContent = "Unlock link incomplete";
+          message.textContent =
+            "This page needs a valid ?token= from your Stripe success URL. If you already paid, open the exact success link from Stripe or contact support with your receipt.";
+        }
+      })();
+    </script>
+  </body>
+</html>

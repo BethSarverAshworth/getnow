@@ -1,0 +1,441 @@
+{
+  "categories": [
+    {
+      "id": "all",
+      "name": "All",
+      "icon": "\ud83d\udce6"
+    },
+    {
+      "id": "networking",
+      "name": "Networking",
+      "icon": "\ud83c\udf10"
+    },
+    {
+      "id": "linux",
+      "name": "Linux",
+      "icon": "\ud83d\udc27"
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "icon": "\ud83d\udd12"
+    },
+    {
+      "id": "cloud",
+      "name": "Cloud",
+      "icon": "\u2601\ufe0f"
+    },
+    {
+      "id": "certs",
+      "name": "Certifications",
+      "icon": "\ud83d\udcdc"
+    },
+    {
+      "id": "scripts",
+      "name": "Scripts",
+      "icon": "\u2699\ufe0f"
+    },
+    {
+      "id": "tools",
+      "name": "Tools",
+      "icon": "\ud83d\udee0\ufe0f"
+    },
+    {
+      "id": "cheatsheets",
+      "name": "Cheatsheets",
+      "icon": "\ud83d\udccb"
+    }
+  ],
+  "resources": [
+    {
+      "id": "net-osi",
+      "title": "OSI Model Deep Dive",
+      "description": "Layer-by-layer networking model with real packet examples and troubleshooting tips.",
+      "category": "networking",
+      "tags": [
+        "osi",
+        "tcp-ip",
+        "fundamentals"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/",
+      "featured": true
+    },
+    {
+      "id": "net-subnet",
+      "title": "Subnetting Practice Kit",
+      "description": "CIDR charts, practice problems, and quick binary conversion methods for CCNA/Network+.",
+      "category": "networking",
+      "tags": [
+        "subnetting",
+        "cidr",
+        "ccna"
+      ],
+      "level": "Intermediate",
+      "type": "Practice",
+      "tier": "free",
+      "url": "https://subnettingpractice.com/",
+      "featured": true
+    },
+    {
+      "id": "net-wireshark",
+      "title": "Wireshark Packet Analysis Starter",
+      "description": "Capture filters, display filters, and common protocol analysis workflows.",
+      "category": "networking",
+      "tags": [
+        "wireshark",
+        "packets",
+        "troubleshooting"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.wireshark.org/docs/",
+      "featured": false
+    },
+    {
+      "id": "linux-cli",
+      "title": "Linux Command Line Essentials",
+      "description": "Daily-driver commands: files, permissions, processes, pipes, and package managers.",
+      "category": "linux",
+      "tags": [
+        "bash",
+        "cli",
+        "sysadmin"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://linuxcommand.org/lc3_learning_the_shell.php",
+      "featured": true
+    },
+    {
+      "id": "linux-perms",
+      "title": "Permissions & Ownership Cheatsheet",
+      "description": "chmod, chown, umask, sticky bit, and SUID explained with examples.",
+      "category": "cheatsheets",
+      "tags": [
+        "chmod",
+        "security",
+        "linux"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "https://chmod-calculator.com/",
+      "featured": false
+    },
+    {
+      "id": "linux-systemd",
+      "title": "systemd Service Management",
+      "description": "Start, stop, enable services; read logs with journalctl; write simple unit files.",
+      "category": "linux",
+      "tags": [
+        "systemd",
+        "services",
+        "admin"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+      "featured": false
+    },
+    {
+      "id": "sec-oauth",
+      "title": "OAuth 2.0 Security Checklist",
+      "description": "Secure authorization flows, PKCE, token storage, and common pitfalls for apps.",
+      "category": "security",
+      "tags": [
+        "oauth",
+        "auth",
+        "web"
+      ],
+      "level": "Intermediate",
+      "type": "Checklist",
+      "tier": "free",
+      "url": "https://oauth.net/2/",
+      "featured": true
+    },
+    {
+      "id": "sec-owasp",
+      "title": "OWASP Top 10 Quick Reference",
+      "description": "The most critical web application security risks with prevention notes.",
+      "category": "security",
+      "tags": [
+        "owasp",
+        "websec",
+        "vulnerabilities"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "https://owasp.org/www-project-top-ten/",
+      "featured": true
+    },
+    {
+      "id": "sec-passwords",
+      "title": "Password & Secrets Best Practices",
+      "description": "Hashing, MFA, secret managers, and how to avoid common credential leaks.",
+      "category": "security",
+      "tags": [
+        "passwords",
+        "mfa",
+        "secrets"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
+      "featured": false
+    },
+    {
+      "id": "cloud-aws-free",
+      "title": "AWS Free Tier Map",
+      "description": "What you can run for free on AWS and how to avoid surprise bills.",
+      "category": "cloud",
+      "tags": [
+        "aws",
+        "free-tier",
+        "cloud"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://aws.amazon.com/free/",
+      "featured": false
+    },
+    {
+      "id": "cloud-docker",
+      "title": "Docker Basics for IT Pros",
+      "description": "Images, containers, volumes, and networking \u2014 practical ops focus.",
+      "category": "cloud",
+      "tags": [
+        "docker",
+        "containers",
+        "devops"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://docs.docker.com/get-started/",
+      "featured": true
+    },
+    {
+      "id": "cert-network-plus",
+      "title": "CompTIA Network+ Study Path",
+      "description": "Exam domains, free labs ideas, and a 6-week study plan structure.",
+      "category": "certs",
+      "tags": [
+        "network+",
+        "comptia",
+        "exam"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://www.comptia.org/certifications/network",
+      "featured": true
+    },
+    {
+      "id": "cert-linux",
+      "title": "Linux Cert Roadmap (LFCS / RHCSA)",
+      "description": "Which Linux cert fits helpdesk \u2192 sysadmin, and free practice resources.",
+      "category": "certs",
+      "tags": [
+        "lfcs",
+        "rhcsa",
+        "linux"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/",
+      "featured": false
+    },
+    {
+      "id": "cert-security-plus",
+      "title": "CompTIA Security+ Domain Map",
+      "description": "High-yield topics and free practice sources for Security+.",
+      "category": "certs",
+      "tags": [
+        "security+",
+        "comptia",
+        "cyber"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://www.comptia.org/certifications/security",
+      "featured": false
+    },
+    {
+      "id": "script-bash-backup",
+      "title": "Bash Backup Script Template",
+      "description": "Portable backup script with rotation, logging, and dry-run mode.",
+      "category": "scripts",
+      "tags": [
+        "bash",
+        "backup",
+        "automation"
+      ],
+      "level": "Intermediate",
+      "type": "Script",
+      "tier": "free",
+      "url": "#script-bash-backup",
+      "body": "#!/usr/bin/env bash\n# Simple backup with dry-run and rotation\nset -euo pipefail\nSRC=\"${1:-$HOME/Documents}\"\nDEST=\"${2:-$HOME/backups}\"\nDRY_RUN=\"${DRY_RUN:-0}\"\nSTAMP=$(date +%Y%m%d-%H%M%S)\nTARGET=\"$DEST/backup-$STAMP\"\n\nmkdir -p \"$DEST\"\nif [[ \"$DRY_RUN\" == \"1\" ]]; then\n  echo \"[dry-run] Would copy $SRC -> $TARGET\"\n  exit 0\nfi\n\nmkdir -p \"$TARGET\"\ncp -a \"$SRC\" \"$TARGET/\"\necho \"Backup complete: $TARGET\"\n\n# Keep last 7 backups\nls -1dt \"$DEST\"/backup-* 2>/dev/null | tail -n +8 | xargs -r rm -rf",
+      "featured": true
+    },
+    {
+      "id": "script-port-scan-note",
+      "title": "Safe Local Port Check Script",
+      "description": "Check listening ports on your own machine (not for unauthorized scanning).",
+      "category": "scripts",
+      "tags": [
+        "bash",
+        "ports",
+        "troubleshooting"
+      ],
+      "level": "Beginner",
+      "type": "Script",
+      "tier": "free",
+      "url": "#script-port-check",
+      "body": "#!/usr/bin/env bash\n# List listening TCP ports on this machine\nif command -v ss >/dev/null 2>&1; then\n  ss -tuln\nelif command -v netstat >/dev/null 2>&1; then\n  netstat -tuln\nelse\n  echo \"Install ss or netstat\"\n  exit 1\nfi",
+      "featured": false
+    },
+    {
+      "id": "tool-nmap",
+      "title": "Nmap (Authorized Use Only)",
+      "description": "Network discovery and security auditing on systems you own or have permission to test.",
+      "category": "tools",
+      "tags": [
+        "nmap",
+        "scanning",
+        "security"
+      ],
+      "level": "Intermediate",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://nmap.org/",
+      "featured": false
+    },
+    {
+      "id": "tool-vscode",
+      "title": "VS Code for IT Work",
+      "description": "Extensions and workflows for configs, scripts, Markdown docs, and remote SSH.",
+      "category": "tools",
+      "tags": [
+        "vscode",
+        "editor",
+        "productivity"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://code.visualstudio.com/",
+      "featured": false
+    },
+    {
+      "id": "cheat-networking",
+      "title": "Networking Ports Cheatsheet",
+      "description": "Common TCP/UDP ports IT pros should know (HTTP, SSH, DNS, RDP, etc.).",
+      "category": "cheatsheets",
+      "tags": [
+        "ports",
+        "tcp",
+        "udp"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#ports-cheatsheet",
+      "body": "20/21 FTP\n22 SSH\n23 Telnet (avoid)\n25 SMTP\n53 DNS\n80 HTTP\n110 POP3\n143 IMAP\n443 HTTPS\n445 SMB\n3389 RDP\n3306 MySQL\n5432 PostgreSQL\n8080 Alt HTTP",
+      "featured": true
+    },
+    {
+      "id": "cheat-git",
+      "title": "Git Essentials Cheatsheet",
+      "description": "Clone, branch, commit, push, pull, stash \u2014 day-one commands for IT projects.",
+      "category": "cheatsheets",
+      "tags": [
+        "git",
+        "version-control"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "https://education.github.com/git-cheat-sheet-education.pdf",
+      "featured": false
+    },
+    {
+      "id": "pro-lab-pack",
+      "title": "Home Lab Blueprint Pack",
+      "description": "Step-by-step lab designs: virtualization, VLANs, AD basics, monitoring stack diagrams.",
+      "category": "networking",
+      "tags": [
+        "homelab",
+        "virtualization",
+        "practice"
+      ],
+      "level": "Advanced",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "featured": true,
+      "pack": "packs/home-lab-blueprint.md"
+    },
+    {
+      "id": "pro-interview",
+      "title": "IT Interview Question Bank (200+)",
+      "description": "Helpdesk \u2192 junior sysadmin interview Q&A with model answers and red flags.",
+      "category": "certs",
+      "tags": [
+        "interview",
+        "career",
+        "sysadmin"
+      ],
+      "level": "Intermediate",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "featured": true,
+      "pack": "packs/interview-bank.md"
+    },
+    {
+      "id": "pro-incident",
+      "title": "Incident Response Runbooks",
+      "description": "Copy-paste runbooks: ransomware first hour, phishing, disk full, DNS outage.",
+      "category": "security",
+      "tags": [
+        "incident",
+        "runbooks",
+        "ops"
+      ],
+      "level": "Advanced",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "featured": false,
+      "pack": "packs/incident-runbooks.md"
+    },
+    {
+      "id": "pro-scripts",
+      "title": "Automation Script Vault",
+      "description": "50+ production-ready Bash/PowerShell scripts with logging and error handling.",
+      "category": "scripts",
+      "tags": [
+        "automation",
+        "powershell",
+        "bash"
+      ],
+      "level": "Advanced",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "featured": true,
+      "pack": "packs/script-vault.md"
+    }
+  ]
+}
