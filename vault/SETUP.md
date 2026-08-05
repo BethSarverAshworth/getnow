@@ -53,3 +53,7 @@ The token never goes into the public site config; it stays in localStorage on yo
 - Invite links are passwords — don’t post publicly  
 - Don’t store real credentials inside vault files  
 - Rotate invite by creating a new room when a class ends  
+
+## Live chat
+
+After enabling Live sync, re-run `supabase-schema.sql` so `chat_messages` exists and Realtime is enabled. Then open `/tools/chat.html`.

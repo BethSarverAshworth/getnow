@@ -93,6 +93,23 @@
   ],
   "resources": [
     {
+      "id": "tool-live-chat",
+      "title": "Live Chat — Real-Time Collaboration",
+      "description": "Chat with people on the site in real time. Channels for networking, security, homelab, certs, plus custom study rooms. Uses free Supabase Live sync.",
+      "category": "tools",
+      "tags": [
+        "chat",
+        "realtime",
+        "collaboration",
+        "community"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "./tools/chat.html",
+      "featured": true
+    },
+    {
       "id": "tool-tech-news",
       "title": "Tech News Desk — Feeds & Community Shares",
       "description": "Browse latest IT/security/cloud headlines from trusted sources and share articles on a community board.",

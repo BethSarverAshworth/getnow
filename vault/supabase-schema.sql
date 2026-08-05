@@ -73,6 +73,28 @@ create index if not exists tech_news_shares_created on tech_news_shares (created
 
 alter table tech_news_shares enable row level security;
 
+-- Live chat messages (Realtime)
+create table if not exists chat_messages (
+  id uuid primary key default gen_random_uuid(),
+  room text not null default 'general',
+  author text not null default 'Anonymous',
+  author_key text not null,
+  body text not null,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists chat_messages_room_created on chat_messages (room, created_at desc);
+
+alter table chat_messages enable row level security;
+
+-- Enable realtime for live chat (safe to re-run)
+do $$ begin
+  alter publication supabase_realtime add table chat_messages;
+exception
+  when duplicate_object then null;
+  when undefined_object then null;
+end $$;
+
 do $$ begin
   -- rooms
   begin create policy vault_rooms_all on vault_rooms for all using (true) with check (true); exception when duplicate_object then null; end;
@@ -80,4 +102,5 @@ do $$ begin
   begin create policy vault_staging_all on vault_staging for all using (true) with check (true); exception when duplicate_object then null; end;
   begin create policy vault_dismissals_all on vault_dismissals for all using (true) with check (true); exception when duplicate_object then null; end;
   begin create policy tech_news_shares_all on tech_news_shares for all using (true) with check (true); exception when duplicate_object then null; end;
+  begin create policy chat_messages_all on chat_messages for all using (true) with check (true); exception when duplicate_object then null; end;
 end $$;

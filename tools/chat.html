@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live Chat — Collaborate in Real Time | IT Repository</title>
+    <meta
+      name="description"
+      content="Real-time chat for IT Repository users to collaborate, share links, and help each other across study channels."
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="./tools.css" />
+    <link rel="stylesheet" href="./chat.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <span>IT Repository</span>
+        </a>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="./">Tools</a>
+          <a class="btn btn-ghost" href="./vault.html">Vault</a>
+          <button class="btn btn-ghost" type="button" id="btn-live-setup">Live sync setup</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container tools-main chat-page">
+      <p class="tools-kicker">Real-time collaboration</p>
+      <h1>Live chat</h1>
+      <p class="tools-lead">
+        Talk with people on the site <strong>right now</strong> — share links, troubleshoot together,
+        and bounce ideas across channels. Requires free <strong>Live sync</strong> (Supabase), the
+        same setup used by the shared vault.
+      </p>
+
+      <div id="offline-banner" class="tool-card offline-banner">
+        <strong>Live chat needs Live sync</strong>
+        <p class="muted">
+          Chat is real-time across the internet, so it needs a free Supabase project. Open
+          <strong>Live sync setup</strong>, paste your Project URL + anon key (from Vault → Live sync),
+          run the latest SQL (includes <code>chat_messages</code>), then refresh this page.
+        </p>
+        <div class="row">
+          <a class="btn btn-primary" href="./vault.html">Open vault Live sync</a>
+          <a class="btn btn-ghost" href="../vault/supabase-schema.sql" target="_blank" rel="noopener"
+            >SQL schema</a
+          >
+        </div>
+      </div>
+
+      <div class="chat-shell tool-card" id="chat-shell">
+        <aside class="chat-side">
+          <h2>Channels</h2>
+          <div id="channel-list" class="channel-list"></div>
+          <label class="field" style="margin-top: 0.85rem">
+            <span>Private study room</span>
+            <input id="custom-room" type="text" maxlength="24" placeholder="e.g. CLASS2026" />
+          </label>
+          <button class="btn btn-ghost" type="button" id="btn-join-custom" style="width: 100%; margin-top: 0.5rem">
+            Join / create room
+          </button>
+          <p class="tiny muted" style="margin-top: 0.75rem">
+            Be kind. No secrets, passwords, or illegal activity. Links and ideas welcome.
+          </p>
+        </aside>
+
+        <section class="chat-main">
+          <div class="chat-header">
+            <div>
+              <div class="room-label">Channel</div>
+              <div class="chat-room-name" id="room-name"># general</div>
+            </div>
+            <div class="chat-status" id="conn-status">Connecting…</div>
+          </div>
+
+          <div class="chat-join bar" id="name-bar">
+            <label class="field" style="flex: 1">
+              <span>Display name</span>
+              <input id="display-name" type="text" maxlength="32" placeholder="How others see you" />
+            </label>
+            <button class="btn btn-primary" type="button" id="btn-set-name">Join chat</button>
+          </div>
+
+          <div id="messages" class="messages" aria-live="polite"></div>
+
+          <form id="composer" class="composer">
+            <input
+              id="message-input"
+              type="text"
+              maxlength="1000"
+              placeholder="Message the room — paste links, ask questions…"
+              autocomplete="off"
+              disabled
+            />
+            <button class="btn btn-primary" type="submit" id="btn-send" disabled>Send</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>Live chat · Real-time via Supabase · Collaborate kindly</div>
+        <a class="btn btn-ghost" href="./news.html">News desk</a>
+      </div>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./chat.js"></script>
+  </body>
+</html>
