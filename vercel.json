@@ -1,11 +1,28 @@
 {
-  "cleanUrls": true,
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/chat", "destination": "/tools/chat.html" },
+    { "source": "/chat/", "destination": "/tools/chat.html" },
+    { "source": "/news", "destination": "/tools/news.html" },
+    { "source": "/journal", "destination": "/tools/journal.html" },
+    { "source": "/vault", "destination": "/tools/vault.html" },
+    { "source": "/tools", "destination": "/tools/index.html" },
+    { "source": "/tools/", "destination": "/tools/index.html" },
+    { "source": "/tools/chat", "destination": "/tools/chat.html" },
+    { "source": "/tools/news", "destination": "/tools/news.html" },
+    { "source": "/tools/journal", "destination": "/tools/journal.html" },
+    { "source": "/tools/vault", "destination": "/tools/vault.html" },
+    { "source": "/tools/network", "destination": "/tools/network.html" },
+    { "source": "/tools/vm-lab", "destination": "/tools/vm-lab.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     }
   ]
