@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Network Tools — Ping · DNS · Reachability | IT Repository</title>
+    <meta
+      name="description"
+      content="Free browser network tools: check IPs, DNS lookup, latency probes, and copy-ready ping commands for Windows, Mac, and Linux."
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="./tools.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <span>IT Repository</span>
+        </a>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="./">All tools</a>
+          <a class="btn btn-ghost" href="./vm-lab.html">VM Lab Setup</a>
+          <a class="btn btn-primary" href="../">Library</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container tools-main">
+      <p class="tools-kicker">Interactive tools</p>
+      <h1>Network toolkit</h1>
+      <p class="tools-lead">
+        Check hosts, resolve DNS, probe latency, and copy real
+        <strong>ping / traceroute</strong> commands. Browsers can’t send true ICMP “ping”
+        packets — this toolkit uses DNS + HTTP probes and gives you terminal commands that can.
+      </p>
+
+      <div class="tool-grid">
+        <!-- Your IP -->
+        <section class="tool-card">
+          <h2>Your public IP</h2>
+          <p class="muted">What the internet sees for this browser.</p>
+          <div class="big-out" id="my-ip">Loading…</div>
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="refresh-ip">Refresh</button>
+            <button class="btn btn-ghost" type="button" id="copy-ip">Copy</button>
+          </div>
+          <pre class="out" id="my-ip-meta"></pre>
+        </section>
+
+        <!-- Host check -->
+        <section class="tool-card span-2">
+          <h2>Host / IP checker</h2>
+          <p class="muted">
+            Enter an IP or hostname. We’ll resolve DNS (when possible), probe HTTPS latency, and
+            generate OS commands.
+          </p>
+          <form id="check-form" class="stack">
+            <label class="field">
+              <span>IP or hostname</span>
+              <input
+                id="host-input"
+                type="text"
+                placeholder="e.g. 8.8.8.8, 1.1.1.1, google.com, 10.0.0.1"
+                autocomplete="off"
+                required
+              />
+            </label>
+            <div class="row">
+              <button class="btn btn-primary" type="submit">Run checks</button>
+              <button class="btn btn-ghost" type="button" id="fill-dns">Use 1.1.1.1</button>
+              <button class="btn btn-ghost" type="button" id="fill-local">Use gateway hint</button>
+            </div>
+          </form>
+          <div id="check-results" class="results hidden"></div>
+        </section>
+
+        <!-- Bulk -->
+        <section class="tool-card span-2">
+          <h2>Bulk host list</h2>
+          <p class="muted">One host per line — resolve + quick probe each (max 12).</p>
+          <textarea id="bulk-hosts" rows="6" placeholder="8.8.8.8&#10;1.1.1.1&#10;cloudflare.com&#10;github.com"></textarea>
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="bulk-run">Check all</button>
+            <button class="btn btn-ghost" type="button" id="bulk-sample">Load sample list</button>
+          </div>
+          <div id="bulk-results" class="results hidden"></div>
+        </section>
+
+        <!-- Commands -->
+        <section class="tool-card">
+          <h2>Ping cheat panel</h2>
+          <p class="muted">True ICMP ping from your terminal:</p>
+          <pre class="out"># macOS / Linux
+ping -c 4 TARGET
+
+# Continuous
+ping TARGET
+
+# Windows
+ping -n 4 TARGET
+
+# Traceroute
+traceroute TARGET      # Mac/Linux
+tracert TARGET         # Windows
+
+# PowerShell
+Test-NetConnection TARGET -InformationLevel Detailed
+Test-Connection TARGET -Count 4</pre>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>IT Repository · Network tools · Authorized testing only</div>
+        <a class="btn btn-ghost" href="./vm-lab.html">Set up VMs →</a>
+      </div>
+    </footer>
+
+    <script src="./network.js"></script>
+  </body>
+</html>

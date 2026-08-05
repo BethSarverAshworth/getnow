@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VM Lab Setup Wizard | IT Repository</title>
+    <meta
+      name="description"
+      content="Step-by-step virtual machine lab setup for Mac, Windows, and Linux using UTM, VirtualBox, Hyper-V, or Proxmox."
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="./tools.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <span>IT Repository</span>
+        </a>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="./">All tools</a>
+          <a class="btn btn-ghost" href="./network.html">Network tools</a>
+          <a class="btn btn-primary" href="../">Library</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container tools-main">
+      <p class="tools-kicker">Interactive tools</p>
+      <h1>VM lab setup wizard</h1>
+      <p class="tools-lead">
+        Build a resume-ready home lab in under an hour. Pick your computer and hypervisor —
+        get download links, sizing, network modes, and a first-VM checklist.
+      </p>
+
+      <div class="wizard">
+        <div class="wizard-steps" id="stepper" aria-label="Progress"></div>
+
+        <!-- Step 1 -->
+        <section class="tool-card wizard-panel" data-step="1">
+          <h2>1) What computer are you using?</h2>
+          <div class="choice-grid" id="host-os">
+            <button type="button" class="choice" data-value="mac">Mac (Apple Silicon or Intel)</button>
+            <button type="button" class="choice" data-value="windows">Windows PC</button>
+            <button type="button" class="choice" data-value="linux">Linux PC</button>
+          </div>
+        </section>
+
+        <!-- Step 2 -->
+        <section class="tool-card wizard-panel hidden" data-step="2">
+          <h2>2) Choose a hypervisor</h2>
+          <p class="muted" id="hyper-hint">Select your host OS first.</p>
+          <div class="choice-grid" id="hypervisor"></div>
+        </section>
+
+        <!-- Step 3 -->
+        <section class="tool-card wizard-panel hidden" data-step="3">
+          <h2>3) Lab goal</h2>
+          <div class="choice-grid" id="goal">
+            <button type="button" class="choice" data-value="linux-admin">
+              Linux admin practice
+            </button>
+            <button type="button" class="choice" data-value="windows-admin">
+              Windows / AD practice
+            </button>
+            <button type="button" class="choice" data-value="networking">
+              Networking / multi-VM
+            </button>
+            <button type="button" class="choice" data-value="security">
+              Security tools (authorized only)
+            </button>
+          </div>
+        </section>
+
+        <!-- Step 4 plan -->
+        <section class="tool-card wizard-panel hidden" data-step="4">
+          <h2>4) Your personalized plan</h2>
+          <div id="plan" class="plan"></div>
+          <div class="row" style="margin-top: 1rem">
+            <button class="btn btn-ghost" type="button" id="back-btn">← Back</button>
+            <button class="btn btn-primary" type="button" id="restart-btn">Start over</button>
+            <a class="btn btn-pro" href="./network.html">Test network next →</a>
+          </div>
+        </section>
+
+        <div class="row wizard-nav">
+          <button class="btn btn-ghost hidden" type="button" id="prev">← Previous</button>
+          <button class="btn btn-primary hidden" type="button" id="next">Next →</button>
+        </div>
+      </div>
+
+      <section class="tool-card" style="margin-top: 1.25rem">
+        <h2>Default lab topology</h2>
+        <pre class="out diagram">[Internet]
+    |
+[Home router / Wi‑Fi]
+    |
+[Your PC + Hypervisor]
+    |-- VM1: Linux server   (10.10.10.11)  NAT or Host-only
+    |-- VM2: Linux client   (10.10.10.12)
+    |-- VM3: Windows (opt)  (10.10.10.13)
+    '---- snapshots after every win
+
+Network modes:
+  NAT        = easy internet for updates (default)
+  Bridged    = VM looks like another device on LAN
+  Host-only  = isolated lab network (great for practice)
+</pre>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>IT Repository · VM Lab Wizard · Free forever</div>
+        <a class="btn btn-ghost" href="../">Back to library</a>
+      </div>
+    </footer>
+
+    <script src="./vm-lab.js"></script>
+  </body>
+</html>

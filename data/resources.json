@@ -78,6 +78,56 @@
   ],
   "resources": [
     {
+      "id": "tool-hub",
+      "title": "All Interactive Tools",
+      "description": "Hub for built-in IT Repository utilities (network + VM lab).",
+      "category": "tools",
+      "tags": [
+        "interactive",
+        "tools"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "./tools/",
+      "featured": true
+    },
+    {
+      "id": "tool-vm-wizard",
+      "title": "VM Lab Setup Wizard",
+      "description": "Guided setup for UTM, VirtualBox, Hyper-V, or Proxmox — downloads, sizing, network modes, checklists.",
+      "category": "tools",
+      "tags": [
+        "virtualization",
+        "homelab",
+        "vm",
+        "interactive"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "./tools/vm-lab.html",
+      "featured": true
+    },
+    {
+      "id": "tool-net-toolkit",
+      "title": "Network Toolkit (Ping · DNS · Bulk IP Check)",
+      "description": "Interactive: public IP, DNS lookup, HTTPS probes, bulk hosts, and copy-ready ping commands for every OS.",
+      "category": "tools",
+      "tags": [
+        "ping",
+        "dns",
+        "ip",
+        "interactive",
+        "traceroute"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "./tools/network.html",
+      "featured": true
+    },
+    {
       "id": "pro-architecture",
       "title": "Network Architecture Pack",
       "description": "3-tier campus, small business, DMZ, IP plans, HA sketches, and architecture checklists.",
