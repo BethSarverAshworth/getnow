@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tech News Desk | IT Repository</title>
+    <meta
+      name="description"
+      content="Latest tech and IT security news from trusted sources, plus a community board to share articles and finds."
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="./tools.css" />
+    <link rel="stylesheet" href="./news.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <span>IT Repository</span>
+        </a>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="./">Tools</a>
+          <a class="btn btn-ghost" href="./journal.html">Journal</a>
+          <button class="btn btn-ghost" type="button" id="btn-refresh">Refresh feeds</button>
+          <button class="btn btn-pro" type="button" id="btn-share">Share a story</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container tools-main">
+      <p class="tools-kicker">Stay current</p>
+      <h1>Tech news desk</h1>
+      <p class="tools-lead">
+        Scan <strong>latest headlines</strong> from trusted IT, security, and cloud sources — then
+        <strong>share finds</strong> with classmates and teammates on the community board. Great for
+        stand-ups, study groups, and “what should we care about this week?”
+      </p>
+
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" data-tab="feeds">Latest feeds</button>
+        <button type="button" class="tab" data-tab="community">
+          Community shares <span class="badge-count" id="share-count">0</span>
+        </button>
+      </div>
+
+      <!-- FEEDS -->
+      <section id="tab-feeds" class="tab-panel">
+        <div class="tool-card news-controls">
+          <div class="filters" id="topic-filters"></div>
+          <label class="field" style="margin-top: 0.75rem">
+            <span>Search headlines</span>
+            <input id="feed-search" type="search" placeholder="ransomware, Azure, Wi‑Fi 7, AI…" />
+          </label>
+          <p class="tiny muted" id="feed-status">Loading headlines…</p>
+        </div>
+        <div id="feed-list" class="news-list"></div>
+      </section>
+
+      <!-- COMMUNITY -->
+      <section id="tab-community" class="tab-panel hidden">
+        <div class="tool-card" style="margin-bottom: 1rem">
+          <h2>Community board</h2>
+          <p class="muted">
+            Drop a link to an article, advisory, or write-up worth reading. Others can browse what the
+            group is watching. Posts stay on this device unless Live Sync (Supabase) is enabled in the
+            vault settings — then they sync for everyone using the same project.
+          </p>
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="btn-share-2">Share a story</button>
+            <button class="btn btn-ghost" type="button" id="btn-export-shares">Export shares</button>
+          </div>
+        </div>
+        <div id="community-list" class="news-list"></div>
+      </section>
+    </main>
+
+    <!-- Share modal -->
+    <div class="modal-backdrop" id="share-modal" aria-hidden="true">
+      <div class="modal vault-modal">
+        <header>
+          <h3>Share a story</h3>
+          <button class="icon-btn" type="button" id="share-close" aria-label="Close">×</button>
+        </header>
+        <div class="editor-body">
+          <label class="field">
+            <span>Your name</span>
+            <input id="s-name" type="text" maxlength="40" placeholder="e.g. Beth" />
+          </label>
+          <label class="field">
+            <span>Headline</span>
+            <input id="s-title" type="text" maxlength="200" placeholder="Short title for the board" />
+          </label>
+          <label class="field">
+            <span>Link (URL)</span>
+            <input id="s-url" type="url" placeholder="https://…" />
+          </label>
+          <div class="join-grid">
+            <label class="field">
+              <span>Topic</span>
+              <select id="s-topic">
+                <option value="general">General tech</option>
+                <option value="security">Security</option>
+                <option value="networking">Networking</option>
+                <option value="cloud">Cloud</option>
+                <option value="hardware">Hardware</option>
+                <option value="career">Career / certs</option>
+                <option value="opensource">Open source</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Why it matters (optional)</span>
+              <input id="s-note" type="text" maxlength="240" placeholder="One line for the team" />
+            </label>
+          </div>
+          <div class="row">
+            <button class="btn btn-pro" type="button" id="s-submit">Post to board</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>Tech news desk · External headlines via public feeds · Share responsibly</div>
+        <a class="btn btn-ghost" href="../">Library</a>
+      </div>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./news.js"></script>
+  </body>
+</html>

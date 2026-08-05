@@ -93,6 +93,24 @@
   ],
   "resources": [
     {
+      "id": "tool-tech-news",
+      "title": "Tech News Desk — Feeds & Community Shares",
+      "description": "Browse latest IT/security/cloud headlines from trusted sources and share articles on a community board.",
+      "category": "tools",
+      "tags": [
+        "news",
+        "security",
+        "cloud",
+        "community",
+        "rss"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "./tools/news.html",
+      "featured": true
+    },
+    {
       "id": "tool-field-journal",
       "title": "Field Journal — Troubleshooting & Findings",
       "description": "Personal tech journal with templates for troubleshooting, lab findings, incidents, and tips. Search, export Markdown, private on device.",

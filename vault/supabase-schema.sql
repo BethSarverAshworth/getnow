@@ -58,10 +58,26 @@ alter table vault_dismissals enable row level security;
 
 -- Open policies: secrecy is the invite token (share carefully).
 -- For stronger security later, move API behind a server with service role.
+-- Community tech news shares (optional live board)
+create table if not exists tech_news_shares (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  url text not null,
+  topic text not null default 'general',
+  note text not null default '',
+  author text not null default 'Anonymous',
+  created_at timestamptz not null default now()
+);
+
+create index if not exists tech_news_shares_created on tech_news_shares (created_at desc);
+
+alter table tech_news_shares enable row level security;
+
 do $$ begin
   -- rooms
   begin create policy vault_rooms_all on vault_rooms for all using (true) with check (true); exception when duplicate_object then null; end;
   begin create policy vault_personal_all on vault_personal for all using (true) with check (true); exception when duplicate_object then null; end;
   begin create policy vault_staging_all on vault_staging for all using (true) with check (true); exception when duplicate_object then null; end;
   begin create policy vault_dismissals_all on vault_dismissals for all using (true) with check (true); exception when duplicate_object then null; end;
+  begin create policy tech_news_shares_all on tech_news_shares for all using (true) with check (true); exception when duplicate_object then null; end;
 end $$;
