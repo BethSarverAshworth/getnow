@@ -21,6 +21,7 @@
         </a>
         <div class="nav-actions">
           <a class="btn btn-ghost" href="./">Tools</a>
+          <button class="btn btn-ghost" type="button" id="btn-live-sync">Live sync</button>
           <button class="btn btn-ghost" type="button" id="btn-github-settings">GitHub</button>
           <button class="btn btn-pro" type="button" id="btn-copy-invite">Copy invite link</button>
         </div>
@@ -300,6 +301,47 @@
           <div class="row">
             <button class="btn btn-pro" type="button" id="q-submit">Put in middle box</button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live sync (Supabase) -->
+    <div class="modal-backdrop" id="live-modal" aria-hidden="true">
+      <div class="modal vault-modal">
+        <header>
+          <h3>Enable live multi-device sync</h3>
+          <button class="icon-btn" type="button" id="live-close" aria-label="Close">×</button>
+        </header>
+        <div class="editor-body">
+          <p class="muted">
+            Free Supabase project lets every teammate with the invite link see the same middle box
+            and keep their own private work across phones/PCs. Keys stay in <strong>this browser</strong>
+            (or site config). Use the <strong>anon public</strong> key only — never the service_role secret.
+          </p>
+          <ol class="help-list">
+            <li>Open <a href="https://supabase.com/dashboard" target="_blank" rel="noopener">supabase.com/dashboard</a> and create a free project</li>
+            <li>SQL Editor → New query → paste contents of <code>vault/supabase-schema.sql</code> → Run</li>
+            <li>Project Settings → API → copy Project URL + anon public key</li>
+            <li>Paste below → Save → reload</li>
+          </ol>
+          <label class="field">
+            <span>Project URL</span>
+            <input id="live-url" type="url" placeholder="https://xxxx.supabase.co" />
+          </label>
+          <label class="field">
+            <span>anon public key</span>
+            <input id="live-anon" type="password" placeholder="eyJhbGciOi…" autocomplete="off" />
+          </label>
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="live-save">Save &amp; enable live sync</button>
+            <button class="btn btn-ghost" type="button" id="live-test">Test connection</button>
+            <button class="btn btn-ghost" type="button" id="live-clear">Clear</button>
+          </div>
+          <pre class="out" id="live-status">Not configured — vault runs in local mode.</pre>
+          <p class="tiny muted">
+            SQL file on this site:
+            <a href="../vault/supabase-schema.sql" target="_blank" rel="noopener">vault/supabase-schema.sql</a>
+          </p>
         </div>
       </div>
     </div>

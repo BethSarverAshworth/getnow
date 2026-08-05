@@ -32,6 +32,27 @@
     return window.IT_REPO_CONFIG || {};
   }
 
+  function liveSettings() {
+    try {
+      const local = JSON.parse(localStorage.getItem("it_vault_supabase") || "null");
+      if (local && local.url && local.anon) return local;
+    } catch {
+      /* ignore */
+    }
+    const c = cfg();
+    if (c.supabaseUrl && c.supabaseAnonKey) {
+      return { url: c.supabaseUrl, anon: c.supabaseAnonKey };
+    }
+    return null;
+  }
+
+  function saveLiveSettings(url, anon) {
+    localStorage.setItem(
+      "it_vault_supabase",
+      JSON.stringify({ url: url.trim(), anon: anon.trim() })
+    );
+  }
+
   function uid() {
     return crypto.randomUUID ? crypto.randomUUID() : "id-" + Math.random().toString(36).slice(2) + Date.now();
   }
@@ -91,15 +112,36 @@
   }
 
   function initClient() {
-    const { supabaseUrl, supabaseAnonKey } = cfg();
-    if (supabaseUrl && supabaseAnonKey && window.supabase?.createClient) {
-      state.client = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
-      state.mode = "live";
-      return true;
+    const live = liveSettings();
+    if (live?.url && live?.anon && window.supabase?.createClient) {
+      try {
+        state.client = window.supabase.createClient(live.url, live.anon);
+        state.mode = "live";
+        return true;
+      } catch {
+        state.client = null;
+        state.mode = "local";
+        return false;
+      }
     }
     state.client = null;
     state.mode = "local";
     return false;
+  }
+
+  async function testLiveConnection() {
+    const live = liveSettings();
+    if (!live?.url || !live?.anon) throw new Error("Save URL and anon key first");
+    if (!window.supabase?.createClient) throw new Error("Supabase library not loaded");
+    const client = window.supabase.createClient(live.url, live.anon);
+    const { error } = await client.from("vault_rooms").select("room_code").limit(1);
+    if (error) {
+      if (/relation .* does not exist/i.test(error.message) || error.code === "42P01") {
+        throw new Error("Connected, but tables missing — run vault/supabase-schema.sql in SQL Editor");
+      }
+      throw new Error(error.message);
+    }
+    return true;
   }
 
   function updateModeBanner() {
@@ -671,6 +713,57 @@
     $("p-close").addEventListener("click", () => closeModal("proposal"));
     $("propose-close").addEventListener("click", () => closeModal("propose-modal"));
     $("gh-close").addEventListener("click", () => closeModal("gh-modal"));
+    $("btn-live-sync").addEventListener("click", () => {
+      const live = liveSettings();
+      $("live-url").value = live?.url || "";
+      $("live-anon").value = live?.anon || "";
+      $("live-status").textContent = live
+        ? state.mode === "live"
+          ? "Live sync is ON for this browser."
+          : "Keys saved — reload the page if mode still says local."
+        : "Not configured — vault runs in local mode.";
+      openModal("live-modal");
+    });
+    $("live-close").addEventListener("click", () => closeModal("live-modal"));
+    $("live-save").addEventListener("click", () => {
+      const url = $("live-url").value.trim();
+      const anon = $("live-anon").value.trim();
+      if (!url || !anon) {
+        $("live-status").textContent = "Both URL and anon key are required.";
+        return;
+      }
+      saveLiveSettings(url, anon);
+      initClient();
+      updateModeBanner();
+      $("live-status").textContent =
+        state.mode === "live"
+          ? "Saved. Live sync enabled. Create a NEW protected room and share the invite link."
+          : "Saved keys, but client did not start — check URL/key and reload.";
+    });
+    $("live-test").addEventListener("click", async () => {
+      const url = $("live-url").value.trim();
+      const anon = $("live-anon").value.trim();
+      if (url && anon) saveLiveSettings(url, anon);
+      $("live-status").textContent = "Testing…";
+      try {
+        await testLiveConnection();
+        initClient();
+        updateModeBanner();
+        $("live-status").textContent =
+          "Success — tables reachable. Live sync ready. Create a protected room and share the invite link.";
+      } catch (e) {
+        $("live-status").textContent = "Test failed: " + e.message;
+      }
+    });
+    $("live-clear").addEventListener("click", () => {
+      localStorage.removeItem("it_vault_supabase");
+      initClient();
+      updateModeBanner();
+      $("live-url").value = "";
+      $("live-anon").value = "";
+      $("live-status").textContent = "Cleared. Back to local mode.";
+    });
+
     $("btn-github-settings").addEventListener("click", () => {
       const s = ghSettings();
       $("gh-token").value = s.token || "";
@@ -863,6 +956,7 @@
         closeModal("proposal");
         closeModal("propose-modal");
         closeModal("gh-modal");
+        closeModal("live-modal");
       }
     });
   }
