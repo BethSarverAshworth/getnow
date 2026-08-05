@@ -73,6 +73,13 @@
     return null;
   }
 
+  function saveLiveSettings(url, anon) {
+    localStorage.setItem(
+      "it_vault_supabase",
+      JSON.stringify({ url: String(url || "").trim(), anon: String(anon || "").trim() })
+    );
+  }
+
   function initClient() {
     const live = liveSettings();
     if (!live || !window.supabase?.createClient) {
@@ -88,6 +95,45 @@
       state.client = null;
       state.live = false;
       return false;
+    }
+  }
+
+  async function testLiveConnection() {
+    const live = liveSettings();
+    if (!live?.url || !live?.anon) throw new Error("Save URL and anon key first");
+    if (!window.supabase?.createClient) throw new Error("Supabase library not loaded (check network)");
+    const client = window.supabase.createClient(live.url, live.anon);
+    const { error } = await client.from("chat_messages").select("id").limit(1);
+    if (error) {
+      if (/relation .* does not exist/i.test(error.message) || error.code === "42P01") {
+        throw new Error("Connected, but chat_messages table missing — run supabase-schema.sql");
+      }
+      throw new Error(error.message);
+    }
+    return true;
+  }
+
+  function openLiveModal() {
+    const live = liveSettings();
+    if ($("live-url")) $("live-url").value = live?.url || "";
+    if ($("live-anon")) $("live-anon").value = live?.anon || "";
+    if ($("live-status")) {
+      $("live-status").textContent = live
+        ? "Keys found in this browser. Click Test, then Save if needed."
+        : "Not configured yet.";
+    }
+    const modal = $("live-modal");
+    if (modal) {
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+  }
+
+  function closeLiveModal() {
+    const modal = $("live-modal");
+    if (modal) {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
     }
   }
 
@@ -302,9 +348,55 @@
       sendMessage(text);
     });
 
-    $("btn-live-setup").addEventListener("click", () => {
-      window.location.href = "./vault.html";
-    });
+    const openSetup = () => openLiveModal();
+    if ($("btn-live-setup")) $("btn-live-setup").addEventListener("click", openSetup);
+    if ($("btn-live-setup-2")) $("btn-live-setup-2").addEventListener("click", openSetup);
+    if ($("live-close")) $("live-close").addEventListener("click", closeLiveModal);
+    if ($("live-modal")) {
+      $("live-modal").addEventListener("click", (e) => {
+        if (e.target === $("live-modal")) closeLiveModal();
+      });
+    }
+    if ($("live-save")) {
+      $("live-save").addEventListener("click", async () => {
+        const url = $("live-url").value.trim();
+        const anon = $("live-anon").value.trim();
+        if (!url || !anon) {
+          $("live-status").textContent = "Both URL and anon key are required.";
+          return;
+        }
+        saveLiveSettings(url, anon);
+        const ok = initClient();
+        updateUiForLive();
+        if (!ok) {
+          $("live-status").textContent = "Saved, but client did not start. Check keys and reload.";
+          return;
+        }
+        try {
+          await testLiveConnection();
+          $("live-status").textContent = "Live Sync ON. Close this and click Join chat.";
+          setConn("Ready — enter a display name", true);
+        } catch (e) {
+          $("live-status").textContent = "Saved, but test failed: " + e.message;
+        }
+      });
+    }
+    if ($("live-test")) {
+      $("live-test").addEventListener("click", async () => {
+        const url = $("live-url").value.trim();
+        const anon = $("live-anon").value.trim();
+        if (url && anon) saveLiveSettings(url, anon);
+        $("live-status").textContent = "Testing…";
+        try {
+          await testLiveConnection();
+          initClient();
+          updateUiForLive();
+          $("live-status").textContent = "Success — chat_messages is reachable. You can join chat.";
+        } catch (e) {
+          $("live-status").textContent = "Test failed: " + e.message;
+        }
+      });
+    }
   }
 
   // boot

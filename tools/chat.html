@@ -8,14 +8,14 @@
       name="description"
       content="Real-time chat for GetNow users to collaborate, share links, and help each other across study channels."
     />
-    <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="./tools.css" />
-    <link rel="stylesheet" href="./chat.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/tools/tools.css" />
+    <link rel="stylesheet" href="/tools/chat.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="../">
+        <a class="brand" href="/">
           <div class="brand-mark" aria-hidden="true">⚡</div>
           <span>GetNow</span>
         </a>
@@ -37,17 +37,51 @@
       </p>
 
       <div id="offline-banner" class="tool-card offline-banner">
-        <strong>Live chat needs Live sync</strong>
+        <strong>Chat page is online — Live Sync is not connected yet</strong>
         <p class="muted">
-          Chat is real-time across the internet, so it needs a free Supabase project. Open
-          <strong>Live sync setup</strong>, paste your Project URL + anon key (from Vault → Live sync),
-          run the latest SQL (includes <code>chat_messages</code>), then refresh this page.
+          This is <em>not</em> a 404. The page loaded, but real-time chat needs a free Supabase project
+          once. Click <strong>Connect Live Sync</strong>, paste your Project URL + anon key, run the SQL
+          once, then join a channel.
         </p>
         <div class="row">
-          <a class="btn btn-primary" href="./vault.html">Open vault Live sync</a>
-          <a class="btn btn-ghost" href="../vault/supabase-schema.sql" target="_blank" rel="noopener"
-            >SQL schema</a
+          <button class="btn btn-primary" type="button" id="btn-live-setup-2">Connect Live Sync</button>
+          <a class="btn btn-ghost" href="/vault/supabase-schema.sql" target="_blank" rel="noopener"
+            >Open SQL schema</a
           >
+        </div>
+      </div>
+
+      <!-- Live Sync modal (same keys as Vault) -->
+      <div class="modal-backdrop" id="live-modal" aria-hidden="true">
+        <div class="modal vault-modal" style="max-width: 560px; width: min(560px, 100%); margin: auto; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem;">
+          <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
+            <h3 style="margin:0">Connect Live Sync (free)</h3>
+            <button class="icon-btn" type="button" id="live-close" aria-label="Close">×</button>
+          </header>
+          <div class="editor-body" style="display:grid;gap:0.75rem">
+            <p class="muted" style="margin:0">
+              1) Create free project at
+              <a href="https://supabase.com/dashboard" target="_blank" rel="noopener">supabase.com</a><br />
+              2) SQL Editor → paste
+              <a href="/vault/supabase-schema.sql" target="_blank" rel="noopener">supabase-schema.sql</a>
+              → Run<br />
+              3) Settings → API → copy <strong>Project URL</strong> + <strong>anon public</strong> key<br />
+              4) Paste below → Save → join chat
+            </p>
+            <label class="field">
+              <span>Project URL</span>
+              <input id="live-url" type="url" placeholder="https://xxxx.supabase.co" />
+            </label>
+            <label class="field">
+              <span>anon public key</span>
+              <input id="live-anon" type="password" placeholder="eyJhbGciOi…" autocomplete="off" />
+            </label>
+            <p class="tiny muted" id="live-status">Not configured.</p>
+            <div class="row">
+              <button class="btn btn-primary" type="button" id="live-save">Save &amp; enable</button>
+              <button class="btn btn-ghost" type="button" id="live-test">Test connection</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -108,8 +142,8 @@
       </div>
     </footer>
 
-    <script src="../js/config.js"></script>
+    <script src="/js/config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./chat.js"></script>
+    <script src="/tools/chat.js"></script>
   </body>
 </html>

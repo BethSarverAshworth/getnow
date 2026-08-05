@@ -1,0 +1,68 @@
+GetNow — social captions (copy/paste)
+
+---
+SHORT (TikTok / Reels / Shorts)
+---
+Learn IT free. Build real skills. Share with your team.
+
+GetNow: library + tools + live chat + vault + journal + news.
+
+Start free → getnow-app.vercel.app
+Pro packs $12 one-time (Zelle)
+
+#IT #cybersecurity #homelab #NetworkPlus #learnIT #GetNow
+
+---
+LONGER (LinkedIn / Facebook)
+---
+I built GetNow — a free tech platform for people learning IT.
+
+✅ Hundreds of resources (networking, Linux, security, cloud…)
+✅ Live tools (ping/DNS, VM lab wizard)
+✅ Live chat & shared vault for classmates
+✅ Field journal for troubleshooting notes
+✅ Tech news desk
+
+Free to browse. Optional Pro packs ($12).
+
+👉 https://getnow-app.vercel.app
+
+---
+X / Twitter
+---
+GetNow is live: free IT library + tools + live chat.
+https://getnow-app.vercel.app
+Pro: $12 one-time → getnow-app.vercel.app/pay.html
+
+---
+VIDEO FILES ON YOUR MAC (updated with ALL resources)
+---
+Desktop/GetNow-full-resources.mp4  (~66 seconds — FULL tour of everything)
+Desktop/GetNow-engage-promo.mp4    (~48 seconds — best for social ads)
+Desktop/GetNow-promo.mp4           (~30 seconds — earlier cut)
+Desktop/GetNow-promo-short.mp4     (~18 seconds — TikTok/Reels)
+
+Full tour includes:
+Brand · 390+ resources overview · Library homepage · Tools hub ·
+Network toolkit · Shared vault · Field journal · Live chat ·
+Tech news · Engagement features · End card with URL
+
+Also: ~/it-repository/promo/
+
+---
+FULL RESOURCES VIDEO (updated)
+---
+Desktop/GetNow-full-resources.mp4  (~66s) — full tour of EVERYTHING
+Desktop/GetNow-engage-promo.mp4    (~48s) — highlights for social
+
+Everything on GetNow:
+• 390+ free resources (networking, security, Linux, Windows, cloud, certs…)
+• Live tools: network toolkit, VM lab wizard
+• Live chat channels
+• Shared vault (invite-only, middle box)
+• Field journal for troubleshooting notes
+• Tech news desk + community shares
+• Pro packs $12
+
+Start free → https://getnow-app.vercel.app
+Pro → https://getnow-app.vercel.app/pay.html

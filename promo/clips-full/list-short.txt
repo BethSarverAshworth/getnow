@@ -1,0 +1,8 @@
+file '/Users/bethsarverashworth/it-repository/promo/clips-full/s01.mp4'
+file '/Users/bethsarverashworth/it-repository/promo/clips-full/s02.mp4'
+file '/Users/bethsarverashworth/it-repository/promo/clips-full/s03.mp4'
+file '/Users/bethsarverashworth/it-repository/promo/clips-full/s04.mp4'
+file '/Users/bethsarverashworth/it-repository/promo/clips-full/s08.mp4'
+file '/Users/bethsarverashworth/it-repository/promo/clips-full/s06.mp4'
+file '/Users/bethsarverashworth/it-repository/promo/clips-full/s10.mp4'
+file '/Users/bethsarverashworth/it-repository/promo/clips-full/s11.mp4'
