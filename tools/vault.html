@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Shared Filing Vault — Scripts & Ideas | IT Repository</title>
+    <title>Protected Shared Vault | IT Repository</title>
     <meta
       name="description"
-      content="Shared filing system for teams and classmates to post scripts, ideas, and notes with a room code."
+      content="Invite-only vault: personal completed work stays protected; shared middle box for proposals; accept changes yourself; optional GitHub upload."
     />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="./tools.css" />
@@ -21,98 +21,170 @@
         </a>
         <div class="nav-actions">
           <a class="btn btn-ghost" href="./">Tools</a>
-          <a class="btn btn-ghost" href="../#browse">Library</a>
-          <button class="btn btn-pro" type="button" id="btn-share-link">Copy share link</button>
+          <button class="btn btn-ghost" type="button" id="btn-github-settings">GitHub</button>
+          <button class="btn btn-pro" type="button" id="btn-copy-invite">Copy invite link</button>
         </div>
       </div>
     </header>
 
     <main class="container tools-main">
-      <p class="tools-kicker">Collaborate</p>
-      <h1>Shared filing vault</h1>
+      <p class="tools-kicker">Protected collaboration</p>
+      <h1>Shared vault with a middle box</h1>
       <p class="tools-lead">
-        A room-based filing cabinet for <strong>scripts, ideas, and notes</strong>. Create a room,
-        share the code or link, and everyone in the room can read and add files. Live multi-device
-        sharing uses free Supabase (optional); otherwise use export/import to pass the room around.
+        <strong>Your completed work stays yours</strong> — nobody can overwrite it.
+        Teammates put scripts and ideas in the <strong>middle box</strong>. You review each
+        proposal and choose <em>Accept into my work</em> or ignore it. Access requires a
+        <strong>special invite link</strong>. Optional pipeline pushes <em>your</em> files to GitHub.
       </p>
 
-      <!-- Join gate -->
+      <div class="flow-diagram tool-card">
+        <pre class="out diagram">YOU (private workspace)          MIDDLE BOX (shared)          THEM (private workspace)
+  [Completed files]  ←accept?←   [Proposed scripts/ideas]  →accept?→  [Completed files]
+  [Drafts you edit]  → submit →  [Nobody auto-changes you]  ←submit←  [Drafts they edit]
+         |                              ^
+         +------ GitHub upload (your files only, optional) ------+</pre>
+      </div>
+
+      <!-- ACCESS GATE: special invite link required -->
       <section class="tool-card" id="gate">
-        <h2>Enter a shared room</h2>
+        <h2>Invite-only access</h2>
         <p class="muted" id="mode-banner">Checking storage mode…</p>
-        <div class="join-grid">
-          <label class="field">
-            <span>Your display name</span>
-            <input id="display-name" type="text" maxlength="40" placeholder="e.g. Beth" />
-          </label>
-          <label class="field">
-            <span>Room code</span>
-            <input id="room-code" type="text" maxlength="12" placeholder="e.g. TECHLAB" style="text-transform: uppercase" />
-          </label>
-        </div>
-        <div class="row" style="margin-top: 0.85rem">
-          <button class="btn btn-primary" type="button" id="btn-join">Join room</button>
-          <button class="btn btn-ghost" type="button" id="btn-create">Create new room</button>
-        </div>
-        <p class="tiny muted" style="margin-top: 0.85rem">
-          Room codes are like a shared folder password — anyone with the code can view and edit.
-          Don’t store secrets, passwords, or private keys here.
+        <p class="muted" id="gate-msg">
+          You need a <strong>special invite link</strong> from the room owner (it includes a secret
+          token). A room name alone is not enough.
         </p>
+
+        <div id="invite-ok" class="hidden">
+          <div class="join-grid">
+            <label class="field">
+              <span>Your display name</span>
+              <input id="display-name" type="text" maxlength="40" placeholder="e.g. Beth" />
+            </label>
+            <label class="field">
+              <span>Room</span>
+              <input id="room-display-gate" type="text" readonly />
+            </label>
+          </div>
+          <div class="row" style="margin-top: 0.85rem">
+            <button class="btn btn-primary" type="button" id="btn-enter">Enter vault</button>
+          </div>
+        </div>
+
+        <div id="invite-missing">
+          <p class="warn-box">
+            No valid invite token in this link. Ask your teammate for their
+            <strong>Copy invite link</strong> URL, or create a new protected room below.
+          </p>
+          <div class="join-grid">
+            <label class="field">
+              <span>Your display name</span>
+              <input id="create-name" type="text" maxlength="40" placeholder="Owner name" />
+            </label>
+            <label class="field">
+              <span>Room name (optional)</span>
+              <input id="create-room" type="text" maxlength="12" placeholder="TECHLAB" style="text-transform: uppercase" />
+            </label>
+          </div>
+          <div class="row" style="margin-top: 0.85rem">
+            <button class="btn btn-primary" type="button" id="btn-create-room">
+              Create protected room + invite link
+            </button>
+          </div>
+        </div>
       </section>
 
-      <!-- Workspace -->
+      <!-- WORKSPACE -->
       <section id="workspace" class="hidden">
         <div class="vault-toolbar tool-card">
           <div>
-            <div class="room-label">Room</div>
+            <div class="room-label">Protected room</div>
             <div class="room-code-display" id="room-display">—</div>
-            <div class="tiny muted" id="conn-status">Local mode</div>
+            <div class="tiny muted" id="conn-status">—</div>
+            <div class="tiny muted">Signed in as <strong id="whoami">—</strong></div>
           </div>
           <div class="row">
             <button class="btn btn-ghost" type="button" id="btn-refresh">Refresh</button>
-            <button class="btn btn-ghost" type="button" id="btn-export">Export room</button>
-            <label class="btn btn-ghost file-btn">
-              Import
-              <input type="file" id="import-file" accept="application/json,.json" hidden />
-            </label>
-            <button class="btn btn-ghost" type="button" id="btn-leave">Leave room</button>
-            <button class="btn btn-primary" type="button" id="btn-new">+ New file</button>
+            <button class="btn btn-ghost" type="button" id="btn-export">Export my pack</button>
+            <button class="btn btn-ghost" type="button" id="btn-leave">Leave</button>
           </div>
         </div>
 
-        <div class="vault-layout">
-          <aside class="tool-card vault-side">
-            <h2>Folders</h2>
-            <div id="folder-list" class="folder-list"></div>
-            <label class="field" style="margin-top: 0.85rem">
-              <span>Search this room</span>
-              <input id="vault-search" type="search" placeholder="title, tags, author…" />
-            </label>
-          </aside>
+        <div class="tabs" role="tablist">
+          <button type="button" class="tab active" data-tab="mine">My work</button>
+          <button type="button" class="tab" data-tab="box">Middle box <span id="box-badge" class="badge-count">0</span></button>
+          <button type="button" class="tab" data-tab="help">How it works</button>
+        </div>
 
-          <div class="vault-main">
-            <div class="results-bar">
-              <span id="file-count">0 files</span>
-              <span class="tiny muted">Click a file to open · everyone in the room can edit</span>
+        <!-- MY WORK -->
+        <div class="tab-panel" id="tab-mine">
+          <div class="vault-layout">
+            <aside class="tool-card vault-side">
+              <h2>My folders</h2>
+              <div id="folder-list" class="folder-list"></div>
+              <label class="field" style="margin-top: 0.85rem">
+                <span>Search my files</span>
+                <input id="mine-search" type="search" placeholder="title, tags…" />
+              </label>
+              <button class="btn btn-primary" type="button" id="btn-new" style="width: 100%; margin-top: 0.75rem">
+                + New file (mine only)
+              </button>
+            </aside>
+            <div class="vault-main">
+              <div class="results-bar">
+                <span id="mine-count">0 files</span>
+                <span class="tiny muted">Completed files are locked from others — only you edit them</span>
+              </div>
+              <div id="mine-list" class="file-list"></div>
             </div>
-            <div id="file-list" class="file-list"></div>
+          </div>
+        </div>
+
+        <!-- MIDDLE BOX -->
+        <div class="tab-panel hidden" id="tab-box">
+          <div class="tool-card" style="margin-bottom: 1rem">
+            <h2>Submit to the middle box</h2>
+            <p class="muted">
+              Proposals land here for everyone to review. They do <strong>not</strong> change anyone’s
+              completed work unless that person accepts a copy into their own workspace.
+            </p>
+            <button class="btn btn-pro" type="button" id="btn-propose">Propose script / idea</button>
+          </div>
+          <div class="results-bar">
+            <span id="box-count">0 proposals</span>
+            <span class="tiny muted">Accept = copy into YOUR work · originals stay safe</span>
+          </div>
+          <div id="box-list" class="file-list"></div>
+        </div>
+
+        <!-- HELP -->
+        <div class="tab-panel hidden" id="tab-help">
+          <div class="tool-card">
+            <h2>Rules of this vault</h2>
+            <ol class="help-list">
+              <li><strong>Special invite link</strong> required — room name alone is not enough.</li>
+              <li><strong>My work</strong> is private to you inside the room. Mark files <em>Completed</em> when done.</li>
+              <li><strong>Middle box</strong> holds proposals from all parties.</li>
+              <li>Others <strong>cannot edit or delete</strong> your files.</li>
+              <li><strong>Accept</strong> creates a <em>copy</em> in your workspace (optionally as draft). Your completed originals stay untouched.</li>
+              <li><strong>GitHub</strong> uploads only files you choose from <em>your</em> workspace (token stays in your browser).</li>
+            </ol>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Editor modal -->
+    <!-- File editor (personal) -->
     <div class="modal-backdrop" id="editor" aria-hidden="true">
       <div class="modal vault-modal">
         <header>
-          <h3 id="editor-title">New file</h3>
+          <h3 id="editor-title">My file</h3>
           <button class="icon-btn" type="button" id="editor-close" aria-label="Close">×</button>
         </header>
         <div class="editor-body">
           <div class="join-grid">
             <label class="field">
               <span>Title</span>
-              <input id="f-title" type="text" maxlength="120" placeholder="e.g. Backup script v1" />
+              <input id="f-title" type="text" maxlength="120" />
             </label>
             <label class="field">
               <span>Folder</span>
@@ -126,27 +198,159 @@
               </select>
             </label>
           </div>
+          <div class="join-grid">
+            <label class="field">
+              <span>Status</span>
+              <select id="f-status">
+                <option value="draft">Draft (still editing)</option>
+                <option value="completed">Completed (protected baseline)</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Tags</span>
+              <input id="f-tags" type="text" placeholder="bash, lab, vlan" />
+            </label>
+          </div>
           <label class="field">
-            <span>Tags (comma-separated)</span>
-            <input id="f-tags" type="text" placeholder="bash, backup, lab" />
+            <span>Content</span>
+            <textarea id="f-content" rows="14"></textarea>
+          </label>
+          <p class="tiny muted" id="editor-lock-note"></p>
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="btn-save">Save to my work</button>
+            <button class="btn btn-ghost" type="button" id="btn-to-box">Send copy to middle box</button>
+            <button class="btn btn-ghost" type="button" id="btn-github-push">Upload to GitHub</button>
+            <button class="btn btn-ghost" type="button" id="btn-delete" style="color: #f87171">Delete mine</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proposal viewer / accept -->
+    <div class="modal-backdrop" id="proposal" aria-hidden="true">
+      <div class="modal vault-modal">
+        <header>
+          <h3 id="p-title">Proposal</h3>
+          <button class="icon-btn" type="button" id="p-close" aria-label="Close">×</button>
+        </header>
+        <div class="editor-body">
+          <div class="file-meta" id="p-meta"></div>
+          <pre class="out" id="p-content"></pre>
+          <label class="field">
+            <span>If you accept, save as title</span>
+            <input id="p-accept-title" type="text" />
           </label>
           <label class="field">
-            <span>Content — scripts, steps, diagrams (text)</span>
-            <textarea id="f-content" rows="14" placeholder="Paste script or write your idea…"></textarea>
+            <span>Accept as</span>
+            <select id="p-accept-status">
+              <option value="draft">Draft (review further)</option>
+              <option value="completed">Completed in my work</option>
+            </select>
+          </label>
+          <p class="tiny muted">
+            Accept always creates a <strong>new copy under your account</strong>. It never overwrites
+            your existing completed files.
+          </p>
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="p-accept">Accept into my work</button>
+            <button class="btn btn-ghost" type="button" id="p-dismiss">Hide for me</button>
+            <button class="btn btn-ghost" type="button" id="p-copy">Copy content</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Propose new -->
+    <div class="modal-backdrop" id="propose-modal" aria-hidden="true">
+      <div class="modal vault-modal">
+        <header>
+          <h3>Propose to middle box</h3>
+          <button class="icon-btn" type="button" id="propose-close" aria-label="Close">×</button>
+        </header>
+        <div class="editor-body">
+          <label class="field">
+            <span>Title</span>
+            <input id="q-title" type="text" />
+          </label>
+          <div class="join-grid">
+            <label class="field">
+              <span>Folder</span>
+              <select id="q-folder">
+                <option value="scripts">Scripts</option>
+                <option value="ideas">Ideas</option>
+                <option value="notes">Notes</option>
+                <option value="architecture">Architecture</option>
+                <option value="security">Security</option>
+                <option value="hardware">Hardware</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Tags</span>
+              <input id="q-tags" type="text" />
+            </label>
+          </div>
+          <label class="field">
+            <span>Note to teammates (optional)</span>
+            <input id="q-note" type="text" placeholder="Why this helps / how to use" />
+          </label>
+          <label class="field">
+            <span>Content</span>
+            <textarea id="q-content" rows="12"></textarea>
           </label>
           <div class="row">
-            <button class="btn btn-primary" type="button" id="btn-save">Save to room</button>
-            <button class="btn btn-ghost" type="button" id="btn-copy-content">Copy content</button>
-            <button class="btn btn-ghost" type="button" id="btn-delete" style="color: #f87171">Delete</button>
+            <button class="btn btn-pro" type="button" id="q-submit">Put in middle box</button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GitHub settings -->
+    <div class="modal-backdrop" id="gh-modal" aria-hidden="true">
+      <div class="modal vault-modal">
+        <header>
+          <h3>GitHub upload pipeline</h3>
+          <button class="icon-btn" type="button" id="gh-close" aria-label="Close">×</button>
+        </header>
+        <div class="editor-body">
+          <p class="muted">
+            Token is stored <strong>only in your browser</strong> (localStorage), never on our server.
+            Use a fine-grained PAT with Contents: Read/Write on one repo.
+          </p>
+          <label class="field">
+            <span>Personal access token</span>
+            <input id="gh-token" type="password" placeholder="ghp_… or github_pat_…" autocomplete="off" />
+          </label>
+          <div class="join-grid">
+            <label class="field">
+              <span>Owner (user or org)</span>
+              <input id="gh-owner" type="text" placeholder="your-username" />
+            </label>
+            <label class="field">
+              <span>Repository</span>
+              <input id="gh-repo" type="text" placeholder="it-lab-notes" />
+            </label>
+          </div>
+          <label class="field">
+            <span>Path prefix (folder in repo)</span>
+            <input id="gh-prefix" type="text" placeholder="vault/" />
+          </label>
+          <label class="field">
+            <span>Branch</span>
+            <input id="gh-branch" type="text" placeholder="main" />
+          </label>
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="gh-save">Save GitHub settings</button>
+            <button class="btn btn-ghost" type="button" id="gh-clear">Clear token</button>
+          </div>
+          <p class="tiny muted" id="gh-status"></p>
         </div>
       </div>
     </div>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>Shared vault · Multi-party rooms · Free tier friendly</div>
-        <a class="btn btn-ghost" href="../vault/SETUP.md">Setup live sharing</a>
+        <div>Invite-only · Personal work protected · Middle box for proposals</div>
+        <a class="btn btn-ghost" href="../vault/SETUP.md">Setup docs</a>
       </div>
     </footer>
 

@@ -110,15 +110,15 @@
     },
     {
       "id": "tool-vault",
-      "title": "Shared Filing Vault (Scripts & Ideas)",
-      "description": "Multi-party room for sharing scripts, ideas, and notes via room code or link. Export/import or live Supabase sync.",
+      "title": "Protected Shared Vault (Invite + Middle Box)",
+      "description": "Invite-only rooms. Personal completed work cannot be changed by others. Middle box for proposals you accept or reject. GitHub upload pipeline for your files.",
       "category": "tools",
       "tags": [
         "collaboration",
-        "scripts",
-        "ideas",
-        "shared",
-        "vault"
+        "invite",
+        "github",
+        "staging",
+        "protected"
       ],
       "level": "Beginner",
       "type": "Tool",
