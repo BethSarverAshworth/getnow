@@ -6,7 +6,7 @@
     <title>Tech News Desk | GetNow</title>
     <meta
       name="description"
-      content="Latest tech and IT security news from trusted sources, plus a community board to share articles and finds."
+      content="Latest tech and IT security news from trusted sources, add your own RSS feeds, and share articles with the community."
     />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="./tools.css" />
@@ -21,8 +21,8 @@
         </a>
         <div class="nav-actions">
           <a class="btn btn-ghost" href="./">Tools</a>
-          <a class="btn btn-ghost" href="./journal.html">Journal</a>
           <button class="btn btn-ghost" type="button" id="btn-refresh">Refresh feeds</button>
+          <button class="btn btn-ghost" type="button" id="btn-add-feed">+ Add feed</button>
           <button class="btn btn-pro" type="button" id="btn-share">Share a story</button>
         </div>
       </div>
@@ -32,9 +32,9 @@
       <p class="tools-kicker">Stay current</p>
       <h1>Tech news desk</h1>
       <p class="tools-lead">
-        Scan <strong>latest headlines</strong> from trusted IT, security, and cloud sources — then
-        <strong>share finds</strong> with classmates and teammates on the community board. Great for
-        stand-ups, study groups, and “what should we care about this week?”
+        Scan <strong>latest headlines</strong> from built-in IT sources — or
+        <strong>add your own RSS feed</strong>. Share individual articles on the community board for
+        classmates and teammates.
       </p>
 
       <div class="tabs" role="tablist">
@@ -53,6 +53,16 @@
             <input id="feed-search" type="search" placeholder="ransomware, Azure, Wi‑Fi 7, AI…" />
           </label>
           <p class="tiny muted" id="feed-status">Loading headlines…</p>
+
+          <div class="custom-feeds-box">
+            <div class="row" style="justify-content: space-between; align-items: center">
+              <strong>Your custom RSS feeds</strong>
+              <button class="btn btn-primary" type="button" id="btn-add-feed-2" onclick="document.getElementById('btn-add-feed').click()">
+                + Add feed
+              </button>
+            </div>
+            <div id="custom-feed-list" style="margin-top: 0.65rem"></div>
+          </div>
         </div>
         <div id="feed-list" class="news-list"></div>
       </section>
@@ -62,9 +72,8 @@
         <div class="tool-card" style="margin-bottom: 1rem">
           <h2>Community board</h2>
           <p class="muted">
-            Drop a link to an article, advisory, or write-up worth reading. Others can browse what the
-            group is watching. Posts stay on this device unless Live Sync (Supabase) is enabled in the
-            vault settings — then they sync for everyone using the same project.
+            Drop a link to a single article, advisory, or write-up. (To pull ongoing headlines from a
+            site, use <strong>+ Add feed</strong> with that site’s RSS URL.)
           </p>
           <div class="row">
             <button class="btn btn-primary" type="button" id="btn-share-2">Share a story</button>
@@ -75,7 +84,7 @@
       </section>
     </main>
 
-    <!-- Share modal -->
+    <!-- Share modal (single story) -->
     <div class="modal-backdrop" id="share-modal" aria-hidden="true">
       <div class="modal vault-modal">
         <header>
@@ -93,7 +102,7 @@
           </label>
           <label class="field">
             <span>Link (URL)</span>
-            <input id="s-url" type="url" placeholder="https://…" />
+            <input id="s-url" type="text" inputmode="url" placeholder="https://example.com/article" />
           </label>
           <div class="join-grid">
             <label class="field">
@@ -113,6 +122,7 @@
               <input id="s-note" type="text" maxlength="240" placeholder="One line for the team" />
             </label>
           </div>
+          <p class="tiny muted" id="share-status"></p>
           <div class="row">
             <button class="btn btn-pro" type="button" id="s-submit">Post to board</button>
           </div>
@@ -120,9 +130,59 @@
       </div>
     </div>
 
+    <!-- Add RSS feed modal -->
+    <div class="modal-backdrop" id="feed-modal" aria-hidden="true">
+      <div class="modal vault-modal">
+        <header>
+          <h3>Add an RSS feed</h3>
+          <button class="icon-btn" type="button" id="feed-close" aria-label="Close">×</button>
+        </header>
+        <div class="editor-body">
+          <p class="muted">
+            Paste a site’s <strong>RSS or Atom feed URL</strong> (not a normal article page). We’ll
+            test it, then pull headlines into Latest feeds.
+          </p>
+          <label class="field">
+            <span>Feed name</span>
+            <input id="f-name" type="text" maxlength="60" placeholder="e.g. My favorite blog" />
+          </label>
+          <label class="field">
+            <span>RSS / Atom URL</span>
+            <input
+              id="f-url"
+              type="text"
+              inputmode="url"
+              placeholder="https://example.com/feed/ or /rss.xml"
+            />
+          </label>
+          <label class="field">
+            <span>Topic</span>
+            <select id="f-topic">
+              <option value="general">General tech</option>
+              <option value="security">Security</option>
+              <option value="networking">Networking</option>
+              <option value="cloud">Cloud</option>
+              <option value="hardware">Hardware</option>
+              <option value="career">Career / certs</option>
+              <option value="opensource">Open source</option>
+            </select>
+          </label>
+          <p class="tiny muted">
+            Examples that work:
+            <code>https://hnrss.org/frontpage</code> ·
+            <code>https://www.bleepingcomputer.com/feed/</code>
+          </p>
+          <p class="tiny muted" id="feed-add-status"></p>
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="f-submit">Add feed &amp; load</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>Tech news desk · External headlines via public feeds · Share responsibly</div>
+        <div>Tech news desk · Built-in + custom RSS · Share stories</div>
         <a class="btn btn-ghost" href="../">Library</a>
       </div>
     </footer>
