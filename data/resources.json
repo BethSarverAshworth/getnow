@@ -11,6 +11,11 @@
       "icon": "\ud83c\udf10"
     },
     {
+      "id": "architecture",
+      "name": "Architecture",
+      "icon": "\ud83d\uddfa\ufe0f"
+    },
+    {
       "id": "linux",
       "name": "Linux",
       "icon": "\ud83d\udc27"
@@ -436,6 +441,230 @@
       "url": "#pro",
       "featured": true,
       "pack": "packs/script-vault.md"
+    },
+    {
+      "id": "topo-types",
+      "title": "Network Topology Types (Star, Mesh, Hybrid)",
+      "description": "Visual overview of common topologies with when to use each \u2014 interview and Network+ ready.",
+      "category": "architecture",
+      "tags": [
+        "topology",
+        "star",
+        "mesh",
+        "diagrams"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "#topo-types",
+      "featured": true,
+      "body": "NETWORK TOPOLOGY TYPES (quick guide)\n\n1) STAR\n   Devices connect to a central switch.\n   + Easy to manage  - Switch is critical\n\n        PC -- Switch -- PC\n                 |\n                PC\n\n2) EXTENDED STAR\n   Multiple access switches under a core/distribution switch.\n   Used in real buildings and campuses.\n\n3) MESH (full or partial)\n   Multiple paths between nodes for resilience.\n   + Redundancy  - Cost/complexity\n\n4) HYBRID\n   What enterprises actually run: star access + hierarchical core + edge firewall.\n\n5) BUS / RING\n   Mostly exam history for modern Ethernet LANs.\n   Know definitions; design with star + hierarchy.\n\nINTERVIEW ONE-LINER\n\"Access layers are usually star; the campus is hierarchical; the WAN may use partial mesh.\"\n"
+    },
+    {
+      "id": "arch-3tier",
+      "title": "3-Tier Campus Architecture Explained",
+      "description": "Core, distribution, and access layers \u2014 plus when to use a collapsed core.",
+      "category": "architecture",
+      "tags": [
+        "campus",
+        "core",
+        "distribution",
+        "access"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "#arch-3tier",
+      "featured": true,
+      "body": "3-TIER CAMPUS MODEL\n\nACCESS\n- End devices: PCs, phones, APs, printers\n- Port security, PoE, VLAN assignment\n\nDISTRIBUTION\n- Policy, routing between VLANs, aggregation\n- ACLs, summarization (as design allows)\n\nCORE\n- High-speed backbone, keep it simple and fast\n- Connect distribution blocks\n\nCOLLAPSED CORE (2-TIER)\n- Merge core + distribution for smaller networks\n- Cheaper, fewer devices, still valid design\n\nASCII SKETCH\n        [CORE]\n       /  |  \\\n   [DIST][DIST][DIST]\n     |     |     |\n   access access access\n\nTalk about failure domains: one access switch down shouldn't take the whole campus.\n"
+    },
+    {
+      "id": "arch-dmz",
+      "title": "DMZ & Perimeter Sketch",
+      "description": "Simple perimeter diagram: Internet, firewall, LAN, and DMZ for public services.",
+      "category": "architecture",
+      "tags": [
+        "dmz",
+        "firewall",
+        "perimeter",
+        "security"
+      ],
+      "level": "Intermediate",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#arch-dmz",
+      "featured": false,
+      "body": "DMZ / PERIMETER (starter sketch)\n\n                 Internet\n                     |\n              [Edge Firewall]\n               /          \\\n           [LAN]          [DMZ]\n        users/apps     web / mail / VPN portal\n                            |\n                     (optional internal FW)\n                            |\n                      sensitive systems\n\nRULES OF THUMB\n- Don't put public web servers flat on the staff LAN\n- Limit DMZ \u2192 LAN to only required ports\n- Log denials and critical allows\n- Prefer reverse proxy / WAF patterns when possible\n"
+    },
+    {
+      "id": "arch-home-lab-diagram",
+      "title": "Home Lab Topology (Starter Diagram)",
+      "description": "Copy-paste lab diagram for resumes and study journals: ISP to VMs.",
+      "category": "architecture",
+      "tags": [
+        "homelab",
+        "diagram",
+        "virtualization"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#arch-homelab",
+      "featured": true,
+      "body": "HOME LAB TOPOLOGY (starter)\n\n[Internet / ISP]\n       |\n[Home Router]  (NAT)\n       |\n[Host PC / Hypervisor]\n   |-- VM: Firewall (optional)\n   |-- VM: Linux server\n   |-- VM: Windows client\n   |-- VM: Security tools (authorized use only)\n\nLABEL ON YOUR DIAGRAM\n- Hypervisor name (VirtualBox, UTM, Proxmox, etc.)\n- Lab subnet (example: 10.10.10.0/24)\n- What each VM is for (AD, DNS, web, etc.)\n\nPORTFOLIO TIP\nExport this from draw.io and put it on your LinkedIn featured section.\n"
+    },
+    {
+      "id": "arch-vlan-basics",
+      "title": "VLAN Basics for Diagrams",
+      "description": "How to show VLANs, trunks, and access ports on a whiteboard without panic.",
+      "category": "architecture",
+      "tags": [
+        "vlan",
+        "trunk",
+        "802.1q",
+        "segmentation"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "#arch-vlan",
+      "featured": false,
+      "body": "VLANS ON A DIAGRAM\n\nACCESS PORT = one VLAN to a PC/phone\nTRUNK = multiple VLANs between switches (802.1Q tags)\n\nSketch:\n[PC VLAN10]--access--[SW1]==trunk==[SW2]--access--[PC VLAN20]\n\nIf VLANs differ, they need a router/L3/firewall to talk (inter-VLAN routing).\n\nDRAWING TIP\nColor-code or label each link: \"access 10\" vs \"trunk 10,20,30\".\n"
+    },
+    {
+      "id": "tool-drawio",
+      "title": "diagrams.net (draw.io) for Network Diagrams",
+      "description": "Free browser tool to draw professional topology and architecture diagrams.",
+      "category": "tools",
+      "tags": [
+        "drawio",
+        "diagrams",
+        "visio-alternative"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://app.diagrams.net/",
+      "featured": true
+    },
+    {
+      "id": "tool-excalidraw",
+      "title": "Excalidraw \u2014 Fast Whiteboard Diagrams",
+      "description": "Sketch interview-style network diagrams quickly; export PNG for notes.",
+      "category": "tools",
+      "tags": [
+        "excalidraw",
+        "whiteboard",
+        "diagrams"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://excalidraw.com/",
+      "featured": false
+    },
+    {
+      "id": "cheat-topology-symbols",
+      "title": "Topology Symbol Cheatsheet",
+      "description": "Common shapes and labels used on network diagrams (cloud, firewall, switch, server).",
+      "category": "cheatsheets",
+      "tags": [
+        "symbols",
+        "diagrams",
+        "documentation"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-symbols",
+      "featured": false,
+      "body": "DIAGRAM SYMBOL CHEATSHEET\n\nCloud        = Internet / ISP / MPLS\nRectangle    = Router or L3 device\nSwitch icon  = L2/L3 switch\nCylinder     = Server / database\nPhone/laptop = End users\nDashed box   = Security zone (DMZ, guest, PCI)\nFirewall     = Filter / policy point (label INSIDE/OUTSIDE/DMZ)\n\nALWAYS LABEL\n- Device role\n- VLAN or subnet\n- Trust boundary\n- North arrow optional; top=Internet is fine\n"
+    },
+    {
+      "id": "net-hierarchical",
+      "title": "Cisco Hierarchical Design (Free Overview)",
+      "description": "Vendor-neutral reading on hierarchical network design concepts used industry-wide.",
+      "category": "networking",
+      "tags": [
+        "cisco",
+        "hierarchical",
+        "design"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Campus/campover.html",
+      "featured": false
+    },
+    {
+      "id": "pro-topology",
+      "title": "Network Topology Diagram Pack",
+      "description": "Star, mesh, hybrid, extended star diagrams plus whiteboard drawing checklist for labs and interviews.",
+      "category": "architecture",
+      "tags": [
+        "topology",
+        "diagrams",
+        "whiteboard"
+      ],
+      "level": "Intermediate",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "pack": "packs/topology-diagrams.md",
+      "featured": true
+    },
+    {
+      "id": "pro-architecture",
+      "title": "Network Architecture Pack",
+      "description": "3-tier campus, small business, DMZ, IP plans, HA sketches, and architecture checklists.",
+      "category": "architecture",
+      "tags": [
+        "architecture",
+        "campus",
+        "dmz",
+        "design"
+      ],
+      "level": "Advanced",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "pack": "packs/network-architecture.md",
+      "featured": true
+    },
+    {
+      "id": "pro-vlan",
+      "title": "VLAN & Segmentation Design Pack",
+      "description": "VLAN maps, trunk/access, wireless SSIDs, ACL intent, and lab exercises.",
+      "category": "architecture",
+      "tags": [
+        "vlan",
+        "segmentation",
+        "acl",
+        "wifi"
+      ],
+      "level": "Intermediate",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "pack": "packs/vlan-segmentation.md",
+      "featured": true
+    },
+    {
+      "id": "pro-diagram-interview",
+      "title": "Diagram Interview Pack",
+      "description": "How to draw under pressure: outage paths, clarifying questions, and senior phrasing.",
+      "category": "certs",
+      "tags": [
+        "interview",
+        "whiteboard",
+        "troubleshooting"
+      ],
+      "level": "Intermediate",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "pack": "packs/diagram-interview.md",
+      "featured": true
     }
   ]
 }
