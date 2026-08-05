@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shared Filing Vault — Scripts & Ideas | IT Repository</title>
+    <meta
+      name="description"
+      content="Shared filing system for teams and classmates to post scripts, ideas, and notes with a room code."
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="./tools.css" />
+    <link rel="stylesheet" href="./vault.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <span>IT Repository</span>
+        </a>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="./">Tools</a>
+          <a class="btn btn-ghost" href="../#browse">Library</a>
+          <button class="btn btn-pro" type="button" id="btn-share-link">Copy share link</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container tools-main">
+      <p class="tools-kicker">Collaborate</p>
+      <h1>Shared filing vault</h1>
+      <p class="tools-lead">
+        A room-based filing cabinet for <strong>scripts, ideas, and notes</strong>. Create a room,
+        share the code or link, and everyone in the room can read and add files. Live multi-device
+        sharing uses free Supabase (optional); otherwise use export/import to pass the room around.
+      </p>
+
+      <!-- Join gate -->
+      <section class="tool-card" id="gate">
+        <h2>Enter a shared room</h2>
+        <p class="muted" id="mode-banner">Checking storage mode…</p>
+        <div class="join-grid">
+          <label class="field">
+            <span>Your display name</span>
+            <input id="display-name" type="text" maxlength="40" placeholder="e.g. Beth" />
+          </label>
+          <label class="field">
+            <span>Room code</span>
+            <input id="room-code" type="text" maxlength="12" placeholder="e.g. TECHLAB" style="text-transform: uppercase" />
+          </label>
+        </div>
+        <div class="row" style="margin-top: 0.85rem">
+          <button class="btn btn-primary" type="button" id="btn-join">Join room</button>
+          <button class="btn btn-ghost" type="button" id="btn-create">Create new room</button>
+        </div>
+        <p class="tiny muted" style="margin-top: 0.85rem">
+          Room codes are like a shared folder password — anyone with the code can view and edit.
+          Don’t store secrets, passwords, or private keys here.
+        </p>
+      </section>
+
+      <!-- Workspace -->
+      <section id="workspace" class="hidden">
+        <div class="vault-toolbar tool-card">
+          <div>
+            <div class="room-label">Room</div>
+            <div class="room-code-display" id="room-display">—</div>
+            <div class="tiny muted" id="conn-status">Local mode</div>
+          </div>
+          <div class="row">
+            <button class="btn btn-ghost" type="button" id="btn-refresh">Refresh</button>
+            <button class="btn btn-ghost" type="button" id="btn-export">Export room</button>
+            <label class="btn btn-ghost file-btn">
+              Import
+              <input type="file" id="import-file" accept="application/json,.json" hidden />
+            </label>
+            <button class="btn btn-ghost" type="button" id="btn-leave">Leave room</button>
+            <button class="btn btn-primary" type="button" id="btn-new">+ New file</button>
+          </div>
+        </div>
+
+        <div class="vault-layout">
+          <aside class="tool-card vault-side">
+            <h2>Folders</h2>
+            <div id="folder-list" class="folder-list"></div>
+            <label class="field" style="margin-top: 0.85rem">
+              <span>Search this room</span>
+              <input id="vault-search" type="search" placeholder="title, tags, author…" />
+            </label>
+          </aside>
+
+          <div class="vault-main">
+            <div class="results-bar">
+              <span id="file-count">0 files</span>
+              <span class="tiny muted">Click a file to open · everyone in the room can edit</span>
+            </div>
+            <div id="file-list" class="file-list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Editor modal -->
+    <div class="modal-backdrop" id="editor" aria-hidden="true">
+      <div class="modal vault-modal">
+        <header>
+          <h3 id="editor-title">New file</h3>
+          <button class="icon-btn" type="button" id="editor-close" aria-label="Close">×</button>
+        </header>
+        <div class="editor-body">
+          <div class="join-grid">
+            <label class="field">
+              <span>Title</span>
+              <input id="f-title" type="text" maxlength="120" placeholder="e.g. Backup script v1" />
+            </label>
+            <label class="field">
+              <span>Folder</span>
+              <select id="f-folder">
+                <option value="scripts">Scripts</option>
+                <option value="ideas">Ideas</option>
+                <option value="notes">Notes</option>
+                <option value="architecture">Architecture</option>
+                <option value="security">Security</option>
+                <option value="hardware">Hardware</option>
+              </select>
+            </label>
+          </div>
+          <label class="field">
+            <span>Tags (comma-separated)</span>
+            <input id="f-tags" type="text" placeholder="bash, backup, lab" />
+          </label>
+          <label class="field">
+            <span>Content — scripts, steps, diagrams (text)</span>
+            <textarea id="f-content" rows="14" placeholder="Paste script or write your idea…"></textarea>
+          </label>
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="btn-save">Save to room</button>
+            <button class="btn btn-ghost" type="button" id="btn-copy-content">Copy content</button>
+            <button class="btn btn-ghost" type="button" id="btn-delete" style="color: #f87171">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>Shared vault · Multi-party rooms · Free tier friendly</div>
+        <a class="btn btn-ghost" href="../vault/SETUP.md">Setup live sharing</a>
+      </div>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./vault.js"></script>
+  </body>
+</html>

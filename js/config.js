@@ -39,4 +39,15 @@ window.IT_REPO_CONFIG = {
 
   formspreeEndpoint: "",
   plausibleDomain: "",
+
+  /**
+   * SHARED FILING VAULT (multi-party scripts & ideas)
+   * Free setup (~10 min): https://supabase.com → new project → SQL editor →
+   * run the script in vault/supabase-schema.sql → Project Settings → API →
+   * paste URL + anon key below.
+   *
+   * Leave blank to use local + export/import sharing (works offline).
+   */
+  supabaseUrl: "",
+  supabaseAnonKey: "",
 };

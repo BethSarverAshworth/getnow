@@ -93,6 +93,40 @@
   ],
   "resources": [
     {
+      "id": "tool-vault-setup",
+      "title": "Vault Live Sharing Setup (Supabase)",
+      "description": "How to enable free multi-device live sync for the shared filing vault.",
+      "category": "tools",
+      "tags": [
+        "supabase",
+        "setup",
+        "collaboration"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "./vault/SETUP.md",
+      "featured": false
+    },
+    {
+      "id": "tool-vault",
+      "title": "Shared Filing Vault (Scripts & Ideas)",
+      "description": "Multi-party room for sharing scripts, ideas, and notes via room code or link. Export/import or live Supabase sync.",
+      "category": "tools",
+      "tags": [
+        "collaboration",
+        "scripts",
+        "ideas",
+        "shared",
+        "vault"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "./tools/vault.html",
+      "featured": true
+    },
+    {
       "id": "tool-hub",
       "title": "All Interactive Tools",
       "description": "Hub for built-in IT Repository utilities (network + VM lab).",
