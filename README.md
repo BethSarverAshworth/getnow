@@ -1,6 +1,6 @@
 # IT Repository
 
-A **free-to-build, free-to-host** IT knowledge library: networking, Linux, security, cloud, certifications, scripts, tools, and cheatsheets.
+A **free-to-build, free-to-host** tech dream library: **hundreds** of networking, architecture, Linux, Windows, security, cloud, wireless, helpdesk, certs, scripts, tools, and learning-path resources — searchable in one place.
 
 Designed as a product you can monetize later with **Free + Pro** tiers.
 

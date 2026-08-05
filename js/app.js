@@ -1,9 +1,13 @@
+const PAGE_SIZE = 24;
+
 const state = {
   resources: [],
   categories: [],
   query: "",
   category: "all",
   tier: "all",
+  level: "all",
+  page: 1,
 };
 
 const els = {
@@ -12,6 +16,8 @@ const els = {
   search: document.getElementById("search"),
   categoryFilters: document.getElementById("category-filters"),
   tierFilters: document.getElementById("tier-filters"),
+  levelFilters: document.getElementById("level-filters"),
+  pager: document.getElementById("pager"),
   freeCount: document.getElementById("stat-free"),
   proCount: document.getElementById("stat-pro"),
   totalCount: document.getElementById("stat-total"),
@@ -39,6 +45,9 @@ function matches(resource) {
   if (state.tier !== "all" && resource.tier !== state.tier) {
     return false;
   }
+  if (state.level !== "all" && resource.level !== state.level) {
+    return false;
+  }
   if (!state.query) return true;
 
   const q = state.query.toLowerCase();
@@ -54,6 +63,24 @@ function matches(resource) {
     .toLowerCase();
 
   return haystack.includes(q);
+}
+
+function resetPage() {
+  state.page = 1;
+}
+
+function getFilteredSorted() {
+  const filtered = state.resources.filter(matches);
+  filtered.sort((a, b) => {
+    if (Boolean(b.featured) !== Boolean(a.featured)) {
+      return Number(b.featured) - Number(a.featured);
+    }
+    if (a.tier !== b.tier) {
+      return a.tier === "pro" ? -1 : 1;
+    }
+    return a.title.localeCompare(b.title);
+  });
+  return filtered;
 }
 
 function openModal(title, body, { pre = true } = {}) {
@@ -223,6 +250,44 @@ function renderTierFilters() {
     .join("");
 }
 
+function renderLevelFilters() {
+  if (!els.levelFilters) return;
+  const options = [
+    { id: "all", label: "All levels" },
+    { id: "Beginner", label: "Beginner" },
+    { id: "Intermediate", label: "Intermediate" },
+    { id: "Advanced", label: "Advanced" },
+  ];
+  els.levelFilters.innerHTML = options
+    .map(
+      (o) => `
+      <button type="button" class="chip ${state.level === o.id ? "active" : ""}" data-level="${o.id}">
+        ${escapeHtml(o.label)}
+      </button>`
+    )
+    .join("");
+}
+
+function renderPager(total) {
+  if (!els.pager) return;
+  const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  if (state.page > pages) state.page = pages;
+
+  if (total <= PAGE_SIZE) {
+    els.pager.innerHTML = "";
+    return;
+  }
+
+  const prevDisabled = state.page <= 1 ? "disabled" : "";
+  const nextDisabled = state.page >= pages ? "disabled" : "";
+
+  els.pager.innerHTML = `
+    <button type="button" class="btn btn-ghost" data-page="prev" ${prevDisabled}>← Prev</button>
+    <span class="pager-meta">Page ${state.page} of ${pages}</span>
+    <button type="button" class="btn btn-ghost" data-page="next" ${nextDisabled}>Next →</button>
+  `;
+}
+
 function updateProUI() {
   const unlocked = hasPro();
   const cfg = window.ITRepoAccess.getConfig();
@@ -267,15 +332,17 @@ function updateProUI() {
 }
 
 function render() {
-  const filtered = state.resources.filter(matches);
-  filtered.sort((a, b) => {
-    if (Boolean(b.featured) !== Boolean(a.featured)) {
-      return Number(b.featured) - Number(a.featured);
-    }
-    return a.title.localeCompare(b.title);
-  });
+  const filtered = getFilteredSorted();
+  const total = filtered.length;
+  const start = (state.page - 1) * PAGE_SIZE;
+  const pageItems = filtered.slice(start, start + PAGE_SIZE);
 
-  els.count.textContent = `${filtered.length} resource${filtered.length === 1 ? "" : "s"}`;
+  const showingFrom = total === 0 ? 0 : start + 1;
+  const showingTo = Math.min(start + PAGE_SIZE, total);
+  els.count.textContent =
+    total === 0
+      ? "0 resources"
+      : `Showing ${showingFrom}–${showingTo} of ${total} resource${total === 1 ? "" : "s"}`;
 
   if (!filtered.length) {
     els.grid.innerHTML = `
@@ -283,10 +350,12 @@ function render() {
         <strong>No matches</strong>
         <p>Try another search term or clear filters.</p>
       </div>`;
+    renderPager(0);
     return;
   }
 
-  els.grid.innerHTML = filtered.map(cardHTML).join("");
+  els.grid.innerHTML = pageItems.map(cardHTML).join("");
+  renderPager(total);
 }
 
 function updateStats() {
@@ -303,6 +372,7 @@ function updateStats() {
 function bindEvents() {
   els.search.addEventListener("input", (e) => {
     state.query = e.target.value.trim();
+    resetPage();
     render();
   });
 
@@ -310,6 +380,7 @@ function bindEvents() {
     const btn = e.target.closest("[data-category]");
     if (!btn) return;
     state.category = btn.dataset.category;
+    resetPage();
     renderCategories();
     render();
   });
@@ -318,9 +389,34 @@ function bindEvents() {
     const btn = e.target.closest("[data-tier]");
     if (!btn) return;
     state.tier = btn.dataset.tier;
+    resetPage();
     renderTierFilters();
     render();
   });
+
+  if (els.levelFilters) {
+    els.levelFilters.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-level]");
+      if (!btn) return;
+      state.level = btn.dataset.level;
+      resetPage();
+      renderLevelFilters();
+      render();
+    });
+  }
+
+  if (els.pager) {
+    els.pager.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-page]");
+      if (!btn || btn.disabled) return;
+      const total = getFilteredSorted().length;
+      const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+      if (btn.dataset.page === "prev") state.page = Math.max(1, state.page - 1);
+      if (btn.dataset.page === "next") state.page = Math.min(pages, state.page + 1);
+      render();
+      document.getElementById("browse")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
 
   els.grid.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-open]");
@@ -341,6 +437,7 @@ function bindEvents() {
     els.proCta.addEventListener("click", () => {
       if (hasPro()) {
         state.tier = "pro";
+        resetPage();
         renderTierFilters();
         render();
         document.getElementById("browse")?.scrollIntoView({ behavior: "smooth" });
@@ -371,6 +468,7 @@ async function init() {
     updateProUI();
     renderCategories();
     renderTierFilters();
+    renderLevelFilters();
     render();
     bindEvents();
   } catch (err) {

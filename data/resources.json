@@ -3,616 +3,80 @@
     {
       "id": "all",
       "name": "All",
-      "icon": "\ud83d\udce6"
+      "icon": "📦"
     },
     {
       "id": "networking",
       "name": "Networking",
-      "icon": "\ud83c\udf10"
+      "icon": "🌐"
     },
     {
       "id": "architecture",
       "name": "Architecture",
-      "icon": "\ud83d\uddfa\ufe0f"
+      "icon": "🗺️"
     },
     {
       "id": "linux",
       "name": "Linux",
-      "icon": "\ud83d\udc27"
+      "icon": "🐧"
+    },
+    {
+      "id": "windows",
+      "name": "Windows",
+      "icon": "🪟"
     },
     {
       "id": "security",
       "name": "Security",
-      "icon": "\ud83d\udd12"
+      "icon": "🔒"
     },
     {
       "id": "cloud",
       "name": "Cloud",
-      "icon": "\u2601\ufe0f"
+      "icon": "☁️"
+    },
+    {
+      "id": "devops",
+      "name": "DevOps",
+      "icon": "🚀"
+    },
+    {
+      "id": "helpdesk",
+      "name": "Helpdesk",
+      "icon": "🎫"
+    },
+    {
+      "id": "wireless",
+      "name": "Wireless",
+      "icon": "📶"
     },
     {
       "id": "certs",
       "name": "Certifications",
-      "icon": "\ud83d\udcdc"
+      "icon": "📜"
     },
     {
       "id": "scripts",
       "name": "Scripts",
-      "icon": "\u2699\ufe0f"
+      "icon": "⚙️"
     },
     {
       "id": "tools",
       "name": "Tools",
-      "icon": "\ud83d\udee0\ufe0f"
+      "icon": "🛠️"
     },
     {
       "id": "cheatsheets",
       "name": "Cheatsheets",
-      "icon": "\ud83d\udccb"
+      "icon": "📋"
+    },
+    {
+      "id": "paths",
+      "name": "Learning Paths",
+      "icon": "🧭"
     }
   ],
   "resources": [
-    {
-      "id": "net-osi",
-      "title": "OSI Model Deep Dive",
-      "description": "Layer-by-layer networking model with real packet examples and troubleshooting tips.",
-      "category": "networking",
-      "tags": [
-        "osi",
-        "tcp-ip",
-        "fundamentals"
-      ],
-      "level": "Beginner",
-      "type": "Guide",
-      "tier": "free",
-      "url": "https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/",
-      "featured": true
-    },
-    {
-      "id": "net-subnet",
-      "title": "Subnetting Practice Kit",
-      "description": "CIDR charts, practice problems, and quick binary conversion methods for CCNA/Network+.",
-      "category": "networking",
-      "tags": [
-        "subnetting",
-        "cidr",
-        "ccna"
-      ],
-      "level": "Intermediate",
-      "type": "Practice",
-      "tier": "free",
-      "url": "https://subnettingpractice.com/",
-      "featured": true
-    },
-    {
-      "id": "net-wireshark",
-      "title": "Wireshark Packet Analysis Starter",
-      "description": "Capture filters, display filters, and common protocol analysis workflows.",
-      "category": "networking",
-      "tags": [
-        "wireshark",
-        "packets",
-        "troubleshooting"
-      ],
-      "level": "Intermediate",
-      "type": "Guide",
-      "tier": "free",
-      "url": "https://www.wireshark.org/docs/",
-      "featured": false
-    },
-    {
-      "id": "linux-cli",
-      "title": "Linux Command Line Essentials",
-      "description": "Daily-driver commands: files, permissions, processes, pipes, and package managers.",
-      "category": "linux",
-      "tags": [
-        "bash",
-        "cli",
-        "sysadmin"
-      ],
-      "level": "Beginner",
-      "type": "Guide",
-      "tier": "free",
-      "url": "https://linuxcommand.org/lc3_learning_the_shell.php",
-      "featured": true
-    },
-    {
-      "id": "linux-perms",
-      "title": "Permissions & Ownership Cheatsheet",
-      "description": "chmod, chown, umask, sticky bit, and SUID explained with examples.",
-      "category": "cheatsheets",
-      "tags": [
-        "chmod",
-        "security",
-        "linux"
-      ],
-      "level": "Beginner",
-      "type": "Cheatsheet",
-      "tier": "free",
-      "url": "https://chmod-calculator.com/",
-      "featured": false
-    },
-    {
-      "id": "linux-systemd",
-      "title": "systemd Service Management",
-      "description": "Start, stop, enable services; read logs with journalctl; write simple unit files.",
-      "category": "linux",
-      "tags": [
-        "systemd",
-        "services",
-        "admin"
-      ],
-      "level": "Intermediate",
-      "type": "Guide",
-      "tier": "free",
-      "url": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
-      "featured": false
-    },
-    {
-      "id": "sec-oauth",
-      "title": "OAuth 2.0 Security Checklist",
-      "description": "Secure authorization flows, PKCE, token storage, and common pitfalls for apps.",
-      "category": "security",
-      "tags": [
-        "oauth",
-        "auth",
-        "web"
-      ],
-      "level": "Intermediate",
-      "type": "Checklist",
-      "tier": "free",
-      "url": "https://oauth.net/2/",
-      "featured": true
-    },
-    {
-      "id": "sec-owasp",
-      "title": "OWASP Top 10 Quick Reference",
-      "description": "The most critical web application security risks with prevention notes.",
-      "category": "security",
-      "tags": [
-        "owasp",
-        "websec",
-        "vulnerabilities"
-      ],
-      "level": "Beginner",
-      "type": "Cheatsheet",
-      "tier": "free",
-      "url": "https://owasp.org/www-project-top-ten/",
-      "featured": true
-    },
-    {
-      "id": "sec-passwords",
-      "title": "Password & Secrets Best Practices",
-      "description": "Hashing, MFA, secret managers, and how to avoid common credential leaks.",
-      "category": "security",
-      "tags": [
-        "passwords",
-        "mfa",
-        "secrets"
-      ],
-      "level": "Beginner",
-      "type": "Guide",
-      "tier": "free",
-      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
-      "featured": false
-    },
-    {
-      "id": "cloud-aws-free",
-      "title": "AWS Free Tier Map",
-      "description": "What you can run for free on AWS and how to avoid surprise bills.",
-      "category": "cloud",
-      "tags": [
-        "aws",
-        "free-tier",
-        "cloud"
-      ],
-      "level": "Beginner",
-      "type": "Guide",
-      "tier": "free",
-      "url": "https://aws.amazon.com/free/",
-      "featured": false
-    },
-    {
-      "id": "cloud-docker",
-      "title": "Docker Basics for IT Pros",
-      "description": "Images, containers, volumes, and networking \u2014 practical ops focus.",
-      "category": "cloud",
-      "tags": [
-        "docker",
-        "containers",
-        "devops"
-      ],
-      "level": "Beginner",
-      "type": "Guide",
-      "tier": "free",
-      "url": "https://docs.docker.com/get-started/",
-      "featured": true
-    },
-    {
-      "id": "cert-network-plus",
-      "title": "CompTIA Network+ Study Path",
-      "description": "Exam domains, free labs ideas, and a 6-week study plan structure.",
-      "category": "certs",
-      "tags": [
-        "network+",
-        "comptia",
-        "exam"
-      ],
-      "level": "Beginner",
-      "type": "Study Plan",
-      "tier": "free",
-      "url": "https://www.comptia.org/certifications/network",
-      "featured": true
-    },
-    {
-      "id": "cert-linux",
-      "title": "Linux Cert Roadmap (LFCS / RHCSA)",
-      "description": "Which Linux cert fits helpdesk \u2192 sysadmin, and free practice resources.",
-      "category": "certs",
-      "tags": [
-        "lfcs",
-        "rhcsa",
-        "linux"
-      ],
-      "level": "Intermediate",
-      "type": "Study Plan",
-      "tier": "free",
-      "url": "https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/",
-      "featured": false
-    },
-    {
-      "id": "cert-security-plus",
-      "title": "CompTIA Security+ Domain Map",
-      "description": "High-yield topics and free practice sources for Security+.",
-      "category": "certs",
-      "tags": [
-        "security+",
-        "comptia",
-        "cyber"
-      ],
-      "level": "Intermediate",
-      "type": "Study Plan",
-      "tier": "free",
-      "url": "https://www.comptia.org/certifications/security",
-      "featured": false
-    },
-    {
-      "id": "script-bash-backup",
-      "title": "Bash Backup Script Template",
-      "description": "Portable backup script with rotation, logging, and dry-run mode.",
-      "category": "scripts",
-      "tags": [
-        "bash",
-        "backup",
-        "automation"
-      ],
-      "level": "Intermediate",
-      "type": "Script",
-      "tier": "free",
-      "url": "#script-bash-backup",
-      "body": "#!/usr/bin/env bash\n# Simple backup with dry-run and rotation\nset -euo pipefail\nSRC=\"${1:-$HOME/Documents}\"\nDEST=\"${2:-$HOME/backups}\"\nDRY_RUN=\"${DRY_RUN:-0}\"\nSTAMP=$(date +%Y%m%d-%H%M%S)\nTARGET=\"$DEST/backup-$STAMP\"\n\nmkdir -p \"$DEST\"\nif [[ \"$DRY_RUN\" == \"1\" ]]; then\n  echo \"[dry-run] Would copy $SRC -> $TARGET\"\n  exit 0\nfi\n\nmkdir -p \"$TARGET\"\ncp -a \"$SRC\" \"$TARGET/\"\necho \"Backup complete: $TARGET\"\n\n# Keep last 7 backups\nls -1dt \"$DEST\"/backup-* 2>/dev/null | tail -n +8 | xargs -r rm -rf",
-      "featured": true
-    },
-    {
-      "id": "script-port-scan-note",
-      "title": "Safe Local Port Check Script",
-      "description": "Check listening ports on your own machine (not for unauthorized scanning).",
-      "category": "scripts",
-      "tags": [
-        "bash",
-        "ports",
-        "troubleshooting"
-      ],
-      "level": "Beginner",
-      "type": "Script",
-      "tier": "free",
-      "url": "#script-port-check",
-      "body": "#!/usr/bin/env bash\n# List listening TCP ports on this machine\nif command -v ss >/dev/null 2>&1; then\n  ss -tuln\nelif command -v netstat >/dev/null 2>&1; then\n  netstat -tuln\nelse\n  echo \"Install ss or netstat\"\n  exit 1\nfi",
-      "featured": false
-    },
-    {
-      "id": "tool-nmap",
-      "title": "Nmap (Authorized Use Only)",
-      "description": "Network discovery and security auditing on systems you own or have permission to test.",
-      "category": "tools",
-      "tags": [
-        "nmap",
-        "scanning",
-        "security"
-      ],
-      "level": "Intermediate",
-      "type": "Tool",
-      "tier": "free",
-      "url": "https://nmap.org/",
-      "featured": false
-    },
-    {
-      "id": "tool-vscode",
-      "title": "VS Code for IT Work",
-      "description": "Extensions and workflows for configs, scripts, Markdown docs, and remote SSH.",
-      "category": "tools",
-      "tags": [
-        "vscode",
-        "editor",
-        "productivity"
-      ],
-      "level": "Beginner",
-      "type": "Tool",
-      "tier": "free",
-      "url": "https://code.visualstudio.com/",
-      "featured": false
-    },
-    {
-      "id": "cheat-networking",
-      "title": "Networking Ports Cheatsheet",
-      "description": "Common TCP/UDP ports IT pros should know (HTTP, SSH, DNS, RDP, etc.).",
-      "category": "cheatsheets",
-      "tags": [
-        "ports",
-        "tcp",
-        "udp"
-      ],
-      "level": "Beginner",
-      "type": "Cheatsheet",
-      "tier": "free",
-      "url": "#ports-cheatsheet",
-      "body": "20/21 FTP\n22 SSH\n23 Telnet (avoid)\n25 SMTP\n53 DNS\n80 HTTP\n110 POP3\n143 IMAP\n443 HTTPS\n445 SMB\n3389 RDP\n3306 MySQL\n5432 PostgreSQL\n8080 Alt HTTP",
-      "featured": true
-    },
-    {
-      "id": "cheat-git",
-      "title": "Git Essentials Cheatsheet",
-      "description": "Clone, branch, commit, push, pull, stash \u2014 day-one commands for IT projects.",
-      "category": "cheatsheets",
-      "tags": [
-        "git",
-        "version-control"
-      ],
-      "level": "Beginner",
-      "type": "Cheatsheet",
-      "tier": "free",
-      "url": "https://education.github.com/git-cheat-sheet-education.pdf",
-      "featured": false
-    },
-    {
-      "id": "pro-lab-pack",
-      "title": "Home Lab Blueprint Pack",
-      "description": "Step-by-step lab designs: virtualization, VLANs, AD basics, monitoring stack diagrams.",
-      "category": "networking",
-      "tags": [
-        "homelab",
-        "virtualization",
-        "practice"
-      ],
-      "level": "Advanced",
-      "type": "Pack",
-      "tier": "pro",
-      "url": "#pro",
-      "featured": true,
-      "pack": "packs/home-lab-blueprint.md"
-    },
-    {
-      "id": "pro-interview",
-      "title": "IT Interview Question Bank (200+)",
-      "description": "Helpdesk \u2192 junior sysadmin interview Q&A with model answers and red flags.",
-      "category": "certs",
-      "tags": [
-        "interview",
-        "career",
-        "sysadmin"
-      ],
-      "level": "Intermediate",
-      "type": "Pack",
-      "tier": "pro",
-      "url": "#pro",
-      "featured": true,
-      "pack": "packs/interview-bank.md"
-    },
-    {
-      "id": "pro-incident",
-      "title": "Incident Response Runbooks",
-      "description": "Copy-paste runbooks: ransomware first hour, phishing, disk full, DNS outage.",
-      "category": "security",
-      "tags": [
-        "incident",
-        "runbooks",
-        "ops"
-      ],
-      "level": "Advanced",
-      "type": "Pack",
-      "tier": "pro",
-      "url": "#pro",
-      "featured": false,
-      "pack": "packs/incident-runbooks.md"
-    },
-    {
-      "id": "pro-scripts",
-      "title": "Automation Script Vault",
-      "description": "50+ production-ready Bash/PowerShell scripts with logging and error handling.",
-      "category": "scripts",
-      "tags": [
-        "automation",
-        "powershell",
-        "bash"
-      ],
-      "level": "Advanced",
-      "type": "Pack",
-      "tier": "pro",
-      "url": "#pro",
-      "featured": true,
-      "pack": "packs/script-vault.md"
-    },
-    {
-      "id": "topo-types",
-      "title": "Network Topology Types (Star, Mesh, Hybrid)",
-      "description": "Visual overview of common topologies with when to use each \u2014 interview and Network+ ready.",
-      "category": "architecture",
-      "tags": [
-        "topology",
-        "star",
-        "mesh",
-        "diagrams"
-      ],
-      "level": "Beginner",
-      "type": "Guide",
-      "tier": "free",
-      "url": "#topo-types",
-      "featured": true,
-      "body": "NETWORK TOPOLOGY TYPES (quick guide)\n\n1) STAR\n   Devices connect to a central switch.\n   + Easy to manage  - Switch is critical\n\n        PC -- Switch -- PC\n                 |\n                PC\n\n2) EXTENDED STAR\n   Multiple access switches under a core/distribution switch.\n   Used in real buildings and campuses.\n\n3) MESH (full or partial)\n   Multiple paths between nodes for resilience.\n   + Redundancy  - Cost/complexity\n\n4) HYBRID\n   What enterprises actually run: star access + hierarchical core + edge firewall.\n\n5) BUS / RING\n   Mostly exam history for modern Ethernet LANs.\n   Know definitions; design with star + hierarchy.\n\nINTERVIEW ONE-LINER\n\"Access layers are usually star; the campus is hierarchical; the WAN may use partial mesh.\"\n"
-    },
-    {
-      "id": "arch-3tier",
-      "title": "3-Tier Campus Architecture Explained",
-      "description": "Core, distribution, and access layers \u2014 plus when to use a collapsed core.",
-      "category": "architecture",
-      "tags": [
-        "campus",
-        "core",
-        "distribution",
-        "access"
-      ],
-      "level": "Intermediate",
-      "type": "Guide",
-      "tier": "free",
-      "url": "#arch-3tier",
-      "featured": true,
-      "body": "3-TIER CAMPUS MODEL\n\nACCESS\n- End devices: PCs, phones, APs, printers\n- Port security, PoE, VLAN assignment\n\nDISTRIBUTION\n- Policy, routing between VLANs, aggregation\n- ACLs, summarization (as design allows)\n\nCORE\n- High-speed backbone, keep it simple and fast\n- Connect distribution blocks\n\nCOLLAPSED CORE (2-TIER)\n- Merge core + distribution for smaller networks\n- Cheaper, fewer devices, still valid design\n\nASCII SKETCH\n        [CORE]\n       /  |  \\\n   [DIST][DIST][DIST]\n     |     |     |\n   access access access\n\nTalk about failure domains: one access switch down shouldn't take the whole campus.\n"
-    },
-    {
-      "id": "arch-dmz",
-      "title": "DMZ & Perimeter Sketch",
-      "description": "Simple perimeter diagram: Internet, firewall, LAN, and DMZ for public services.",
-      "category": "architecture",
-      "tags": [
-        "dmz",
-        "firewall",
-        "perimeter",
-        "security"
-      ],
-      "level": "Intermediate",
-      "type": "Cheatsheet",
-      "tier": "free",
-      "url": "#arch-dmz",
-      "featured": false,
-      "body": "DMZ / PERIMETER (starter sketch)\n\n                 Internet\n                     |\n              [Edge Firewall]\n               /          \\\n           [LAN]          [DMZ]\n        users/apps     web / mail / VPN portal\n                            |\n                     (optional internal FW)\n                            |\n                      sensitive systems\n\nRULES OF THUMB\n- Don't put public web servers flat on the staff LAN\n- Limit DMZ \u2192 LAN to only required ports\n- Log denials and critical allows\n- Prefer reverse proxy / WAF patterns when possible\n"
-    },
-    {
-      "id": "arch-home-lab-diagram",
-      "title": "Home Lab Topology (Starter Diagram)",
-      "description": "Copy-paste lab diagram for resumes and study journals: ISP to VMs.",
-      "category": "architecture",
-      "tags": [
-        "homelab",
-        "diagram",
-        "virtualization"
-      ],
-      "level": "Beginner",
-      "type": "Cheatsheet",
-      "tier": "free",
-      "url": "#arch-homelab",
-      "featured": true,
-      "body": "HOME LAB TOPOLOGY (starter)\n\n[Internet / ISP]\n       |\n[Home Router]  (NAT)\n       |\n[Host PC / Hypervisor]\n   |-- VM: Firewall (optional)\n   |-- VM: Linux server\n   |-- VM: Windows client\n   |-- VM: Security tools (authorized use only)\n\nLABEL ON YOUR DIAGRAM\n- Hypervisor name (VirtualBox, UTM, Proxmox, etc.)\n- Lab subnet (example: 10.10.10.0/24)\n- What each VM is for (AD, DNS, web, etc.)\n\nPORTFOLIO TIP\nExport this from draw.io and put it on your LinkedIn featured section.\n"
-    },
-    {
-      "id": "arch-vlan-basics",
-      "title": "VLAN Basics for Diagrams",
-      "description": "How to show VLANs, trunks, and access ports on a whiteboard without panic.",
-      "category": "architecture",
-      "tags": [
-        "vlan",
-        "trunk",
-        "802.1q",
-        "segmentation"
-      ],
-      "level": "Beginner",
-      "type": "Guide",
-      "tier": "free",
-      "url": "#arch-vlan",
-      "featured": false,
-      "body": "VLANS ON A DIAGRAM\n\nACCESS PORT = one VLAN to a PC/phone\nTRUNK = multiple VLANs between switches (802.1Q tags)\n\nSketch:\n[PC VLAN10]--access--[SW1]==trunk==[SW2]--access--[PC VLAN20]\n\nIf VLANs differ, they need a router/L3/firewall to talk (inter-VLAN routing).\n\nDRAWING TIP\nColor-code or label each link: \"access 10\" vs \"trunk 10,20,30\".\n"
-    },
-    {
-      "id": "tool-drawio",
-      "title": "diagrams.net (draw.io) for Network Diagrams",
-      "description": "Free browser tool to draw professional topology and architecture diagrams.",
-      "category": "tools",
-      "tags": [
-        "drawio",
-        "diagrams",
-        "visio-alternative"
-      ],
-      "level": "Beginner",
-      "type": "Tool",
-      "tier": "free",
-      "url": "https://app.diagrams.net/",
-      "featured": true
-    },
-    {
-      "id": "tool-excalidraw",
-      "title": "Excalidraw \u2014 Fast Whiteboard Diagrams",
-      "description": "Sketch interview-style network diagrams quickly; export PNG for notes.",
-      "category": "tools",
-      "tags": [
-        "excalidraw",
-        "whiteboard",
-        "diagrams"
-      ],
-      "level": "Beginner",
-      "type": "Tool",
-      "tier": "free",
-      "url": "https://excalidraw.com/",
-      "featured": false
-    },
-    {
-      "id": "cheat-topology-symbols",
-      "title": "Topology Symbol Cheatsheet",
-      "description": "Common shapes and labels used on network diagrams (cloud, firewall, switch, server).",
-      "category": "cheatsheets",
-      "tags": [
-        "symbols",
-        "diagrams",
-        "documentation"
-      ],
-      "level": "Beginner",
-      "type": "Cheatsheet",
-      "tier": "free",
-      "url": "#cheat-symbols",
-      "featured": false,
-      "body": "DIAGRAM SYMBOL CHEATSHEET\n\nCloud        = Internet / ISP / MPLS\nRectangle    = Router or L3 device\nSwitch icon  = L2/L3 switch\nCylinder     = Server / database\nPhone/laptop = End users\nDashed box   = Security zone (DMZ, guest, PCI)\nFirewall     = Filter / policy point (label INSIDE/OUTSIDE/DMZ)\n\nALWAYS LABEL\n- Device role\n- VLAN or subnet\n- Trust boundary\n- North arrow optional; top=Internet is fine\n"
-    },
-    {
-      "id": "net-hierarchical",
-      "title": "Cisco Hierarchical Design (Free Overview)",
-      "description": "Vendor-neutral reading on hierarchical network design concepts used industry-wide.",
-      "category": "networking",
-      "tags": [
-        "cisco",
-        "hierarchical",
-        "design"
-      ],
-      "level": "Intermediate",
-      "type": "Guide",
-      "tier": "free",
-      "url": "https://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Campus/campover.html",
-      "featured": false
-    },
-    {
-      "id": "pro-topology",
-      "title": "Network Topology Diagram Pack",
-      "description": "Star, mesh, hybrid, extended star diagrams plus whiteboard drawing checklist for labs and interviews.",
-      "category": "architecture",
-      "tags": [
-        "topology",
-        "diagrams",
-        "whiteboard"
-      ],
-      "level": "Intermediate",
-      "type": "Pack",
-      "tier": "pro",
-      "url": "#pro",
-      "pack": "packs/topology-diagrams.md",
-      "featured": true
-    },
     {
       "id": "pro-architecture",
       "title": "Network Architecture Pack",
@@ -629,6 +93,23 @@
       "tier": "pro",
       "url": "#pro",
       "pack": "packs/network-architecture.md",
+      "featured": true
+    },
+    {
+      "id": "pro-topology",
+      "title": "Network Topology Diagram Pack",
+      "description": "Star, mesh, hybrid, extended star diagrams plus whiteboard drawing checklist for labs and interviews.",
+      "category": "architecture",
+      "tags": [
+        "topology",
+        "diagrams",
+        "whiteboard"
+      ],
+      "level": "Intermediate",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "pack": "packs/topology-diagrams.md",
       "featured": true
     },
     {
@@ -664,6 +145,4283 @@
       "tier": "pro",
       "url": "#pro",
       "pack": "packs/diagram-interview.md",
+      "featured": true
+    },
+    {
+      "id": "pro-interview",
+      "title": "IT Interview Question Bank (200+)",
+      "description": "Helpdesk → junior sysadmin interview Q&A with model answers and red flags.",
+      "category": "certs",
+      "tags": [
+        "interview",
+        "career",
+        "sysadmin"
+      ],
+      "level": "Intermediate",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "featured": true,
+      "pack": "packs/interview-bank.md"
+    },
+    {
+      "id": "pro-lab-pack",
+      "title": "Home Lab Blueprint Pack",
+      "description": "Step-by-step lab designs: virtualization, VLANs, AD basics, monitoring stack diagrams.",
+      "category": "networking",
+      "tags": [
+        "homelab",
+        "virtualization",
+        "practice"
+      ],
+      "level": "Advanced",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "featured": true,
+      "pack": "packs/home-lab-blueprint.md"
+    },
+    {
+      "id": "pro-scripts",
+      "title": "Automation Script Vault",
+      "description": "50+ production-ready Bash/PowerShell scripts with logging and error handling.",
+      "category": "scripts",
+      "tags": [
+        "automation",
+        "powershell",
+        "bash"
+      ],
+      "level": "Advanced",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "featured": true,
+      "pack": "packs/script-vault.md"
+    },
+    {
+      "id": "pro-incident",
+      "title": "Incident Response Runbooks",
+      "description": "Copy-paste runbooks: ransomware first hour, phishing, disk full, DNS outage.",
+      "category": "security",
+      "tags": [
+        "incident",
+        "runbooks",
+        "ops"
+      ],
+      "level": "Advanced",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "featured": false,
+      "pack": "packs/incident-runbooks.md"
+    },
+    {
+      "id": "arch-12factor",
+      "title": "12-Factor App (ops view)",
+      "description": "App design that ops can run.",
+      "category": "architecture",
+      "tags": [
+        "apps",
+        "devops"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://12factor.net/",
+      "featured": false
+    },
+    {
+      "id": "arch-3tier",
+      "title": "3-Tier Campus Architecture Explained",
+      "description": "Core, distribution, and access layers — plus when to use a collapsed core.",
+      "category": "architecture",
+      "tags": [
+        "campus",
+        "core",
+        "distribution",
+        "access"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "#arch-3tier",
+      "featured": true,
+      "body": "3-TIER CAMPUS MODEL\n\nACCESS\n- End devices: PCs, phones, APs, printers\n- Port security, PoE, VLAN assignment\n\nDISTRIBUTION\n- Policy, routing between VLANs, aggregation\n- ACLs, summarization (as design allows)\n\nCORE\n- High-speed backbone, keep it simple and fast\n- Connect distribution blocks\n\nCOLLAPSED CORE (2-TIER)\n- Merge core + distribution for smaller networks\n- Cheaper, fewer devices, still valid design\n\nASCII SKETCH\n        [CORE]\n       /  |  \\\n   [DIST][DIST][DIST]\n     |     |     |\n   access access access\n\nTalk about failure domains: one access switch down shouldn't take the whole campus.\n"
+    },
+    {
+      "id": "arch-c4",
+      "title": "C4 Model for Diagrams",
+      "description": "Context/container diagrams beyond pure network.",
+      "category": "architecture",
+      "tags": [
+        "diagrams",
+        "software"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://c4model.com/",
+      "featured": false
+    },
+    {
+      "id": "arch-dmz",
+      "title": "DMZ & Perimeter Sketch",
+      "description": "Simple perimeter diagram: Internet, firewall, LAN, and DMZ for public services.",
+      "category": "architecture",
+      "tags": [
+        "dmz",
+        "firewall",
+        "perimeter",
+        "security"
+      ],
+      "level": "Intermediate",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#arch-dmz",
+      "featured": false,
+      "body": "DMZ / PERIMETER (starter sketch)\n\n                 Internet\n                     |\n              [Edge Firewall]\n               /          \\\n           [LAN]          [DMZ]\n        users/apps     web / mail / VPN portal\n                            |\n                     (optional internal FW)\n                            |\n                      sensitive systems\n\nRULES OF THUMB\n- Don't put public web servers flat on the staff LAN\n- Limit DMZ → LAN to only required ports\n- Log denials and critical allows\n- Prefer reverse proxy / WAF patterns when possible\n"
+    },
+    {
+      "id": "arch-datacenter",
+      "title": "Data Center Network Ideas",
+      "description": "Leaf-spine high-level overview.",
+      "category": "architecture",
+      "tags": [
+        "datacenter"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/security/glossary/what-is-a-data-center/",
+      "featured": false
+    },
+    {
+      "id": "arch-dr",
+      "title": "Disaster Recovery Basics",
+      "description": "RTO/RPO for IT teams.",
+      "category": "architecture",
+      "tags": [
+        "dr",
+        "backup"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/backup/what-is-disaster-recovery/",
+      "featured": false
+    },
+    {
+      "id": "arch-ha",
+      "title": "High Availability Patterns",
+      "description": "Active/passive, clusters, dual-WAN.",
+      "category": "architecture",
+      "tags": [
+        "ha",
+        "redundancy"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/performance/what-is-high-availability/",
+      "featured": false
+    },
+    {
+      "id": "arch-home-lab-diagram",
+      "title": "Home Lab Topology (Starter Diagram)",
+      "description": "Copy-paste lab diagram for resumes and study journals: ISP to VMs.",
+      "category": "architecture",
+      "tags": [
+        "homelab",
+        "diagram",
+        "virtualization"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#arch-homelab",
+      "featured": true,
+      "body": "HOME LAB TOPOLOGY (starter)\n\n[Internet / ISP]\n       |\n[Home Router]  (NAT)\n       |\n[Host PC / Hypervisor]\n   |-- VM: Firewall (optional)\n   |-- VM: Linux server\n   |-- VM: Windows client\n   |-- VM: Security tools (authorized use only)\n\nLABEL ON YOUR DIAGRAM\n- Hypervisor name (VirtualBox, UTM, Proxmox, etc.)\n- Lab subnet (example: 10.10.10.0/24)\n- What each VM is for (AD, DNS, web, etc.)\n\nPORTFOLIO TIP\nExport this from draw.io and put it on your LinkedIn featured section.\n"
+    },
+    {
+      "id": "arch-lan-wan",
+      "title": "LAN vs WAN vs MAN",
+      "description": "Scope of networks and design impact.",
+      "category": "architecture",
+      "tags": [
+        "lan",
+        "wan"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-a-lan/",
+      "featured": false
+    },
+    {
+      "id": "topo-types",
+      "title": "Network Topology Types (Star, Mesh, Hybrid)",
+      "description": "Visual overview of common topologies with when to use each — interview and Network+ ready.",
+      "category": "architecture",
+      "tags": [
+        "topology",
+        "star",
+        "mesh",
+        "diagrams"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "#topo-types",
+      "featured": true,
+      "body": "NETWORK TOPOLOGY TYPES (quick guide)\n\n1) STAR\n   Devices connect to a central switch.\n   + Easy to manage  - Switch is critical\n\n        PC -- Switch -- PC\n                 |\n                PC\n\n2) EXTENDED STAR\n   Multiple access switches under a core/distribution switch.\n   Used in real buildings and campuses.\n\n3) MESH (full or partial)\n   Multiple paths between nodes for resilience.\n   + Redundancy  - Cost/complexity\n\n4) HYBRID\n   What enterprises actually run: star access + hierarchical core + edge firewall.\n\n5) BUS / RING\n   Mostly exam history for modern Ethernet LANs.\n   Know definitions; design with star + hierarchy.\n\nINTERVIEW ONE-LINER\n\"Access layers are usually star; the campus is hierarchical; the WAN may use partial mesh.\"\n"
+    },
+    {
+      "id": "arch-saas",
+      "title": "SaaS Network Implications",
+      "description": "Identity, DNS, and egress changes.",
+      "category": "architecture",
+      "tags": [
+        "saas"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/access-management/what-is-saas/",
+      "featured": false
+    },
+    {
+      "id": "arch-vlan-basics",
+      "title": "VLAN Basics for Diagrams",
+      "description": "How to show VLANs, trunks, and access ports on a whiteboard without panic.",
+      "category": "architecture",
+      "tags": [
+        "vlan",
+        "trunk",
+        "802.1q",
+        "segmentation"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "#arch-vlan",
+      "featured": false,
+      "body": "VLANS ON A DIAGRAM\n\nACCESS PORT = one VLAN to a PC/phone\nTRUNK = multiple VLANs between switches (802.1Q tags)\n\nSketch:\n[PC VLAN10]--access--[SW1]==trunk==[SW2]--access--[PC VLAN20]\n\nIf VLANs differ, they need a router/L3/firewall to talk (inter-VLAN routing).\n\nDRAWING TIP\nColor-code or label each link: \"access 10\" vs \"trunk 10,20,30\".\n"
+    },
+    {
+      "id": "arch-zerotrust",
+      "title": "Zero Trust Overview",
+      "description": "Never trust, always verify.",
+      "category": "architecture",
+      "tags": [
+        "zero-trust"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/",
+      "featured": false
+    },
+    {
+      "id": "cert-aws-ccp",
+      "title": "AWS Cloud Practitioner",
+      "description": "Cloud fluency starting cert.",
+      "category": "certs",
+      "tags": [
+        "aws",
+        "cert"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://aws.amazon.com/certification/certified-cloud-practitioner/",
+      "featured": false
+    },
+    {
+      "id": "cert-az900",
+      "title": "Azure AZ-900",
+      "description": "Microsoft Azure fundamentals.",
+      "category": "certs",
+      "tags": [
+        "azure",
+        "az-900"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/",
+      "featured": false
+    },
+    {
+      "id": "cert-ccna",
+      "title": "Cisco CCNA",
+      "description": "Associate networking cert.",
+      "category": "certs",
+      "tags": [
+        "ccna",
+        "cisco"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccna/index.html",
+      "featured": true
+    },
+    {
+      "id": "cert-a-plus",
+      "title": "CompTIA A+",
+      "description": "Core hardware/software support cert.",
+      "category": "certs",
+      "tags": [
+        "a+",
+        "comptia"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://www.comptia.org/certifications/a",
+      "featured": true
+    },
+    {
+      "id": "cert-cloud-plus",
+      "title": "CompTIA Cloud+",
+      "description": "Cloud ops oriented cert.",
+      "category": "certs",
+      "tags": [
+        "cloud+",
+        "comptia"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://www.comptia.org/certifications/cloud",
+      "featured": false
+    },
+    {
+      "id": "cert-cysa",
+      "title": "CompTIA CySA+",
+      "description": "Cybersecurity analyst path.",
+      "category": "certs",
+      "tags": [
+        "cysa+"
+      ],
+      "level": "Advanced",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://www.comptia.org/certifications/cybersecurity-analyst",
+      "featured": false
+    },
+    {
+      "id": "cert-linux-plus",
+      "title": "CompTIA Linux+",
+      "description": "Linux admin certification path.",
+      "category": "certs",
+      "tags": [
+        "linux+",
+        "comptia"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://www.comptia.org/certifications/linux",
+      "featured": false
+    },
+    {
+      "id": "cert-net-plus",
+      "title": "CompTIA Network+",
+      "description": "Networking foundations cert.",
+      "category": "certs",
+      "tags": [
+        "network+",
+        "comptia"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://www.comptia.org/certifications/network",
+      "featured": true
+    },
+    {
+      "id": "cert-sec-plus",
+      "title": "CompTIA Security+",
+      "description": "Baseline cybersecurity cert.",
+      "category": "certs",
+      "tags": [
+        "security+",
+        "comptia"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://www.comptia.org/certifications/security",
+      "featured": true
+    },
+    {
+      "id": "cert-google-it",
+      "title": "Google IT Support Cert",
+      "description": "Beginner support career path.",
+      "category": "certs",
+      "tags": [
+        "google",
+        "support"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://grow.google/certificates/it-support/",
+      "featured": true
+    },
+    {
+      "id": "cert-itil",
+      "title": "ITIL 4 Foundation",
+      "description": "Service management language.",
+      "category": "certs",
+      "tags": [
+        "itil"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://www.axelos.com/certifications/itil-service-management/itil-4-foundation",
+      "featured": false
+    },
+    {
+      "id": "cert-lfcs",
+      "title": "LFCS Linux Admin",
+      "description": "Linux Foundation sysadmin cert.",
+      "category": "certs",
+      "tags": [
+        "lfcs",
+        "linux"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/",
+      "featured": false
+    },
+    {
+      "id": "cert-md100",
+      "title": "Modern Desktop Ideas",
+      "description": "Windows client admin learning path.",
+      "category": "certs",
+      "tags": [
+        "windows"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/",
+      "featured": false
+    },
+    {
+      "id": "cert-pmp",
+      "title": "PMP Overview",
+      "description": "Project management professional path.",
+      "category": "certs",
+      "tags": [
+        "pmp",
+        "pm"
+      ],
+      "level": "Advanced",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://www.pmi.org/certifications/project-management-pmp",
+      "featured": false
+    },
+    {
+      "id": "cert-roadmap",
+      "title": "Roadmap.sh IT Paths",
+      "description": "Visual career learning maps.",
+      "category": "certs",
+      "tags": [
+        "roadmap",
+        "career"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "https://roadmap.sh/",
+      "featured": true
+    },
+    {
+      "id": "cheat-security-hygiene",
+      "title": "Daily Security Hygiene",
+      "description": "Habits for every tech.",
+      "category": "cheatsheets",
+      "tags": [
+        "security"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-security-hygiene",
+      "featured": false,
+      "body": "- Unique passwords + manager\n- MFA everywhere possible\n- Patch OS and browsers\n- Least privilege accounts\n- Verify unexpected requests (phishing)\n- Lock screen; encrypt disks\n- Backup critical data offline/cloud\n"
+    },
+    {
+      "id": "cheat-docker",
+      "title": "Docker Everyday Commands",
+      "description": "Containers without fear.",
+      "category": "cheatsheets",
+      "tags": [
+        "docker"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-docker",
+      "featured": false,
+      "body": "docker ps -a\ndocker images\ndocker run -d -p 8080:80 nginx\ndocker logs <id>\ndocker exec -it <id> sh\ndocker stop <id>\ndocker rm <id>\ndocker compose up -d\n"
+    },
+    {
+      "id": "cheat-git",
+      "title": "Git Essentials",
+      "description": "Day-one version control.",
+      "category": "cheatsheets",
+      "tags": [
+        "git"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-git",
+      "featured": true,
+      "body": "git clone <url>\ngit status\ngit add .\ngit commit -m \"message\"\ngit push\ngit pull\ngit branch\ngit checkout -b feature\ngit log --oneline\ngit stash\n"
+    },
+    {
+      "id": "cheat-http",
+      "title": "HTTP Status Codes",
+      "description": "Read web errors fast.",
+      "category": "cheatsheets",
+      "tags": [
+        "http"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-http",
+      "featured": true,
+      "body": "1xx informational\n2xx success (200 OK, 201 created)\n3xx redirect (301, 302)\n4xx client (400 bad request, 401 auth, 403 forbid, 404 not found)\n5xx server (500, 502 bad gateway, 503 unavailable, 504 timeout)\n"
+    },
+    {
+      "id": "cheat-priority",
+      "title": "Incident Severity Cheat",
+      "description": "SEV language.",
+      "category": "cheatsheets",
+      "tags": [
+        "incident"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-priority",
+      "featured": true,
+      "body": "SEV-1: business down / major security incident — all hands\nSEV-2: major feature broken for many users\nSEV-3: limited impact, workaround exists\nSEV-4: minor / cosmetic\nAlways: timeline, impact, owner, next update time\n"
+    },
+    {
+      "id": "cheat-linux-cmd",
+      "title": "Linux Commands Cheatsheet",
+      "description": "Daily driver commands.",
+      "category": "cheatsheets",
+      "tags": [
+        "linux",
+        "cli"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-linux-cmd",
+      "featured": true,
+      "body": "FILES: ls, cd, pwd, cp, mv, rm, mkdir, find, locate\nTEXT: cat, less, head, tail, grep, sed, awk\nPERMS: chmod, chown, ls -l\nDISK: df -h, du -sh, lsblk\nPROC: ps aux, top/htop, kill, systemctl\nNET: ip a, ip r, ss -tuln, ping, curl, dig\nLOGS: journalctl -u service, tail -f /var/log/syslog\n"
+    },
+    {
+      "id": "cheat-markdown",
+      "title": "Markdown for IT Docs",
+      "description": "Write clean KB articles.",
+      "category": "cheatsheets",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-markdown",
+      "featured": true,
+      "body": "# Heading\n## Subheading\n- bullet\n1. numbered\n`inline code`\n``` code block ```\n**bold** *italic*\n[link](https://example.com)\n![image](path)\n"
+    },
+    {
+      "id": "cheat-network-troubleshoot",
+      "title": "Network Trouble Flow",
+      "description": "Don't skip steps.",
+      "category": "cheatsheets",
+      "tags": [
+        "troubleshooting"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-network-troubleshoot",
+      "featured": false,
+      "body": "1 Physical: cables, link lights, Wi-Fi connected\n2 Local IP: ipconfig / ip a\n3 Gateway: ping default gateway\n4 DNS: resolve names (nslookup/dig)\n5 Path: traceroute / pathping\n6 Remote port: Test-NetConnection / curl\n7 Change: what changed last?\nDocument each step in the ticket.\n"
+    },
+    {
+      "id": "cheat-networking",
+      "title": "Networking Ports Cheatsheet",
+      "description": "Common TCP/UDP ports IT pros should know (HTTP, SSH, DNS, RDP, etc.).",
+      "category": "cheatsheets",
+      "tags": [
+        "ports",
+        "tcp",
+        "udp"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#ports-cheatsheet",
+      "body": "20/21 FTP\n22 SSH\n23 Telnet (avoid)\n25 SMTP\n53 DNS\n80 HTTP\n110 POP3\n143 IMAP\n443 HTTPS\n445 SMB\n3389 RDP\n3306 MySQL\n5432 PostgreSQL\n8080 Alt HTTP",
+      "featured": true
+    },
+    {
+      "id": "cheat-osi",
+      "title": "OSI vs TCP/IP Cheatsheet",
+      "description": "Map layers while troubleshooting.",
+      "category": "cheatsheets",
+      "tags": [
+        "osi"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-osi",
+      "featured": true,
+      "body": "OSI: 7 App | 6 Pres | 5 Sess | 4 Trans | 3 Net | 2 DataLink | 1 Physical\nTCP/IP: Application | Transport | Internet | Network Access\nTroubleshoot bottom-up: cable → link light → IP → gateway → DNS → app\n"
+    },
+    {
+      "id": "cheat-powershell-ad",
+      "title": "PowerShell AD Quick",
+      "description": "Common directory queries.",
+      "category": "cheatsheets",
+      "tags": [
+        "powershell",
+        "ad"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-powershell-ad",
+      "featured": false,
+      "body": "# Requires AD module / RSAT\nGet-ADUser -Filter * -Properties DisplayName | Select Name,SamAccountName,Enabled\nGet-ADComputer -Filter * | Select Name,Enabled\nGet-ADGroupMember \"Domain Admins\"\nUnlock-ADAccount -Identity jdoe\n"
+    },
+    {
+      "id": "cheat-regex",
+      "title": "Regex Pocket Sheet",
+      "description": "Common patterns.",
+      "category": "cheatsheets",
+      "tags": [
+        "regex"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-regex",
+      "featured": true,
+      "body": "^ start  $ end  . any  * 0+  + 1+  ? 0/1\n\\d digit  \\w word  \\s space\n[abc] class  [^abc] not  (group)  | or\nExample IPv4-ish: \\d{1,3}(\\.\\d{1,3}){3}\n"
+    },
+    {
+      "id": "cheat-subnet",
+      "title": "Subnetting Quick Table",
+      "description": "Common masks and hosts.",
+      "category": "cheatsheets",
+      "tags": [
+        "subnetting"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-subnet",
+      "featured": true,
+      "body": "/24 = 255.255.255.0   → 256 addrs (254 hosts)\n/25 = 255.255.255.128 → 128 addrs\n/26 = 255.255.255.192 → 64 addrs\n/27 = 255.255.255.224 → 32 addrs\n/28 = 255.255.255.240 → 16 addrs\n/29 = 255.255.255.248 → 8 addrs\n/30 = 255.255.255.252 → 4 addrs (point-to-point)\n/16 = 255.255.0.0     → large LAN blocks\n/8  = 255.0.0.0       → huge (legacy class A thinking)\n"
+    },
+    {
+      "id": "cheat-ports",
+      "title": "Top Ports Cheatsheet",
+      "description": "Must-know TCP/UDP ports.",
+      "category": "cheatsheets",
+      "tags": [
+        "ports"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-ports",
+      "featured": true,
+      "body": "COMMON PORTS\n20/21 FTP\n22 SSH\n23 Telnet (avoid)\n25 SMTP\n53 DNS\n67/68 DHCP\n80 HTTP\n110 POP3\n123 NTP\n143 IMAP\n161/162 SNMP\n389 LDAP\n443 HTTPS\n445 SMB\n636 LDAPS\n993 IMAPS\n995 POP3S\n1433 MSSQL\n1521 Oracle\n3306 MySQL\n3389 RDP\n5432 PostgreSQL\n5900 VNC\n8080 Alt-HTTP\n"
+    },
+    {
+      "id": "cheat-topology-symbols",
+      "title": "Topology Symbol Cheatsheet",
+      "description": "Common shapes and labels used on network diagrams (cloud, firewall, switch, server).",
+      "category": "cheatsheets",
+      "tags": [
+        "symbols",
+        "diagrams",
+        "documentation"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-symbols",
+      "featured": false,
+      "body": "DIAGRAM SYMBOL CHEATSHEET\n\nCloud        = Internet / ISP / MPLS\nRectangle    = Router or L3 device\nSwitch icon  = L2/L3 switch\nCylinder     = Server / database\nPhone/laptop = End users\nDashed box   = Security zone (DMZ, guest, PCI)\nFirewall     = Filter / policy point (label INSIDE/OUTSIDE/DMZ)\n\nALWAYS LABEL\n- Device role\n- VLAN or subnet\n- Trust boundary\n- North arrow optional; top=Internet is fine\n"
+    },
+    {
+      "id": "cheat-windows-cmd",
+      "title": "Windows CMD/PowerShell Cheatsheet",
+      "description": "Support desk lifesavers.",
+      "category": "cheatsheets",
+      "tags": [
+        "windows",
+        "powershell"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-windows-cmd",
+      "featured": true,
+      "body": "CMD: ipconfig /all, ping, tracert, nslookup, netstat -ano\n      sfc /scannow, chkdsk, gpupdate /force, gpresult /r\nPS:  Get-Process, Get-Service, Restart-Service\n     Get-EventLog / Get-WinEvent\n     Get-NetIPConfiguration, Test-NetConnection\n     Get-ADUser (with RSAT/AD module)\n"
+    },
+    {
+      "id": "cheat-kubectl",
+      "title": "kubectl Basics",
+      "description": "Talk to a cluster.",
+      "category": "cheatsheets",
+      "tags": [
+        "kubernetes"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "#cheat-kubectl",
+      "featured": false,
+      "body": "kubectl get nodes\nkubectl get pods -A\nkubectl describe pod <name>\nkubectl logs <pod>\nkubectl apply -f file.yaml\nkubectl config get-contexts\n"
+    },
+    {
+      "id": "cloud-aws-overview",
+      "title": "AWS Cloud Overview",
+      "description": "Regions, AZs, shared responsibility.",
+      "category": "cloud",
+      "tags": [
+        "aws"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://aws.amazon.com/what-is-aws/",
+      "featured": false
+    },
+    {
+      "id": "cloud-aws-free",
+      "title": "AWS Free Tier",
+      "description": "What you can try without a big bill.",
+      "category": "cloud",
+      "tags": [
+        "aws"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://aws.amazon.com/free/",
+      "featured": true
+    },
+    {
+      "id": "cloud-aws-wellarch",
+      "title": "AWS Well-Architected",
+      "description": "Design pillars for cloud systems.",
+      "category": "cloud",
+      "tags": [
+        "aws",
+        "architecture"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://aws.amazon.com/architecture/well-architected/",
+      "featured": false
+    },
+    {
+      "id": "cloud-azure-arch",
+      "title": "Azure Architecture Center",
+      "description": "Reference architectures.",
+      "category": "cloud",
+      "tags": [
+        "azure",
+        "architecture"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/",
+      "featured": false
+    },
+    {
+      "id": "cloud-azure",
+      "title": "Azure Fundamentals Path",
+      "description": "Microsoft cloud learning.",
+      "category": "cloud",
+      "tags": [
+        "azure"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/training/azure/",
+      "featured": true
+    },
+    {
+      "id": "cloud-backup",
+      "title": "Cloud Backup Concepts",
+      "description": "3-2-1 still applies.",
+      "category": "cloud",
+      "tags": [
+        "backup"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.backblaze.com/blog/the-3-2-1-backup-strategy/",
+      "featured": false
+    },
+    {
+      "id": "cloud-billing",
+      "title": "Cloud Cost Awareness",
+      "description": "Tags, budgets, surprise bills.",
+      "category": "cloud",
+      "tags": [
+        "finops"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://aws.amazon.com/aws-cost-management/",
+      "featured": false
+    },
+    {
+      "id": "cloud-iam-aws",
+      "title": "Cloud IAM Mindset",
+      "description": "Keys, roles, least privilege in cloud.",
+      "category": "cloud",
+      "tags": [
+        "iam"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://aws.amazon.com/iam/",
+      "featured": false
+    },
+    {
+      "id": "cloud-monitoring",
+      "title": "Cloud Monitoring Idea",
+      "description": "Metrics, logs, traces.",
+      "category": "cloud",
+      "tags": [
+        "monitoring"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://aws.amazon.com/cloudwatch/",
+      "featured": false
+    },
+    {
+      "id": "cloud-docker",
+      "title": "Docker Get Started",
+      "description": "Containers for IT and DevOps.",
+      "category": "cloud",
+      "tags": [
+        "docker"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://docs.docker.com/get-started/",
+      "featured": true
+    },
+    {
+      "id": "cloud-gcp",
+      "title": "Google Cloud Free Program",
+      "description": "GCP entry point.",
+      "category": "cloud",
+      "tags": [
+        "gcp"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://cloud.google.com/free",
+      "featured": false
+    },
+    {
+      "id": "cloud-hybrid",
+      "title": "Hybrid Cloud Patterns",
+      "description": "On-prem + cloud together.",
+      "category": "cloud",
+      "tags": [
+        "hybrid"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ibm.com/topics/hybrid-cloud",
+      "featured": false
+    },
+    {
+      "id": "cloud-iaas",
+      "title": "IaaS vs PaaS vs SaaS",
+      "description": "Service models for IT decisions.",
+      "category": "cloud",
+      "tags": [
+        "iaas",
+        "paas",
+        "saas"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ibm.com/topics/iaas-paas-saas",
+      "featured": true
+    },
+    {
+      "id": "cloud-k8s",
+      "title": "Kubernetes Overview",
+      "description": "Orchestration at a glance.",
+      "category": "cloud",
+      "tags": [
+        "kubernetes"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://kubernetes.io/docs/concepts/overview/",
+      "featured": false
+    },
+    {
+      "id": "cloud-k8s-tutorial",
+      "title": "Kubernetes Tutorials",
+      "description": "Official interactive learning.",
+      "category": "cloud",
+      "tags": [
+        "kubernetes"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://kubernetes.io/docs/tutorials/",
+      "featured": false
+    },
+    {
+      "id": "cloud-s3",
+      "title": "Object Storage Basics",
+      "description": "Buckets and durability ideas.",
+      "category": "cloud",
+      "tags": [
+        "storage"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://aws.amazon.com/s3/",
+      "featured": false
+    },
+    {
+      "id": "cloud-serverless",
+      "title": "Serverless Overview",
+      "description": "Functions without managing servers.",
+      "category": "cloud",
+      "tags": [
+        "serverless"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/serverless/what-is-serverless/",
+      "featured": false
+    },
+    {
+      "id": "cloud-shared-resp",
+      "title": "Shared Responsibility Model",
+      "description": "Who secures what in cloud.",
+      "category": "cloud",
+      "tags": [
+        "security"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+      "featured": true
+    },
+    {
+      "id": "cloud-terraform",
+      "title": "Terraform Intro",
+      "description": "Infrastructure as code.",
+      "category": "cloud",
+      "tags": [
+        "iac",
+        "terraform"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://developer.hashicorp.com/terraform/intro",
+      "featured": false
+    },
+    {
+      "id": "cloud-vpc",
+      "title": "VPC Concepts",
+      "description": "Private networks in the cloud.",
+      "category": "cloud",
+      "tags": [
+        "vpc",
+        "networking"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://aws.amazon.com/vpc/",
+      "featured": false
+    },
+    {
+      "id": "cloud-cdn",
+      "title": "What is a CDN?",
+      "description": "Cache content closer to users.",
+      "category": "cloud",
+      "tags": [
+        "cdn"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/cdn/what-is-a-cdn/",
+      "featured": false
+    },
+    {
+      "id": "devops-ansible",
+      "title": "Ansible Overview",
+      "description": "Agentless automation.",
+      "category": "devops",
+      "tags": [
+        "ansible"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://docs.ansible.com/",
+      "featured": false
+    },
+    {
+      "id": "devops-cicd",
+      "title": "CI/CD Concepts",
+      "description": "Automate build and deploy.",
+      "category": "devops",
+      "tags": [
+        "cicd"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.redhat.com/en/topics/devops/what-is-ci-cd",
+      "featured": false
+    },
+    {
+      "id": "devops-caddy",
+      "title": "Caddy Server Docs",
+      "description": "Automatic HTTPS reverse proxy.",
+      "category": "devops",
+      "tags": [
+        "caddy",
+        "tls"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://caddyserver.com/docs/",
+      "featured": false
+    },
+    {
+      "id": "devops-git",
+      "title": "Git Documentation",
+      "description": "Version control core.",
+      "category": "devops",
+      "tags": [
+        "git"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://git-scm.com/doc",
+      "featured": true
+    },
+    {
+      "id": "devops-github",
+      "title": "GitHub Skills",
+      "description": "Hands-on free courses.",
+      "category": "devops",
+      "tags": [
+        "github"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://skills.github.com/",
+      "featured": true
+    },
+    {
+      "id": "devops-grafana",
+      "title": "Grafana Dashboards",
+      "description": "Visualize metrics.",
+      "category": "devops",
+      "tags": [
+        "grafana"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://grafana.com/docs/",
+      "featured": false
+    },
+    {
+      "id": "devops-json",
+      "title": "JSON Intro",
+      "description": "Data format for APIs and configs.",
+      "category": "devops",
+      "tags": [
+        "json"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.json.org/json-en.html",
+      "featured": false
+    },
+    {
+      "id": "devops-linux-for-dev",
+      "title": "Linux for DevOps",
+      "description": "Shell skills that transfer.",
+      "category": "devops",
+      "tags": [
+        "linux"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://linuxjourney.com/",
+      "featured": false
+    },
+    {
+      "id": "devops-makefile",
+      "title": "Make Basics",
+      "description": "Simple task runners.",
+      "category": "devops",
+      "tags": [
+        "make"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.gnu.org/software/make/manual/make.html",
+      "featured": false
+    },
+    {
+      "id": "devops-nginx",
+      "title": "NGINX Beginner Guide",
+      "description": "Web server and reverse proxy.",
+      "category": "devops",
+      "tags": [
+        "nginx"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://nginx.org/en/docs/beginners_guide.html",
+      "featured": false
+    },
+    {
+      "id": "devops-prometheus",
+      "title": "Prometheus Intro",
+      "description": "Metrics monitoring stack.",
+      "category": "devops",
+      "tags": [
+        "monitoring"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://prometheus.io/docs/introduction/overview/",
+      "featured": false
+    },
+    {
+      "id": "devops-rest",
+      "title": "REST API Basics",
+      "description": "HTTP methods and resources.",
+      "category": "devops",
+      "tags": [
+        "rest",
+        "api"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://restfulapi.net/",
+      "featured": false
+    },
+    {
+      "id": "devops-semver",
+      "title": "Semantic Versioning",
+      "description": "Version numbers that mean something.",
+      "category": "devops",
+      "tags": [
+        "versioning"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://semver.org/",
+      "featured": false
+    },
+    {
+      "id": "devops-api",
+      "title": "What is an API?",
+      "description": "How systems talk.",
+      "category": "devops",
+      "tags": [
+        "api"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ibm.com/topics/api",
+      "featured": false
+    },
+    {
+      "id": "devops-yaml",
+      "title": "YAML for Configs",
+      "description": "Readable config language everywhere.",
+      "category": "devops",
+      "tags": [
+        "yaml"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://yaml.org/",
+      "featured": false
+    },
+    {
+      "id": "hd-asset",
+      "title": "Asset Inventory Basics",
+      "description": "Know what you support.",
+      "category": "helpdesk",
+      "tags": [
+        "assets"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/resources-tools/resources/cybersecurity-performance-goals",
+      "featured": false
+    },
+    {
+      "id": "hd-comm",
+      "title": "Customer Service for Techs",
+      "description": "Empathy + clarity under stress.",
+      "category": "helpdesk",
+      "tags": [
+        "soft-skills"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.comptia.org/blog/what-is-help-desk",
+      "featured": false
+    },
+    {
+      "id": "hd-documentation",
+      "title": "Document Everything",
+      "description": "Future-you needs notes.",
+      "category": "helpdesk",
+      "tags": [
+        "docs"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.atlassian.com/work-management/knowledge-sharing",
+      "featured": false
+    },
+    {
+      "id": "hd-ticket",
+      "title": "ITIL Incident vs Request",
+      "description": "Ticket language that sounds pro.",
+      "category": "helpdesk",
+      "tags": [
+        "itil",
+        "tickets"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.axelos.com/certifications/itil-service-management",
+      "featured": true
+    },
+    {
+      "id": "hd-imaging",
+      "title": "Imaging & Provisioning Idea",
+      "description": "Repeatable device builds.",
+      "category": "helpdesk",
+      "tags": [
+        "imaging"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows/deployment/",
+      "featured": false
+    },
+    {
+      "id": "hd-kb",
+      "title": "Knowledge Base Writing",
+      "description": "Write steps others can follow.",
+      "category": "helpdesk",
+      "tags": [
+        "documentation"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.atlassian.com/itsm/knowledge-management",
+      "featured": false
+    },
+    {
+      "id": "hd-mdm",
+      "title": "MDM Concepts",
+      "description": "Manage phones and laptops centrally.",
+      "category": "helpdesk",
+      "tags": [
+        "mdm"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/mem/intune/fundamentals/what-is-intune",
+      "featured": false
+    },
+    {
+      "id": "hd-password",
+      "title": "Password Reset Workflow",
+      "description": "Verify identity, force change, document.",
+      "category": "helpdesk",
+      "tags": [
+        "passwords",
+        "process"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/secure-our-world/use-strong-passwords",
+      "featured": true
+    },
+    {
+      "id": "hd-email",
+      "title": "Professional Ticket Updates",
+      "description": "Status notes users understand.",
+      "category": "helpdesk",
+      "tags": [
+        "communication"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.comptia.org/blog",
+      "featured": false
+    },
+    {
+      "id": "hd-remote",
+      "title": "Remote Support Best Practices",
+      "description": "Consent, privacy, documentation.",
+      "category": "helpdesk",
+      "tags": [
+        "remote-support"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/news-events/news/tips-staying-safe-while-working-remotely",
+      "featured": false
+    },
+    {
+      "id": "hd-remote-tools",
+      "title": "Remote Tools Landscape",
+      "description": "Compare RDP, SSH, vendor tools concepts.",
+      "category": "helpdesk",
+      "tags": [
+        "remote"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.comptia.org/blog/what-is-help-desk",
+      "featured": false
+    },
+    {
+      "id": "hd-sla",
+      "title": "SLA Basics",
+      "description": "Response vs resolution time.",
+      "category": "helpdesk",
+      "tags": [
+        "sla"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.atlassian.com/itsm/service-request-management/slas",
+      "featured": false
+    },
+    {
+      "id": "hd-priority",
+      "title": "Ticket Priority Matrix",
+      "description": "Impact vs urgency thinking.",
+      "category": "helpdesk",
+      "tags": [
+        "priority"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.atlassian.com/incident-management/kpis/severity-levels",
+      "featured": false
+    },
+    {
+      "id": "hd-offboarding",
+      "title": "User Offboarding Checklist",
+      "description": "Disable, recover assets, revoke tokens.",
+      "category": "helpdesk",
+      "tags": [
+        "offboarding",
+        "security"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/secure-our-world",
+      "featured": true
+    },
+    {
+      "id": "hd-onboarding",
+      "title": "User Onboarding Checklist",
+      "description": "Accounts, MFA, devices, access.",
+      "category": "helpdesk",
+      "tags": [
+        "onboarding"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/secure-our-world",
+      "featured": false
+    },
+    {
+      "id": "hd-voip",
+      "title": "VoIP Helpdesk Notes",
+      "description": "Latency, jitter, QoS symptoms.",
+      "category": "helpdesk",
+      "tags": [
+        "voip"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/performance/what-is-latency/",
+      "featured": false
+    },
+    {
+      "id": "hd-escalation",
+      "title": "When to Escalate",
+      "description": "Don't sit on a fire.",
+      "category": "helpdesk",
+      "tags": [
+        "escalation"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.atlassian.com/incident-management",
+      "featured": false
+    },
+    {
+      "id": "linux-tar",
+      "title": "Archives & Compression",
+      "description": "tar, gzip, xz.",
+      "category": "linux",
+      "tags": [
+        "backup"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://man7.org/linux/man-pages/man1/tar.1.html",
+      "featured": false
+    },
+    {
+      "id": "linux-bash-guide",
+      "title": "Bash Guide for Beginners",
+      "description": "Scripting foundations.",
+      "category": "linux",
+      "tags": [
+        "bash",
+        "scripting"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://tldp.org/LDP/Bash-Beginners-Guide/html/",
+      "featured": false
+    },
+    {
+      "id": "linux-cockpit",
+      "title": "Cockpit Project",
+      "description": "Web UI for Linux servers.",
+      "category": "linux",
+      "tags": [
+        "admin-ui"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://cockpit-project.org/",
+      "featured": false
+    },
+    {
+      "id": "linux-cron",
+      "title": "Cron Scheduling",
+      "description": "Automate recurring jobs.",
+      "category": "linux",
+      "tags": [
+        "cron",
+        "automation"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://man7.org/linux/man-pages/man5/crontab.5.html",
+      "featured": false
+    },
+    {
+      "id": "linux-disk",
+      "title": "Disks & Mounts",
+      "description": "lsblk, fstab, df, du.",
+      "category": "linux",
+      "tags": [
+        "storage"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://man7.org/linux/man-pages/man8/lsblk.8.html",
+      "featured": false
+    },
+    {
+      "id": "linux-filesystem",
+      "title": "Filesystem Hierarchy",
+      "description": "Where things live on Linux.",
+      "category": "linux",
+      "tags": [
+        "fhs",
+        "filesystem"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html",
+      "featured": false
+    },
+    {
+      "id": "linux-kernel",
+      "title": "Kernel & Modules Overview",
+      "description": "What the kernel does for ops.",
+      "category": "linux",
+      "tags": [
+        "kernel"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.kernel.org/doc/html/latest/",
+      "featured": false
+    },
+    {
+      "id": "linux-lvm",
+      "title": "LVM Concepts",
+      "description": "Flexible volume management.",
+      "category": "linux",
+      "tags": [
+        "lvm"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)",
+      "featured": false
+    },
+    {
+      "id": "linux-cli",
+      "title": "Learning the Shell",
+      "description": "Core CLI for admins.",
+      "category": "linux",
+      "tags": [
+        "bash",
+        "cli"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://linuxcommand.org/lc3_learning_the_shell.php",
+      "featured": true
+    },
+    {
+      "id": "linux-containers",
+      "title": "Linux Containers Idea",
+      "description": "Namespaces and cgroups intro.",
+      "category": "linux",
+      "tags": [
+        "containers"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.redhat.com/en/topics/containers",
+      "featured": false
+    },
+    {
+      "id": "linux-net",
+      "title": "Linux Networking Commands",
+      "description": "ip, ss, nmcli overview.",
+      "category": "linux",
+      "tags": [
+        "networking",
+        "ip"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://man7.org/linux/man-pages/man8/ip.8.html",
+      "featured": true
+    },
+    {
+      "id": "linux-performance",
+      "title": "Linux Performance Quick Hits",
+      "description": "CPU, memory, IO signals.",
+      "category": "linux",
+      "tags": [
+        "performance"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.brendangregg.com/linuxperf.html",
+      "featured": false
+    },
+    {
+      "id": "linux-permissions",
+      "title": "Permissions Model",
+      "description": "rwx, ownership, umask ideas.",
+      "category": "linux",
+      "tags": [
+        "chmod",
+        "security"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.redhat.com/en/blog/linux-file-permissions-explained",
+      "featured": true
+    },
+    {
+      "id": "linux-podman",
+      "title": "Podman Intro",
+      "description": "Daemonless containers.",
+      "category": "linux",
+      "tags": [
+        "containers"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://docs.podman.io/",
+      "featured": false
+    },
+    {
+      "id": "linux-process",
+      "title": "Process Management",
+      "description": "ps, top, kill, nice.",
+      "category": "linux",
+      "tags": [
+        "processes"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://man7.org/linux/man-pages/man1/ps.1.html",
+      "featured": false
+    },
+    {
+      "id": "linux-regex",
+      "title": "Regular Expressions Intro",
+      "description": "Search patterns in logs/configs.",
+      "category": "linux",
+      "tags": [
+        "regex"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.regular-expressions.info/quickstart.html",
+      "featured": false
+    },
+    {
+      "id": "linux-selinux",
+      "title": "SELinux Intro",
+      "description": "Mandatory access control mindset.",
+      "category": "linux",
+      "tags": [
+        "selinux"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://github.com/SELinuxProject/selinux/wiki",
+      "featured": false
+    },
+    {
+      "id": "linux-ssh",
+      "title": "SSH Hardening Basics",
+      "description": "Keys over passwords, config tips.",
+      "category": "linux",
+      "tags": [
+        "ssh"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ssh.com/academy/ssh/protocol",
+      "featured": true
+    },
+    {
+      "id": "linux-ssh-keys",
+      "title": "SSH Key Management",
+      "description": "Generate, agent, authorized_keys.",
+      "category": "linux",
+      "tags": [
+        "ssh",
+        "keys"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ssh.com/academy/ssh/keygen",
+      "featured": false
+    },
+    {
+      "id": "linux-firewall-u",
+      "title": "UFW Quickstart",
+      "description": "Ubuntu host firewall.",
+      "category": "linux",
+      "tags": [
+        "ufw",
+        "firewall"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://help.ubuntu.com/community/UFW",
+      "featured": false
+    },
+    {
+      "id": "linux-users",
+      "title": "Users & Groups",
+      "description": "useradd, groups, sudoers concept.",
+      "category": "linux",
+      "tags": [
+        "users",
+        "sudo"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu",
+      "featured": false
+    },
+    {
+      "id": "linux-apt",
+      "title": "apt Package Management",
+      "description": "Debian/Ubuntu packages.",
+      "category": "linux",
+      "tags": [
+        "apt",
+        "packages"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://ubuntu.com/server/docs/package-management",
+      "featured": false
+    },
+    {
+      "id": "linux-chmod-calc",
+      "title": "chmod Calculator",
+      "description": "Visual permission helper.",
+      "category": "linux",
+      "tags": [
+        "chmod"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://chmod-calculator.com/",
+      "featured": false
+    },
+    {
+      "id": "linux-yum",
+      "title": "dnf/yum Basics",
+      "description": "RHEL-family packages.",
+      "category": "linux",
+      "tags": [
+        "dnf",
+        "rhel"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://docs.fedoraproject.org/en-US/quick-docs/dnf/",
+      "featured": false
+    },
+    {
+      "id": "linux-find",
+      "title": "find Command Mastery",
+      "description": "Search files by name, time, size.",
+      "category": "linux",
+      "tags": [
+        "find"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://man7.org/linux/man-pages/man1/find.1.html",
+      "featured": false
+    },
+    {
+      "id": "linux-firewall-f",
+      "title": "firewalld Concepts",
+      "description": "Zones and services.",
+      "category": "linux",
+      "tags": [
+        "firewalld"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://firewalld.org/documentation/",
+      "featured": false
+    },
+    {
+      "id": "linux-grep",
+      "title": "grep/sed/awk Power Trio",
+      "description": "Text processing for logs.",
+      "category": "linux",
+      "tags": [
+        "grep",
+        "logs"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.gnu.org/software/grep/manual/grep.html",
+      "featured": false
+    },
+    {
+      "id": "linux-journal",
+      "title": "journalctl Logging",
+      "description": "Query service logs fast.",
+      "category": "linux",
+      "tags": [
+        "logs"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.freedesktop.org/software/systemd/man/journalctl.html",
+      "featured": false
+    },
+    {
+      "id": "linux-nftables",
+      "title": "nftables Docs",
+      "description": "Modern Linux firewalling.",
+      "category": "linux",
+      "tags": [
+        "firewall"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://wiki.nftables.org/",
+      "featured": false
+    },
+    {
+      "id": "linux-rsync",
+      "title": "rsync Backups",
+      "description": "Efficient file sync.",
+      "category": "linux",
+      "tags": [
+        "rsync",
+        "backup"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://linux.die.net/man/1/rsync",
+      "featured": false
+    },
+    {
+      "id": "linux-strace",
+      "title": "strace Debugging",
+      "description": "See syscalls when apps fail.",
+      "category": "linux",
+      "tags": [
+        "debugging"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://man7.org/linux/man-pages/man1/strace.1.html",
+      "featured": false
+    },
+    {
+      "id": "linux-sudo",
+      "title": "sudo Best Practices",
+      "description": "Least privilege on the CLI.",
+      "category": "linux",
+      "tags": [
+        "sudo",
+        "security"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.sudo.ws/docs/man/1.8.15/sudoers.man/",
+      "featured": false
+    },
+    {
+      "id": "linux-systemd",
+      "title": "systemctl Handbook",
+      "description": "Services and units.",
+      "category": "linux",
+      "tags": [
+        "systemd"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.freedesktop.org/software/systemd/man/systemctl.html",
+      "featured": true
+    },
+    {
+      "id": "linux-systemd-timers",
+      "title": "systemd Timers",
+      "description": "Modern cron alternative.",
+      "category": "linux",
+      "tags": [
+        "timers"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.freedesktop.org/software/systemd/man/systemd.timer.html",
+      "featured": false
+    },
+    {
+      "id": "linux-tmux",
+      "title": "tmux Sessions",
+      "description": "Survive disconnects on servers.",
+      "category": "linux",
+      "tags": [
+        "tmux"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://github.com/tmux/tmux/wiki",
+      "featured": false
+    },
+    {
+      "id": "net-acl",
+      "title": "ACL Concepts",
+      "description": "Allow/deny logic on routers/firewalls.",
+      "category": "networking",
+      "tags": [
+        "acl"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisco.com/c/en/us/support/docs/security/ios-firewall/23602-confaccesslists.html",
+      "featured": false
+    },
+    {
+      "id": "net-arp",
+      "title": "ARP Explained",
+      "description": "IP to MAC resolution and spoofing risks.",
+      "category": "networking",
+      "tags": [
+        "arp"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-arp/",
+      "featured": false
+    },
+    {
+      "id": "net-anycast",
+      "title": "Anycast Routing Idea",
+      "description": "Same IP, many locations.",
+      "category": "networking",
+      "tags": [
+        "anycast"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/cdn/glossary/anycast-network/",
+      "featured": false
+    },
+    {
+      "id": "net-cidr",
+      "title": "CIDR Notation Explained",
+      "description": "Prefix lengths and host counts.",
+      "category": "networking",
+      "tags": [
+        "cidr",
+        "subnetting"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-a-subnet/",
+      "featured": false
+    },
+    {
+      "id": "net-cable",
+      "title": "Cabling Standards Snapshot",
+      "description": "Cat5e/6/6a, fiber types, when it matters.",
+      "category": "networking",
+      "tags": [
+        "cabling",
+        "physical"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.fs.com/blog_detail-what-is-cat6-cable-and-cat6-vs-cat6a-vs-cat5e.html",
+      "featured": false
+    },
+    {
+      "id": "net-ports",
+      "title": "Common Ports Reference",
+      "description": "Ports every tech should recognize.",
+      "category": "networking",
+      "tags": [
+        "ports"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml",
+      "featured": true
+    },
+    {
+      "id": "net-dhcp",
+      "title": "DHCP Essentials",
+      "description": "Lease process and rogue DHCP signs.",
+      "category": "networking",
+      "tags": [
+        "dhcp"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-a-dhcp-server/",
+      "featured": false
+    },
+    {
+      "id": "net-dhcp-snoop",
+      "title": "DHCP Snooping Idea",
+      "description": "Stop rogue DHCP on switches.",
+      "category": "networking",
+      "tags": [
+        "security",
+        "switching"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/DHCP_snooping",
+      "featured": false
+    },
+    {
+      "id": "net-dns-records",
+      "title": "DNS Record Types",
+      "description": "A, AAAA, CNAME, MX, TXT, NS, SRV.",
+      "category": "networking",
+      "tags": [
+        "dns",
+        "records"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/dns/dns-records/",
+      "featured": false
+    },
+    {
+      "id": "net-dai",
+      "title": "Dynamic ARP Inspection",
+      "description": "Mitigate ARP spoofing on campus.",
+      "category": "networking",
+      "tags": [
+        "security",
+        "arp"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Dynamic_ARP_Inspection",
+      "featured": false
+    },
+    {
+      "id": "net-ethernet",
+      "title": "Ethernet Fundamentals",
+      "description": "Frames, MAC, and switching basics.",
+      "category": "networking",
+      "tags": [
+        "ethernet"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-ethernet/",
+      "featured": false
+    },
+    {
+      "id": "net-fiber",
+      "title": "Fiber Optics Basics",
+      "description": "Single-mode vs multi-mode for techs.",
+      "category": "networking",
+      "tags": [
+        "fiber"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-a-fiber-optic-cable/",
+      "featured": false
+    },
+    {
+      "id": "net-http",
+      "title": "HTTP vs HTTPS",
+      "description": "Web traffic and TLS basics for IT.",
+      "category": "networking",
+      "tags": [
+        "http",
+        "tls"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/ssl/what-is-https/",
+      "featured": false
+    },
+    {
+      "id": "net-firewall-learn",
+      "title": "How Firewalls Work",
+      "description": "Packet filters to next-gen concepts.",
+      "category": "networking",
+      "tags": [
+        "firewall"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/security/what-is-a-firewall/",
+      "featured": false
+    },
+    {
+      "id": "net-icmp",
+      "title": "ICMP & Ping",
+      "description": "Path testing and what blocks mean.",
+      "category": "networking",
+      "tags": [
+        "icmp",
+        "ping"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/",
+      "featured": false
+    },
+    {
+      "id": "net-ipv6",
+      "title": "IPv6 for IT Pros",
+      "description": "Addressing and dual-stack reality.",
+      "category": "networking",
+      "tags": [
+        "ipv6"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-ipv6/",
+      "featured": false
+    },
+    {
+      "id": "net-etherchannel",
+      "title": "Link Aggregation Concepts",
+      "description": "Bond ports for speed/redundancy.",
+      "category": "networking",
+      "tags": [
+        "lacp",
+        "bonding"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Link_aggregation",
+      "featured": false
+    },
+    {
+      "id": "net-loadbalance",
+      "title": "Load Balancing Basics",
+      "description": "Distribute traffic across servers.",
+      "category": "networking",
+      "tags": [
+        "load-balancing"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/performance/what-is-load-balancing/",
+      "featured": false
+    },
+    {
+      "id": "net-mpls",
+      "title": "MPLS Overview",
+      "description": "Service provider WAN tech at a glance.",
+      "category": "networking",
+      "tags": [
+        "mpls",
+        "wan"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-mpls/",
+      "featured": false
+    },
+    {
+      "id": "net-mtu",
+      "title": "MTU & Fragmentation",
+      "description": "Why big packets fail mysteriously.",
+      "category": "networking",
+      "tags": [
+        "mtu"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-mtu/",
+      "featured": false
+    },
+    {
+      "id": "net-multicast",
+      "title": "Multicast Overview",
+      "description": "One-to-many delivery patterns.",
+      "category": "networking",
+      "tags": [
+        "multicast"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-multicast/",
+      "featured": false
+    },
+    {
+      "id": "net-nat",
+      "title": "NAT Explained",
+      "description": "How private networks reach the internet.",
+      "category": "networking",
+      "tags": [
+        "nat"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-nat/",
+      "featured": false
+    },
+    {
+      "id": "net-cdp-lldp",
+      "title": "Neighbor Discovery (CDP/LLDP)",
+      "description": "Map who is plugged where.",
+      "category": "networking",
+      "tags": [
+        "lldp",
+        "discovery"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol",
+      "featured": false
+    },
+    {
+      "id": "net-troubleshoot",
+      "title": "Network Troubleshooting Flow",
+      "description": "Layered approach from physical up.",
+      "category": "networking",
+      "tags": [
+        "troubleshooting"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-software-releases-121-mainline/15221-tshoot-lan.html",
+      "featured": true
+    },
+    {
+      "id": "net-nmap",
+      "title": "Nmap Reference Guide",
+      "description": "Authorized network discovery.",
+      "category": "networking",
+      "tags": [
+        "nmap",
+        "scanning"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://nmap.org/book/man.html",
+      "featured": false
+    },
+    {
+      "id": "net-osi",
+      "title": "OSI Model Deep Dive",
+      "description": "Seven layers with troubleshooting mapping.",
+      "category": "networking",
+      "tags": [
+        "osi",
+        "fundamentals"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/",
+      "featured": true
+    },
+    {
+      "id": "net-portsec",
+      "title": "Port Security Concepts",
+      "description": "Limit MACs per switch port.",
+      "category": "networking",
+      "tags": [
+        "switching",
+        "security"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Port_security",
+      "featured": false
+    },
+    {
+      "id": "net-poE",
+      "title": "Power over Ethernet",
+      "description": "Phones, APs, cameras on copper.",
+      "category": "networking",
+      "tags": [
+        "poe"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Power_over_Ethernet",
+      "featured": false
+    },
+    {
+      "id": "net-proxy",
+      "title": "Proxies & Gateways",
+      "description": "Forward proxies vs reverse proxies.",
+      "category": "networking",
+      "tags": [
+        "proxy"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/cdn/what-is-a-reverse-proxy/",
+      "featured": false
+    },
+    {
+      "id": "net-qos",
+      "title": "QoS Concepts",
+      "description": "Prioritizing voice and critical apps.",
+      "category": "networking",
+      "tags": [
+        "qos",
+        "latency"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/performance/what-is-latency/",
+      "featured": false
+    },
+    {
+      "id": "net-radius",
+      "title": "RADIUS / 802.1X Intro",
+      "description": "Network access control concepts.",
+      "category": "networking",
+      "tags": [
+        "radius",
+        "nac"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/RADIUS",
+      "featured": false
+    },
+    {
+      "id": "net-sdwan",
+      "title": "SD-WAN Overview",
+      "description": "Modern branch WAN concepts.",
+      "category": "networking",
+      "tags": [
+        "sd-wan",
+        "wan"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-sd-wan/",
+      "featured": false
+    },
+    {
+      "id": "net-snmp",
+      "title": "SNMP Monitoring Basics",
+      "description": "How tools poll devices.",
+      "category": "networking",
+      "tags": [
+        "snmp",
+        "monitoring"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-snmp/",
+      "featured": false
+    },
+    {
+      "id": "net-stp",
+      "title": "Spanning Tree Basics",
+      "description": "Loop prevention on switched networks.",
+      "category": "networking",
+      "tags": [
+        "stp",
+        "switching"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Spanning_Tree_Protocol",
+      "featured": false
+    },
+    {
+      "id": "net-routing",
+      "title": "Static vs Dynamic Routing",
+      "description": "When to use each approach.",
+      "category": "networking",
+      "tags": [
+        "routing"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-a-router/",
+      "featured": false
+    },
+    {
+      "id": "net-subnet",
+      "title": "Subnetting Practice Hub",
+      "description": "CIDR drills for Network+ and CCNA.",
+      "category": "networking",
+      "tags": [
+        "subnetting",
+        "cidr"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://subnettingpractice.com/",
+      "featured": true
+    },
+    {
+      "id": "net-syslog",
+      "title": "Syslog for Network Devices",
+      "description": "Centralize device logs.",
+      "category": "networking",
+      "tags": [
+        "syslog",
+        "logging"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Syslog",
+      "featured": false
+    },
+    {
+      "id": "net-tcpip",
+      "title": "TCP/IP Model Overview",
+      "description": "Practical internet model used daily by techs.",
+      "category": "networking",
+      "tags": [
+        "tcp-ip",
+        "fundamentals"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/",
+      "featured": true
+    },
+    {
+      "id": "net-ntp",
+      "title": "Time Sync (NTP)",
+      "description": "Why wrong clocks break auth and logs.",
+      "category": "networking",
+      "tags": [
+        "ntp"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-ntp/",
+      "featured": false
+    },
+    {
+      "id": "net-gre",
+      "title": "Tunnels Overview",
+      "description": "Encapsulation concepts for VPNs.",
+      "category": "networking",
+      "tags": [
+        "tunnels",
+        "vpn"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-a-tunnel/",
+      "featured": false
+    },
+    {
+      "id": "net-vlan",
+      "title": "VLAN Concepts",
+      "description": "Segmentation fundamentals.",
+      "category": "networking",
+      "tags": [
+        "vlan",
+        "lan"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-a-lan/",
+      "featured": false
+    },
+    {
+      "id": "net-bgp",
+      "title": "What is BGP?",
+      "description": "Internet routing at a high level.",
+      "category": "networking",
+      "tags": [
+        "bgp",
+        "wan"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/security/glossary/what-is-bgp/",
+      "featured": false
+    },
+    {
+      "id": "net-dns",
+      "title": "What is DNS?",
+      "description": "Name resolution and common failure modes.",
+      "category": "networking",
+      "tags": [
+        "dns"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/dns/what-is-dns/",
+      "featured": true
+    },
+    {
+      "id": "net-packet",
+      "title": "What is a Packet?",
+      "description": "Headers and payloads in plain language.",
+      "category": "networking",
+      "tags": [
+        "packets"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-a-packet/",
+      "featured": false
+    },
+    {
+      "id": "net-vpn",
+      "title": "What is a VPN?",
+      "description": "Remote access concepts for IT support.",
+      "category": "networking",
+      "tags": [
+        "vpn"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/access-management/what-is-a-vpn/",
+      "featured": false
+    },
+    {
+      "id": "net-wireshark",
+      "title": "Wireshark User Guide",
+      "description": "Packet analysis workflows.",
+      "category": "networking",
+      "tags": [
+        "wireshark",
+        "packets"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.wireshark.org/docs/",
+      "featured": true
+    },
+    {
+      "id": "path-cloud",
+      "title": "Path: Cloud-Ready Tech",
+      "description": "AZ-900 / AWS CCP style foundations.",
+      "category": "paths",
+      "tags": [
+        "career",
+        "cloud"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "#path-cloud",
+      "featured": true,
+      "body": "CLOUD-READY PATH\nService models IaaS/PaaS/SaaS\nShared responsibility\nIAM + networking (VPC) basics\nDeploy one static site + one VM free tier\nTrack costs weekly\n"
+    },
+    {
+      "id": "path-helpdesk",
+      "title": "Path: Helpdesk in 90 Days",
+      "description": "A+, core Windows, networking basics, tickets, soft skills.",
+      "category": "paths",
+      "tags": [
+        "career",
+        "helpdesk"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "#path-helpdesk",
+      "featured": true,
+      "body": "HELP DESK 90-DAY PATH\nDays 1-30: CompTIA A+ domains + build a home lab VM\nDays 31-60: Network+ basics (IP, DNS, DHCP, Wi-Fi) + ticket practice\nDays 61-90: Security hygiene (MFA, phishing) + mock interviews\nPortfolio: 3 lab write-ups + diagram of your home network\n"
+    },
+    {
+      "id": "path-netadmin",
+      "title": "Path: Junior Network Admin",
+      "description": "Network+, CCNA topics, labs, diagrams.",
+      "category": "paths",
+      "tags": [
+        "career",
+        "networking"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "#path-netadmin",
+      "featured": true,
+      "body": "JUNIOR NETWORK ADMIN PATH\n1) Subnetting fluency\n2) Switching: VLANs, trunks, STP awareness\n3) Routing: static + OSPF intro\n4) Wireless fundamentals\n5) Draw architectures weekly\nLabs: Packet Tracer / GNS3 / real cheap switch if available\n"
+    },
+    {
+      "id": "path-sysadmin",
+      "title": "Path: Junior Sysadmin",
+      "description": "Linux + Windows hybrid admin skills.",
+      "category": "paths",
+      "tags": [
+        "career",
+        "sysadmin"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "#path-sysadmin",
+      "featured": true,
+      "body": "JUNIOR SYSADMIN PATH\nWindows: AD basics, GPO, shares, PowerShell\nLinux: users, systemd, SSH, packages, logs\nShared: backups, monitoring, documentation, change control\nShip: one automated script + one monitoring check\n"
+    },
+    {
+      "id": "path-security",
+      "title": "Path: Security-Minded IT",
+      "description": "Security+ oriented foundation for any IT role.",
+      "category": "paths",
+      "tags": [
+        "career",
+        "security"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "#path-security",
+      "featured": true,
+      "body": "SECURITY-MINDED IT PATH\nCIA triad, IAM, MFA, patching, logging\nNetwork segmentation and least privilege\nIncident first response runbooks\nRead CISA advisories monthly\n"
+    },
+    {
+      "id": "script-bash-backup",
+      "title": "Bash Backup Script Template",
+      "description": "Portable backup script with rotation, logging, and dry-run mode.",
+      "category": "scripts",
+      "tags": [
+        "bash",
+        "backup",
+        "automation"
+      ],
+      "level": "Intermediate",
+      "type": "Script",
+      "tier": "free",
+      "url": "#script-bash-backup",
+      "body": "#!/usr/bin/env bash\n# Simple backup with dry-run and rotation\nset -euo pipefail\nSRC=\"${1:-$HOME/Documents}\"\nDEST=\"${2:-$HOME/backups}\"\nDRY_RUN=\"${DRY_RUN:-0}\"\nSTAMP=$(date +%Y%m%d-%H%M%S)\nTARGET=\"$DEST/backup-$STAMP\"\n\nmkdir -p \"$DEST\"\nif [[ \"$DRY_RUN\" == \"1\" ]]; then\n  echo \"[dry-run] Would copy $SRC -> $TARGET\"\n  exit 0\nfi\n\nmkdir -p \"$TARGET\"\ncp -a \"$SRC\" \"$TARGET/\"\necho \"Backup complete: $TARGET\"\n\n# Keep last 7 backups\nls -1dt \"$DEST\"/backup-* 2>/dev/null | tail -n +8 | xargs -r rm -rf",
+      "featured": true
+    },
+    {
+      "id": "script-disk",
+      "title": "Disk Space Report (Bash)",
+      "description": "Show largest directories.",
+      "category": "scripts",
+      "tags": [
+        "bash",
+        "disk"
+      ],
+      "level": "Intermediate",
+      "type": "Script",
+      "tier": "free",
+      "url": "#script-disk",
+      "featured": false,
+      "body": "#!/usr/bin/env bash\nset -euo pipefail\ndu -xhd1 \"${1:-/}\" 2>/dev/null | sort -h | tail -n 20\n"
+    },
+    {
+      "id": "script-ps-disk",
+      "title": "Disk Summary (PowerShell)",
+      "description": "Drive free space table.",
+      "category": "scripts",
+      "tags": [
+        "powershell",
+        "disk"
+      ],
+      "level": "Intermediate",
+      "type": "Script",
+      "tier": "free",
+      "url": "#script-ps-disk",
+      "featured": false,
+      "body": "Get-PSDrive -PSProvider FileSystem |\n  Select-Object Name,\n    @{N='UsedGB';E={[math]::Round(($_.Used/1GB),2)}},\n    @{N='FreeGB';E={[math]::Round(($_.Free/1GB),2)}}\n"
+    },
+    {
+      "id": "script-uptime-http",
+      "title": "HTTP Uptime Check (Bash)",
+      "description": "Curl a URL and exit non-zero on failure.",
+      "category": "scripts",
+      "tags": [
+        "bash",
+        "monitoring"
+      ],
+      "level": "Intermediate",
+      "type": "Script",
+      "tier": "free",
+      "url": "#script-uptime-http",
+      "featured": false,
+      "body": "#!/usr/bin/env bash\nset -euo pipefail\nURL=\"${1:-https://example.com}\"\nCODE=$(curl -s -o /dev/null -w \"%{http_code}\" --max-time 10 \"$URL\" || echo 000)\n[[ \"$CODE\" =~ ^[23] ]] && echo \"OK $CODE\" || { echo \"FAIL $CODE\"; exit 1; }\n"
+    },
+    {
+      "id": "script-users-linux",
+      "title": "List Login Users (Bash)",
+      "description": "Accounts with real shells.",
+      "category": "scripts",
+      "tags": [
+        "bash",
+        "audit"
+      ],
+      "level": "Intermediate",
+      "type": "Script",
+      "tier": "free",
+      "url": "#script-users-linux",
+      "featured": false,
+      "body": "#!/usr/bin/env bash\nawk -F: '$7 !~ /nologin|false/ {print $1,$3,$7}' /etc/passwd\n"
+    },
+    {
+      "id": "script-ps-net",
+      "title": "Network Config Snapshot (PowerShell)",
+      "description": "IP configuration dump.",
+      "category": "scripts",
+      "tags": [
+        "powershell",
+        "network"
+      ],
+      "level": "Intermediate",
+      "type": "Script",
+      "tier": "free",
+      "url": "#script-ps-net",
+      "featured": false,
+      "body": "Get-NetIPConfiguration | Format-List\nTest-NetConnection example.com -InformationLevel Detailed\n"
+    },
+    {
+      "id": "script-ps-errors",
+      "title": "Recent System Errors (PowerShell)",
+      "description": "Last 20 error events.",
+      "category": "scripts",
+      "tags": [
+        "powershell",
+        "logs"
+      ],
+      "level": "Intermediate",
+      "type": "Script",
+      "tier": "free",
+      "url": "#script-ps-errors",
+      "featured": false,
+      "body": "Get-WinEvent -FilterHashtable @{LogName='System'; Level=2} -MaxEvents 20 |\n  Select-Object TimeCreated, Id, ProviderName, Message\n"
+    },
+    {
+      "id": "script-port-scan-note",
+      "title": "Safe Local Port Check Script",
+      "description": "Check listening ports on your own machine (not for unauthorized scanning).",
+      "category": "scripts",
+      "tags": [
+        "bash",
+        "ports",
+        "troubleshooting"
+      ],
+      "level": "Beginner",
+      "type": "Script",
+      "tier": "free",
+      "url": "#script-port-check",
+      "body": "#!/usr/bin/env bash\n# List listening TCP ports on this machine\nif command -v ss >/dev/null 2>&1; then\n  ss -tuln\nelif command -v netstat >/dev/null 2>&1; then\n  netstat -tuln\nelse\n  echo \"Install ss or netstat\"\n  exit 1\nfi",
+      "featured": false
+    },
+    {
+      "id": "sec-cia",
+      "title": "CIA Triad",
+      "description": "Confidentiality, integrity, availability.",
+      "category": "security",
+      "tags": [
+        "cia"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/privacy/what-is-the-cia-triad/",
+      "featured": false
+    },
+    {
+      "id": "sec-hardening",
+      "title": "CIS Benchmarks (overview)",
+      "description": "Hardening configuration baselines.",
+      "category": "security",
+      "tags": [
+        "hardening"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisecurity.org/cis-benchmarks",
+      "featured": false
+    },
+    {
+      "id": "sec-cisa",
+      "title": "CISA Cybersecurity Resources",
+      "description": "US free security guidance.",
+      "category": "security",
+      "tags": [
+        "cisa"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/topics/cybersecurity-best-practices",
+      "featured": false
+    },
+    {
+      "id": "sec-cert-pki",
+      "title": "Certificates & PKI",
+      "description": "Trust chains for techs.",
+      "category": "security",
+      "tags": [
+        "pki",
+        "certs"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/ssl/what-is-a-certificate-authority/",
+      "featured": false
+    },
+    {
+      "id": "sec-encryption",
+      "title": "Encryption Basics",
+      "description": "In transit vs at rest.",
+      "category": "security",
+      "tags": [
+        "encryption"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/ssl/what-is-encryption/",
+      "featured": false
+    },
+    {
+      "id": "sec-haveibeenpwned",
+      "title": "Have I Been Pwned",
+      "description": "Check breached accounts.",
+      "category": "security",
+      "tags": [
+        "breaches"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://haveibeenpwned.com/",
+      "featured": false
+    },
+    {
+      "id": "sec-iam",
+      "title": "IAM Fundamentals",
+      "description": "Identity and access management.",
+      "category": "security",
+      "tags": [
+        "iam"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/access-management/what-is-identity-and-access-management/",
+      "featured": false
+    },
+    {
+      "id": "sec-incident-cisa",
+      "title": "Incident Response Basics (CISA)",
+      "description": "Federal IR primers.",
+      "category": "security",
+      "tags": [
+        "incident"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/topics/cyber-threats-and-advisories/incident-response",
+      "featured": false
+    },
+    {
+      "id": "sec-shodan-learn",
+      "title": "Internet Exposure Awareness",
+      "description": "Why open ports matter (use ethically).",
+      "category": "security",
+      "tags": [
+        "exposure"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/news-events/news/understanding-and-responding-cybersecurity-threats",
+      "featured": false
+    },
+    {
+      "id": "sec-least",
+      "title": "Least Privilege Principle",
+      "description": "Only the access required.",
+      "category": "security",
+      "tags": [
+        "least-privilege"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.nist.gov/blogs/taking-measure/least-privilege-protecting-yourself-and-your-data",
+      "featured": false
+    },
+    {
+      "id": "sec-mfa",
+      "title": "MFA Explained",
+      "description": "Why MFA stops account takeovers.",
+      "category": "security",
+      "tags": [
+        "mfa"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication/",
+      "featured": true
+    },
+    {
+      "id": "sec-mitre",
+      "title": "MITRE ATT&CK",
+      "description": "Adversary tactics knowledge base.",
+      "category": "security",
+      "tags": [
+        "mitre",
+        "threats"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://attack.mitre.org/",
+      "featured": false
+    },
+    {
+      "id": "sec-malware",
+      "title": "Malware Types",
+      "description": "Virus, worm, trojan, ransomware.",
+      "category": "security",
+      "tags": [
+        "malware"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/security/glossary/malware/",
+      "featured": false
+    },
+    {
+      "id": "sec-nist",
+      "title": "NIST Cybersecurity Framework",
+      "description": "Identify, protect, detect, respond, recover.",
+      "category": "security",
+      "tags": [
+        "nist"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.nist.gov/cyberframework",
+      "featured": false
+    },
+    {
+      "id": "sec-nvd",
+      "title": "NVD Vulnerability Database",
+      "description": "CVE lookup.",
+      "category": "security",
+      "tags": [
+        "cve"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://nvd.nist.gov/",
+      "featured": false
+    },
+    {
+      "id": "sec-oauth",
+      "title": "OAuth 2.0",
+      "description": "Modern app authorization.",
+      "category": "security",
+      "tags": [
+        "oauth"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://oauth.net/2/",
+      "featured": true
+    },
+    {
+      "id": "sec-cheatsheets",
+      "title": "OWASP Cheat Sheet Series",
+      "description": "Practical secure coding/ops notes.",
+      "category": "security",
+      "tags": [
+        "owasp"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://cheatsheetseries.owasp.org/",
+      "featured": true
+    },
+    {
+      "id": "sec-secure-headers",
+      "title": "OWASP Secure Headers",
+      "description": "HTTP security headers.",
+      "category": "security",
+      "tags": [
+        "headers",
+        "web"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://owasp.org/www-project-secure-headers/",
+      "featured": false
+    },
+    {
+      "id": "sec-owasp",
+      "title": "OWASP Top 10",
+      "description": "Critical web app risks.",
+      "category": "security",
+      "tags": [
+        "owasp",
+        "web"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://owasp.org/www-project-top-ten/",
+      "featured": true
+    },
+    {
+      "id": "sec-oidc",
+      "title": "OpenID Connect",
+      "description": "Identity layer on OAuth.",
+      "category": "security",
+      "tags": [
+        "oidc",
+        "identity"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://openid.net/connect/",
+      "featured": false
+    },
+    {
+      "id": "sec-passwords",
+      "title": "Password Storage Cheat Sheet",
+      "description": "Hashing done right.",
+      "category": "security",
+      "tags": [
+        "passwords"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
+      "featured": false
+    },
+    {
+      "id": "sec-passwordless",
+      "title": "Passwordless Trends",
+      "description": "FIDO2 / passkeys overview.",
+      "category": "security",
+      "tags": [
+        "passkeys"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://fidoalliance.org/passkeys/",
+      "featured": false
+    },
+    {
+      "id": "sec-phishing",
+      "title": "Phishing Overview",
+      "description": "Social engineering patterns.",
+      "category": "security",
+      "tags": [
+        "phishing"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/email-security/what-is-phishing/",
+      "featured": false
+    },
+    {
+      "id": "sec-ransomware",
+      "title": "Ransomware Basics",
+      "description": "Prevention and response mindset.",
+      "category": "security",
+      "tags": [
+        "ransomware"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/stopransomware",
+      "featured": true
+    },
+    {
+      "id": "sec-soc",
+      "title": "SOC Overview",
+      "description": "How security ops teams work.",
+      "category": "security",
+      "tags": [
+        "soc"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ibm.com/topics/security-operations-center",
+      "featured": false
+    },
+    {
+      "id": "sec-email-auth",
+      "title": "SPF, DKIM, DMARC",
+      "description": "Email authentication trio.",
+      "category": "security",
+      "tags": [
+        "email",
+        "dmarc"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf/",
+      "featured": false
+    },
+    {
+      "id": "sec-logging",
+      "title": "Security Logging Guidance",
+      "description": "What to log and why.",
+      "category": "security",
+      "tags": [
+        "logging"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/news-events/news/importance-logging-and-detection",
+      "featured": false
+    },
+    {
+      "id": "sec-tls",
+      "title": "TLS Explained",
+      "description": "How HTTPS protects sessions.",
+      "category": "security",
+      "tags": [
+        "tls"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/",
+      "featured": false
+    },
+    {
+      "id": "sec-vuln",
+      "title": "Vulnerability Management Idea",
+      "description": "Scan, prioritize, patch, verify.",
+      "category": "security",
+      "tags": [
+        "vuln",
+        "patching"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/topics/cyber-threats-and-advisories",
+      "featured": false
+    },
+    {
+      "id": "sec-siem",
+      "title": "What is SIEM?",
+      "description": "Central security logging/analytics.",
+      "category": "security",
+      "tags": [
+        "siem",
+        "logs"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ibm.com/topics/siem",
+      "featured": false
+    },
+    {
+      "id": "tool-7zip",
+      "title": "7-Zip",
+      "description": "Archives without pain.",
+      "category": "tools",
+      "tags": [
+        "archives"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://www.7-zip.org/",
+      "featured": false
+    },
+    {
+      "id": "tool-advanced-ip",
+      "title": "Advanced IP Scanner",
+      "description": "Windows network discovery tool.",
+      "category": "tools",
+      "tags": [
+        "scanning",
+        "windows"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://www.advanced-ip-scanner.com/",
+      "featured": false
+    },
+    {
+      "id": "tool-angry",
+      "title": "Angry IP Scanner",
+      "description": "Simple authorized IP scanning.",
+      "category": "tools",
+      "tags": [
+        "scanning"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://angryip.org/",
+      "featured": false
+    },
+    {
+      "id": "tool-bitwarden",
+      "title": "Bitwarden",
+      "description": "Open source password manager.",
+      "category": "tools",
+      "tags": [
+        "passwords"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://bitwarden.com/",
+      "featured": true
+    },
+    {
+      "id": "tool-nmap-dl",
+      "title": "Download Nmap",
+      "description": "Scanner for authorized tests.",
+      "category": "tools",
+      "tags": [
+        "nmap"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://nmap.org/download.html",
+      "featured": false
+    },
+    {
+      "id": "tool-wireshark-dl",
+      "title": "Download Wireshark",
+      "description": "Packet capture installer.",
+      "category": "tools",
+      "tags": [
+        "wireshark"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.wireshark.org/download.html",
+      "featured": false
+    },
+    {
+      "id": "tool-excalidraw",
+      "title": "Excalidraw",
+      "description": "Sketchy whiteboard diagrams.",
+      "category": "tools",
+      "tags": [
+        "diagrams"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://excalidraw.com/",
+      "featured": false
+    },
+    {
+      "id": "tool-gparted",
+      "title": "GParted",
+      "description": "Partition editing live disk.",
+      "category": "tools",
+      "tags": [
+        "storage"
+      ],
+      "level": "Intermediate",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://gparted.org/",
+      "featured": false
+    },
+    {
+      "id": "tool-git",
+      "title": "Install Git",
+      "description": "Get git on your workstation.",
+      "category": "tools",
+      "tags": [
+        "git"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://git-scm.com/downloads",
+      "featured": false
+    },
+    {
+      "id": "tool-keepass",
+      "title": "KeePass",
+      "description": "Local password database.",
+      "category": "tools",
+      "tags": [
+        "passwords"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://keepass.info/",
+      "featured": false
+    },
+    {
+      "id": "tool-mobaxterm",
+      "title": "MobaXterm",
+      "description": "SSH + tools for Windows admins.",
+      "category": "tools",
+      "tags": [
+        "ssh",
+        "windows"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://mobaxterm.mobatek.net/",
+      "featured": false
+    },
+    {
+      "id": "tool-notepadpp",
+      "title": "Notepad++",
+      "description": "Log-friendly Windows editor.",
+      "category": "tools",
+      "tags": [
+        "editor"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://notepad-plus-plus.org/",
+      "featured": false
+    },
+    {
+      "id": "tool-obs",
+      "title": "OBS Studio",
+      "description": "Record labs and tutorials free.",
+      "category": "tools",
+      "tags": [
+        "media"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://obsproject.com/",
+      "featured": false
+    },
+    {
+      "id": "tool-openssl",
+      "title": "OpenSSL",
+      "description": "Certs and crypto Swiss army knife.",
+      "category": "tools",
+      "tags": [
+        "tls",
+        "certs"
+      ],
+      "level": "Advanced",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://www.openssl.org/",
+      "featured": false
+    },
+    {
+      "id": "tool-postman",
+      "title": "Postman",
+      "description": "API testing for IT integrations.",
+      "category": "tools",
+      "tags": [
+        "api"
+      ],
+      "level": "Intermediate",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://www.postman.com/",
+      "featured": false
+    },
+    {
+      "id": "tool-proxmox",
+      "title": "Proxmox VE",
+      "description": "Homelab hypervisor platform.",
+      "category": "tools",
+      "tags": [
+        "homelab"
+      ],
+      "level": "Intermediate",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://www.proxmox.com/en/proxmox-ve",
+      "featured": false
+    },
+    {
+      "id": "tool-putty",
+      "title": "PuTTY",
+      "description": "Classic Windows SSH/Telnet client.",
+      "category": "tools",
+      "tags": [
+        "ssh"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://www.putty.org/",
+      "featured": false
+    },
+    {
+      "id": "tool-python",
+      "title": "Python for IT Automation",
+      "description": "Scripting language popular in ops.",
+      "category": "tools",
+      "tags": [
+        "python"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://docs.python.org/3/tutorial/",
+      "featured": false
+    },
+    {
+      "id": "tool-rufus",
+      "title": "Rufus",
+      "description": "Make bootable USB installers.",
+      "category": "tools",
+      "tags": [
+        "imaging"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://rufus.ie/",
+      "featured": true
+    },
+    {
+      "id": "tool-ookla",
+      "title": "Speedtest CLI/Web",
+      "description": "Quick path quality checks.",
+      "category": "tools",
+      "tags": [
+        "performance"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://www.speedtest.net/",
+      "featured": false
+    },
+    {
+      "id": "tool-utm",
+      "title": "UTM for Mac",
+      "description": "VMs on Apple Silicon.",
+      "category": "tools",
+      "tags": [
+        "virtualization",
+        "mac"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://mac.getutm.app/",
+      "featured": false
+    },
+    {
+      "id": "tool-vscode-ssh",
+      "title": "VS Code Remote SSH",
+      "description": "Edit files on servers safely.",
+      "category": "tools",
+      "tags": [
+        "vscode",
+        "ssh"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://code.visualstudio.com/docs/remote/ssh",
+      "featured": false
+    },
+    {
+      "id": "tool-virtualbox",
+      "title": "VirtualBox",
+      "description": "Free desktop virtualization.",
+      "category": "tools",
+      "tags": [
+        "virtualization"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://www.virtualbox.org/",
+      "featured": true
+    },
+    {
+      "id": "tool-vscode",
+      "title": "Visual Studio Code",
+      "description": "Editor for configs and scripts.",
+      "category": "tools",
+      "tags": [
+        "editor"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://code.visualstudio.com/",
+      "featured": true
+    },
+    {
+      "id": "tool-winscp",
+      "title": "WinSCP",
+      "description": "SFTP/SCP file transfers.",
+      "category": "tools",
+      "tags": [
+        "sftp"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://winscp.net/",
+      "featured": false
+    },
+    {
+      "id": "tool-wireguard",
+      "title": "WireGuard",
+      "description": "Modern VPN protocol/tools.",
+      "category": "tools",
+      "tags": [
+        "vpn"
+      ],
+      "level": "Intermediate",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://www.wireguard.com/",
+      "featured": false
+    },
+    {
+      "id": "tool-balena",
+      "title": "balenaEtcher",
+      "description": "Flash OS images safely.",
+      "category": "tools",
+      "tags": [
+        "imaging"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://etcher.balena.io/",
+      "featured": false
+    },
+    {
+      "id": "tool-drawio",
+      "title": "diagrams.net",
+      "description": "Free network diagrams.",
+      "category": "tools",
+      "tags": [
+        "diagrams"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://app.diagrams.net/",
+      "featured": true
+    },
+    {
+      "id": "tool-iperf",
+      "title": "iPerf",
+      "description": "Bandwidth testing.",
+      "category": "tools",
+      "tags": [
+        "performance"
+      ],
+      "level": "Intermediate",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://iperf.fr/",
+      "featured": false
+    },
+    {
+      "id": "tool-rclone",
+      "title": "rclone",
+      "description": "Sync to many cloud storages.",
+      "category": "tools",
+      "tags": [
+        "backup",
+        "cloud"
+      ],
+      "level": "Intermediate",
+      "type": "Tool",
+      "tier": "free",
+      "url": "https://rclone.org/",
+      "featured": false
+    },
+    {
+      "id": "win-ad",
+      "title": "Active Directory Basics",
+      "description": "Domains, users, GPOs overview.",
+      "category": "windows",
+      "tags": [
+        "active-directory"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview",
+      "featured": true
+    },
+    {
+      "id": "win-bitlocker",
+      "title": "BitLocker Overview",
+      "description": "Disk encryption for endpoints.",
+      "category": "windows",
+      "tags": [
+        "bitlocker",
+        "security"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/",
+      "featured": false
+    },
+    {
+      "id": "win-bsod",
+      "title": "Crash Dump Basics",
+      "description": "Where to start after a BSOD.",
+      "category": "windows",
+      "tags": [
+        "troubleshooting"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/",
+      "featured": false
+    },
+    {
+      "id": "win-dns-ad",
+      "title": "DNS with Active Directory",
+      "description": "Why AD loves DNS.",
+      "category": "windows",
+      "tags": [
+        "dns",
+        "ad"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/networking/dns/",
+      "featured": false
+    },
+    {
+      "id": "win-azuread",
+      "title": "Entra ID (Azure AD) Basics",
+      "description": "Cloud identity for Microsoft shops.",
+      "category": "windows",
+      "tags": [
+        "entra",
+        "identity"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whatis",
+      "featured": false
+    },
+    {
+      "id": "win-event",
+      "title": "Event Viewer Guide",
+      "description": "Find the error that matters.",
+      "category": "windows",
+      "tags": [
+        "logs",
+        "events"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/wes/windows-event-log",
+      "featured": true
+    },
+    {
+      "id": "win-fs",
+      "title": "File Shares & NTFS",
+      "description": "Share vs NTFS permissions.",
+      "category": "windows",
+      "tags": [
+        "permissions",
+        "shares"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/storage/file-server/file-server",
+      "featured": true
+    },
+    {
+      "id": "win-gpo",
+      "title": "Group Policy Overview",
+      "description": "Central configuration for Windows.",
+      "category": "windows",
+      "tags": [
+        "gpo"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831791(v=ws.11)",
+      "featured": false
+    },
+    {
+      "id": "win-hyperv",
+      "title": "Hyper-V Overview",
+      "description": "Microsoft virtualization.",
+      "category": "windows",
+      "tags": [
+        "virtualization"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/hyper-v-technology-overview",
+      "featured": false
+    },
+    {
+      "id": "win-defender",
+      "title": "Microsoft Defender Basics",
+      "description": "Built-in endpoint protection.",
+      "category": "windows",
+      "tags": [
+        "defender",
+        "security"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/",
+      "featured": false
+    },
+    {
+      "id": "win-intune",
+      "title": "Microsoft Intune Intro",
+      "description": "Endpoint management cloud path.",
+      "category": "windows",
+      "tags": [
+        "intune",
+        "mdm"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/mem/intune/fundamentals/what-is-intune",
+      "featured": false
+    },
+    {
+      "id": "win-ps",
+      "title": "PowerShell Documentation",
+      "description": "Modern Windows automation.",
+      "category": "windows",
+      "tags": [
+        "powershell"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/powershell/",
+      "featured": true
+    },
+    {
+      "id": "win-powershell-gallery",
+      "title": "PowerShell Gallery",
+      "description": "Find community modules.",
+      "category": "windows",
+      "tags": [
+        "powershell"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.powershellgallery.com/",
+      "featured": false
+    },
+    {
+      "id": "win-printer",
+      "title": "Print Server Concepts",
+      "description": "Drivers, queues, and pain points.",
+      "category": "windows",
+      "tags": [
+        "printers"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/print",
+      "featured": false
+    },
+    {
+      "id": "win-registry",
+      "title": "Registry Caution Guide",
+      "description": "What it is and how not to break it.",
+      "category": "windows",
+      "tags": [
+        "registry"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry",
+      "featured": false
+    },
+    {
+      "id": "win-rdp",
+      "title": "Remote Desktop Admin",
+      "description": "RDP access and hardening notes.",
+      "category": "windows",
+      "tags": [
+        "rdp"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/welcome-to-rds",
+      "featured": false
+    },
+    {
+      "id": "win-sysinternals",
+      "title": "Sysinternals Suite",
+      "description": "Process Explorer, Autoruns, TCPView.",
+      "category": "windows",
+      "tags": [
+        "sysinternals",
+        "tools"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/sysinternals/",
+      "featured": true
+    },
+    {
+      "id": "win-task",
+      "title": "Task Scheduler",
+      "description": "Automate Windows jobs.",
+      "category": "windows",
+      "tags": [
+        "automation"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page",
+      "featured": false
+    },
+    {
+      "id": "win-cmd",
+      "title": "Windows Command Line Basics",
+      "description": "Essential cmd commands for techs.",
+      "category": "windows",
+      "tags": [
+        "cmd"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands",
+      "featured": true
+    },
+    {
+      "id": "win-dhcp-s",
+      "title": "Windows DHCP Server",
+      "description": "Scopes and reservations.",
+      "category": "windows",
+      "tags": [
+        "dhcp"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/networking/technologies/dhcp/dhcp-top",
+      "featured": false
+    },
+    {
+      "id": "win-backup",
+      "title": "Windows Server Backup Ideas",
+      "description": "Protect system state and data.",
+      "category": "windows",
+      "tags": [
+        "backup"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/system-state-backup",
+      "featured": false
+    },
+    {
+      "id": "win-services",
+      "title": "Windows Services",
+      "description": "Start types and recovery.",
+      "category": "windows",
+      "tags": [
+        "services"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/dotnet/framework/windows-services/introduction-to-windows-service-applications",
+      "featured": false
+    },
+    {
+      "id": "win-update",
+      "title": "Windows Update Management",
+      "description": "Patches and rings concepts.",
+      "category": "windows",
+      "tags": [
+        "patching"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows/deployment/update/",
+      "featured": false
+    },
+    {
+      "id": "win-gpupdate",
+      "title": "gpupdate / gpresult",
+      "description": "Force and verify policy.",
+      "category": "windows",
+      "tags": [
+        "gpo"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/gpupdate",
+      "featured": false
+    },
+    {
+      "id": "win-winget",
+      "title": "winget Package Manager",
+      "description": "Install software from CLI.",
+      "category": "windows",
+      "tags": [
+        "winget"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows/package-manager/winget/",
+      "featured": false
+    },
+    {
+      "id": "wifi-bluetooth",
+      "title": "Bluetooth vs Wi‑Fi",
+      "description": "Different jobs, shared spectrum pain.",
+      "category": "wireless",
+      "tags": [
+        "bluetooth"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.bluetooth.com/learn-about-bluetooth/tech-overview/",
+      "featured": false
+    },
+    {
+      "id": "net-capwap",
+      "title": "CAPWAP Basics",
+      "description": "AP to controller tunnels.",
+      "category": "wireless",
+      "tags": [
+        "capwap"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/CAPWAP",
+      "featured": false
+    },
+    {
+      "id": "wifi-captive",
+      "title": "Captive Portals",
+      "description": "Guest Wi‑Fi onboarding patterns.",
+      "category": "wireless",
+      "tags": [
+        "guest"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Captive_portal",
+      "featured": false
+    },
+    {
+      "id": "wifi-channels",
+      "title": "Channel Planning Idea",
+      "description": "2.4 vs 5/6 GHz interference.",
+      "category": "wireless",
+      "tags": [
+        "rf",
+        "channels"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ekahau.com/blog/channel-planning-best-practices/",
+      "featured": false
+    },
+    {
+      "id": "wifi-roaming",
+      "title": "Client Roaming Basics",
+      "description": "Why calls drop between APs.",
+      "category": "wireless",
+      "tags": [
+        "roaming"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Handover",
+      "featured": false
+    },
+    {
+      "id": "wifi-controller",
+      "title": "Controller vs Autonomous APs",
+      "description": "How enterprise Wi‑Fi is managed.",
+      "category": "wireless",
+      "tags": [
+        "enterprise-wifi"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Wireless_LAN_controller",
+      "featured": false
+    },
+    {
+      "id": "wifi-site-survey",
+      "title": "Site Survey Concepts",
+      "description": "Coverage vs capacity.",
+      "category": "wireless",
+      "tags": [
+        "survey"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ekahau.com/solutions/wi-fi-site-survey/",
+      "featured": false
+    },
+    {
+      "id": "wifi-security",
+      "title": "WPA2/WPA3",
+      "description": "Wireless encryption eras.",
+      "category": "wireless",
+      "tags": [
+        "wpa3",
+        "security"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.wifi.org/discover-wi-fi/security",
+      "featured": true
+    },
+    {
+      "id": "net-wlc",
+      "title": "Wireless LAN Controllers",
+      "description": "Central AP management.",
+      "category": "wireless",
+      "tags": [
+        "wlc"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Wireless_LAN_controller",
+      "featured": false
+    },
+    {
+      "id": "wifi-troubleshoot",
+      "title": "Wireless Troubleshooting Steps",
+      "description": "Client, RF, auth, DHCP, DNS.",
+      "category": "wireless",
+      "tags": [
+        "troubleshooting"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisco.com/c/en/us/support/docs/wireless-mobility/wireless-lan-wlan/116532-technote-technology-00.html",
+      "featured": true
+    },
+    {
+      "id": "wifi-6",
+      "title": "Wi‑Fi 6 Overview",
+      "description": "What OFDMA buys you.",
+      "category": "wireless",
+      "tags": [
+        "wifi6"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.intel.com/content/www/us/en/gaming/resources/wifi-6.html",
+      "featured": false
+    },
+    {
+      "id": "wifi-basics",
+      "title": "Wi‑Fi Basics",
+      "description": "SSIDs, channels, bands.",
+      "category": "wireless",
+      "tags": [
+        "wifi"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-wifi/",
       "featured": true
     }
   ]

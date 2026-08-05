@@ -36,12 +36,12 @@
       <section class="hero">
         <div class="container hero-grid">
           <div>
-            <h1>IT knowledge that <em>pays you back</em></h1>
+            <h1>A tech’s dream library — <em>hundreds of resources</em>, one search</h1>
             <p class="hero-lead">
-              A searchable repository of networking, Linux, security, cloud, certifications,
-              scripts, and cheatsheets — built by
-              <strong id="owner-name">Beth Sarver-Ashworth</strong>. Free library for everyone.
-              Pro packs for people serious about landing IT roles.
+              Networking, architecture diagrams, Linux, Windows, security, cloud, wireless, helpdesk,
+              certs, scripts, tools, and learning paths — built by
+              <strong id="owner-name">Beth Sarver-Ashworth</strong>. Tap a category, search anything,
+              open free resources instantly. Pro packs go deeper.
             </p>
             <div class="hero-stats">
               <div class="stat">
@@ -94,13 +94,16 @@
             <input
               id="search"
               type="search"
-              placeholder="Search Linux, subnetting, OAuth, Network+, scripts…"
+              placeholder="Search anything: VLAN, PowerShell, Wi‑Fi, Security+, Docker…"
               autocomplete="off"
             />
           </div>
           <div class="filters">
             <div id="category-filters" aria-label="Filter by category"></div>
+          </div>
+          <div class="filters filters-secondary">
             <div class="tier-toggle" id="tier-filters" aria-label="Filter by tier"></div>
+            <div class="tier-toggle" id="level-filters" aria-label="Filter by level"></div>
           </div>
         </div>
 
@@ -110,6 +113,7 @@
         </div>
 
         <div class="grid" id="resource-grid" aria-live="polite"></div>
+        <div class="pager" id="pager" aria-label="Pagination"></div>
       </section>
 
       <section class="container launch-strip" id="earn">
