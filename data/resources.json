@@ -16,6 +16,16 @@
       "icon": "🗺️"
     },
     {
+      "id": "hardware",
+      "name": "Hardware",
+      "icon": "🔧"
+    },
+    {
+      "id": "software",
+      "name": "Software",
+      "icon": "💿"
+    },
+    {
       "id": "linux",
       "name": "Linux",
       "icon": "🐧"
@@ -29,6 +39,11 @@
       "id": "security",
       "name": "Security",
       "icon": "🔒"
+    },
+    {
+      "id": "pentest",
+      "name": "Pen Testing",
+      "icon": "🛡️"
     },
     {
       "id": "cloud",
@@ -4472,6 +4487,1327 @@
       "type": "Guide",
       "tier": "free",
       "url": "https://www.cloudflare.com/learning/network-layer/what-is-wifi/",
+      "featured": true
+    },
+    {
+      "id": "hw-overview",
+      "title": "Computer System Components Overview",
+      "description": "CPU, RAM, storage, motherboard, PSU, GPU — the big picture.",
+      "category": "hardware",
+      "tags": [
+        "components",
+        "a+"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.comptia.org/blog/what-is-a-plus",
+      "featured": true,
+      "body": "COMPUTER SYSTEM — BIG PICTURE\n\n1) CPU (brain) — executes instructions\n2) RAM (short-term memory) — active programs/data\n3) Storage (long-term) — HDD/SSD/NVMe keep data when powered off\n4) Motherboard — connects everything (buses, chipset)\n5) PSU — converts wall power to usable DC rails\n6) GPU — graphics/display (integrated or discrete)\n7) Cooling — air/liquid keep temps safe\n8) Firmware (BIOS/UEFI) — starts hardware before the OS\n\nData path (simple):\nInput → CPU/RAM work → Storage save → Output (display/network)\n"
+    },
+    {
+      "id": "hw-cpu",
+      "title": "CPU Basics for Techs",
+      "description": "Cores, threads, cache, and what “slow CPU” feels like.",
+      "category": "hardware",
+      "tags": [
+        "cpu"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.intel.com/content/www/us/en/gaming/resources/cpu-explained.html",
+      "featured": true
+    },
+    {
+      "id": "hw-ram",
+      "title": "RAM Explained",
+      "description": "Capacity, speed, dual-channel, when more RAM helps.",
+      "category": "hardware",
+      "tags": [
+        "ram",
+        "memory"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.crucial.com/articles/about-memory/support-what-does-computer-memory-do",
+      "featured": true
+    },
+    {
+      "id": "hw-storage",
+      "title": "HDD vs SSD vs NVMe",
+      "description": "How storage type changes boot and app speed.",
+      "category": "hardware",
+      "tags": [
+        "ssd",
+        "storage"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.samsung.com/us/support/answer/ANS00077562/",
+      "featured": true
+    },
+    {
+      "id": "hw-motherboard",
+      "title": "Motherboard Form Factors & Features",
+      "description": "ATX/mATX, chipset, slots, headers.",
+      "category": "hardware",
+      "tags": [
+        "motherboard"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.intel.com/content/www/us/en/gaming/resources/what-is-a-motherboard.html",
+      "featured": false
+    },
+    {
+      "id": "hw-psu",
+      "title": "Power Supply (PSU) Basics",
+      "description": "Wattage, rails, efficiency, never cheap out on PSU.",
+      "category": "hardware",
+      "tags": [
+        "psu",
+        "power"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.coolermaster.com/en-global/pages/blog/psu-basics/",
+      "featured": false
+    },
+    {
+      "id": "hw-gpu",
+      "title": "GPU Roles in IT",
+      "description": "Display, VDI, light compute — not only gaming.",
+      "category": "hardware",
+      "tags": [
+        "gpu"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.nvidia.com/en-us/glossary/gpu/",
+      "featured": false
+    },
+    {
+      "id": "hw-bios",
+      "title": "BIOS / UEFI Fundamentals",
+      "description": "Boot order, Secure Boot, virtualization flags.",
+      "category": "hardware",
+      "tags": [
+        "uefi",
+        "firmware"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-uefi",
+      "featured": true,
+      "body": "UEFI / BIOS QUICK NOTES\n- Boot order: USB → SSD → network (PXE) as needed\n- Enable virtualization: Intel VT-x / AMD-V for VMs\n- Secure Boot: helps stop unauthorized bootloaders\n- Don't flash firmware on unstable power\n- After CMOs clear: re-set time, boot order, virt flags\n"
+    },
+    {
+      "id": "hw-ports",
+      "title": "Physical Ports Cheatsheet",
+      "description": "USB, HDMI, DisplayPort, Ethernet, audio.",
+      "category": "hardware",
+      "tags": [
+        "ports",
+        "cables"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "https://www.usb.org/",
+      "featured": false,
+      "body": "COMMON PORTS\nUSB-A / USB-C — peripherals, power, some video\nHDMI / DP — monitors\nRJ-45 — Ethernet\n3.5mm — analog audio\nThunderbolt (often USB-C shape) — high speed dock/display\nSATA / M.2 — internal storage connectors\n"
+    },
+    {
+      "id": "hw-cooling",
+      "title": "Cooling & Thermals",
+      "description": "Why dust and bad paste cause random shutdowns.",
+      "category": "hardware",
+      "tags": [
+        "cooling",
+        "thermals"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.intel.com/content/www/us/en/gaming/resources/cpu-temperature.html",
+      "featured": false
+    },
+    {
+      "id": "hw-laptop",
+      "title": "Laptop Hardware Quirks",
+      "description": "Soldered RAM, battery health, display cables.",
+      "category": "hardware",
+      "tags": [
+        "laptop"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.comptia.org/blog",
+      "featured": false
+    },
+    {
+      "id": "hw-printers",
+      "title": "Printers & Imaging Devices",
+      "description": "Drivers, spools, network vs USB.",
+      "category": "hardware",
+      "tags": [
+        "printers"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/print",
+      "featured": false
+    },
+    {
+      "id": "hw-raid",
+      "title": "RAID Levels Overview",
+      "description": "0,1,5,10 — speed vs redundancy tradeoffs.",
+      "category": "hardware",
+      "tags": [
+        "raid",
+        "storage"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ibm.com/topics/raid",
+      "featured": false
+    },
+    {
+      "id": "hw-troubleshoot",
+      "title": "Hardware Troubleshooting Flow",
+      "description": "Power → POST → display → storage → OS.",
+      "category": "hardware",
+      "tags": [
+        "troubleshooting",
+        "a+"
+      ],
+      "level": "Beginner",
+      "type": "Cheatsheet",
+      "tier": "free",
+      "url": "https://www.comptia.org/blog/hardware-troubleshooting",
+      "featured": true,
+      "body": "HARDWARE TROUBLE FLOW\n1) Power: outlet, PSU switch, cables, laptop charger LED\n2) POST/beeps/LED codes: memory/GPU/CPU clues\n3) Display: try external monitor, reseat RAM/GPU\n4) Boot device: BIOS sees disk? cables? NVMe seated?\n5) Minimal boot: 1 stick RAM, onboard graphics if possible\n6) Known-good parts swap when available\nDocument every change in the ticket.\n"
+    },
+    {
+      "id": "hw-post",
+      "title": "POST & Beep Codes Idea",
+      "description": "What happens before the OS loads.",
+      "category": "hardware",
+      "tags": [
+        "post"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Power-on_self-test",
+      "featured": false
+    },
+    {
+      "id": "hw-virtualization-cpu",
+      "title": "CPU Virtualization Flags",
+      "description": "Why VMs need VT-x/AMD-V enabled.",
+      "category": "hardware",
+      "tags": [
+        "virtualization",
+        "cpu"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows",
+      "featured": false
+    },
+    {
+      "id": "hw-peripherals",
+      "title": "Peripherals & Drivers",
+      "description": "Keyboards, docks, webcams, driver sources.",
+      "category": "hardware",
+      "tags": [
+        "drivers",
+        "peripherals"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/",
+      "featured": false
+    },
+    {
+      "id": "hw-mobile",
+      "title": "Mobile Device Hardware Basics",
+      "description": "Phones/tablets components techs touch.",
+      "category": "hardware",
+      "tags": [
+        "mobile",
+        "a+"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.comptia.org/certifications/a",
+      "featured": false
+    },
+    {
+      "id": "hw-cabling-copper",
+      "title": "Copper Cabling Types",
+      "description": "Cat5e/6/6a and when length matters.",
+      "category": "hardware",
+      "tags": [
+        "cabling"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.fs.com/blog_detail-what-is-cat6-cable-and-cat6-vs-cat6a-vs-cat5e.html",
+      "featured": false
+    },
+    {
+      "id": "hw-fiber-optic",
+      "title": "Fiber Hardware Basics",
+      "description": "Connectors, single vs multi-mode.",
+      "category": "hardware",
+      "tags": [
+        "fiber"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/network-layer/what-is-a-fiber-optic-cable/",
+      "featured": false
+    },
+    {
+      "id": "sw-overview",
+      "title": "Hardware vs Software vs Firmware",
+      "description": "Three layers every tech must separate in tickets.",
+      "category": "software",
+      "tags": [
+        "fundamentals"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ibm.com/topics/software",
+      "featured": true,
+      "body": "HARDWARE vs SOFTWARE vs FIRMWARE\n\nHARDWARE — physical parts you can touch (CPU, RAM, NIC)\nSOFTWARE — programs and OS instructions (Windows, apps)\nFIRMWARE — software living on chips (UEFI, router firmware)\n\nTicket tip:\n\"Is it broken silicon, a bad driver/OS, or outdated firmware?\"\n"
+    },
+    {
+      "id": "sw-os",
+      "title": "What an Operating System Does",
+      "description": "Process, memory, device, and file management.",
+      "category": "software",
+      "tags": [
+        "os",
+        "fundamentals"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://edu.gcfglobal.org/en/computerbasics/understanding-operating-systems/1/",
+      "featured": true
+    },
+    {
+      "id": "sw-kernel",
+      "title": "Kernel vs User Space (simple)",
+      "description": "Why drivers and permissions matter.",
+      "category": "software",
+      "tags": [
+        "kernel",
+        "os"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/User_space_and_kernel_space",
+      "featured": false
+    },
+    {
+      "id": "sw-drivers",
+      "title": "Device Drivers Explained",
+      "description": "How the OS talks to hardware.",
+      "category": "software",
+      "tags": [
+        "drivers"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/",
+      "featured": true
+    },
+    {
+      "id": "sw-apps",
+      "title": "Application Types",
+      "description": "Native, web, portable, store apps.",
+      "category": "software",
+      "tags": [
+        "applications"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.ibm.com/topics/application-software",
+      "featured": false
+    },
+    {
+      "id": "sw-licensing",
+      "title": "Software Licensing Basics",
+      "description": "OEM, volume, subscription — don't pirate.",
+      "category": "software",
+      "tags": [
+        "licensing"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.microsoft.com/en-us/licensing/",
+      "featured": false
+    },
+    {
+      "id": "sw-install",
+      "title": "Clean Install vs Upgrade vs Repair",
+      "description": "When to reimage vs fix in place.",
+      "category": "software",
+      "tags": [
+        "imaging",
+        "os"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows/deployment/",
+      "featured": true
+    },
+    {
+      "id": "sw-updates",
+      "title": "Why Patching Matters",
+      "description": "Security + stability updates workflow.",
+      "category": "software",
+      "tags": [
+        "patching",
+        "security"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/secure-our-world",
+      "featured": true
+    },
+    {
+      "id": "sw-filesystems",
+      "title": "Filesystems Overview",
+      "description": "NTFS, APFS, ext4, FAT32/exFAT use cases.",
+      "category": "software",
+      "tags": [
+        "filesystems",
+        "storage"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/File_system",
+      "featured": false
+    },
+    {
+      "id": "sw-boot",
+      "title": "Boot Process Overview",
+      "description": "Power → firmware → bootloader → kernel → login.",
+      "category": "software",
+      "tags": [
+        "boot"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://en.wikipedia.org/wiki/Booting",
+      "featured": true,
+      "body": "BOOT CHAIN (simplified)\n1) Power + PSU good\n2) Firmware (UEFI/BIOS) initializes hardware\n3) Bootloader (Windows Boot Manager / GRUB)\n4) Kernel loads drivers\n5) User space services start\n6) Login screen\n\nBreaks often at: disk not found, bad BCD/GRUB, driver crash loops.\n"
+    },
+    {
+      "id": "sw-virtualization",
+      "title": "Software Virtualization Concepts",
+      "description": "VMs, containers, hypervisors types.",
+      "category": "software",
+      "tags": [
+        "virtualization"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.redhat.com/en/topics/virtualization/what-is-virtualization",
+      "featured": true
+    },
+    {
+      "id": "sw-malware-vs-bug",
+      "title": "Bug vs Misconfig vs Malware",
+      "description": "Don't assume virus first — verify.",
+      "category": "software",
+      "tags": [
+        "troubleshooting"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/topics/cyber-threats-and-advisories",
+      "featured": false
+    },
+    {
+      "id": "sw-package-managers",
+      "title": "Package Managers Idea",
+      "description": "apt, dnf, winget, app stores.",
+      "category": "software",
+      "tags": [
+        "packages"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/windows/package-manager/winget/",
+      "featured": false
+    },
+    {
+      "id": "sw-runtime",
+      "title": "Runtimes & Dependencies",
+      "description": ".NET, Java, VC++ redistributables pain.",
+      "category": "software",
+      "tags": [
+        "dependencies"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/dotnet/",
+      "featured": false
+    },
+    {
+      "id": "sw-backup-software",
+      "title": "Backup Software Concepts",
+      "description": "Full/incremental/image and 3-2-1.",
+      "category": "software",
+      "tags": [
+        "backup"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.backblaze.com/blog/the-3-2-1-backup-strategy/",
+      "featured": false
+    },
+    {
+      "id": "sw-remote",
+      "title": "Remote Access Software Layer",
+      "description": "RDP, SSH, vendor tools — security implications.",
+      "category": "software",
+      "tags": [
+        "remote",
+        "security"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/news-events/news/tips-staying-safe-while-working-remotely",
+      "featured": false
+    },
+    {
+      "id": "sw-browser",
+      "title": "Browsers as an IT Platform",
+      "description": "Profiles, extensions, enterprise policies.",
+      "category": "software",
+      "tags": [
+        "browsers"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://support.google.com/chrome/a/",
+      "featured": false
+    },
+    {
+      "id": "sw-office",
+      "title": "Productivity Suites in Business",
+      "description": "M365/Google Workspace support patterns.",
+      "category": "software",
+      "tags": [
+        "m365"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/",
+      "featured": false
+    },
+    {
+      "id": "sec-defense-depth",
+      "title": "Defense in Depth (Security Layers)",
+      "description": "Multiple controls so one failure isn't game over.",
+      "category": "security",
+      "tags": [
+        "defense-in-depth",
+        "layers",
+        "layers"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/topics/cybersecurity-best-practices",
+      "featured": true,
+      "body": "SECURITY LAYERS (DEFENSE IN DEPTH)\n\n1) Physical — locks, badges, cable locks\n2) Perimeter — firewalls, edge filtering, email security\n3) Network — VLANs, ACLs, NAC, VPN\n4) Host — patching, EDR/AV, hardening, host firewall\n5) Application — secure config, input validation, updates\n6) Data — encryption, backups, DLP, least privilege\n7) Identity — MFA, strong auth, joiner/mover/leaver\n8) People — training, phishing drills, process\n\nIf one layer fails, others still slow or stop the attack.\n"
+    },
+    {
+      "id": "sec-cia-deep",
+      "title": "CIA Triad in Real Tickets",
+      "description": "Confidentiality, integrity, availability examples.",
+      "category": "security",
+      "tags": [
+        "cia",
+        "layers"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/privacy/what-is-the-cia-triad/",
+      "featured": true
+    },
+    {
+      "id": "sec-osi-security",
+      "title": "Security at Each OSI Layer",
+      "description": "Map attacks/controls to layers for interviews.",
+      "category": "security",
+      "tags": [
+        "osi",
+        "layers",
+        "layers"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/",
+      "featured": true,
+      "body": "OSI × SECURITY (examples)\nL1 Physical: cable taps, lock rooms, disable unused ports\nL2 Data Link: MAC filtering limits, port security, ARP inspection\nL3 Network: ACLs, anti-spoofing, secure routing\nL4 Transport: firewalls on ports/protocols, TLS\nL5-7 App: authn/z, WAF, secure coding, email filters\n\nInterview gold: pick an incident and name the layer + control.\n"
+    },
+    {
+      "id": "sec-zero-trust-layers",
+      "title": "Zero Trust as a Layered Model",
+      "description": "Identity, device, app, network signals.",
+      "category": "security",
+      "tags": [
+        "zero-trust",
+        "layers"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/",
+      "featured": true
+    },
+    {
+      "id": "sec-physical",
+      "title": "Physical Security Controls",
+      "description": "The layer people forget until a laptop walks off.",
+      "category": "security",
+      "tags": [
+        "physical",
+        "layers"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/topics/physical-security",
+      "featured": false
+    },
+    {
+      "id": "sec-network-seg",
+      "title": "Network Segmentation Layer",
+      "description": "VLANs and firewalls as blast-radius control.",
+      "category": "security",
+      "tags": [
+        "segmentation",
+        "vlan",
+        "layers"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/secure-our-world",
+      "featured": false
+    },
+    {
+      "id": "sec-endpoint-layer",
+      "title": "Endpoint Security Layer",
+      "description": "AV/EDR, disk crypto, patch, USB policy.",
+      "category": "security",
+      "tags": [
+        "endpoint",
+        "edr",
+        "layers"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/topics/cybersecurity-best-practices",
+      "featured": true
+    },
+    {
+      "id": "sec-identity-layer",
+      "title": "Identity Security Layer",
+      "description": "IAM, MFA, SSO, privileged access.",
+      "category": "security",
+      "tags": [
+        "iam",
+        "mfa",
+        "layers"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/access-management/what-is-identity-and-access-management/",
+      "featured": true
+    },
+    {
+      "id": "sec-data-layer",
+      "title": "Data Security Layer",
+      "description": "Classify, encrypt, backup, retain.",
+      "category": "security",
+      "tags": [
+        "data",
+        "encryption",
+        "layers"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/secure-our-world",
+      "featured": false
+    },
+    {
+      "id": "sec-app-layer",
+      "title": "Application Security Layer",
+      "description": "OWASP risks and patching apps.",
+      "category": "security",
+      "tags": [
+        "appsec",
+        "owasp",
+        "layers"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://owasp.org/www-project-top-ten/",
+      "featured": false
+    },
+    {
+      "id": "sec-logging-layer",
+      "title": "Detection & Logging Layer",
+      "description": "If you don't log it, you can't prove it.",
+      "category": "security",
+      "tags": [
+        "logging",
+        "detection",
+        "layers"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/news-events/news/importance-logging-and-detection",
+      "featured": false
+    },
+    {
+      "id": "sec-policy-layer",
+      "title": "Policy & Process Layer",
+      "description": "Acceptable use, IR plans, change control.",
+      "category": "security",
+      "tags": [
+        "policy",
+        "governance",
+        "layers"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.nist.gov/cyberframework",
+      "featured": false
+    },
+    {
+      "id": "sec-email-layer",
+      "title": "Email Security Layer",
+      "description": "SPF/DKIM/DMARC + user reporting.",
+      "category": "security",
+      "tags": [
+        "email",
+        "phishing",
+        "layers"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf/",
+      "featured": false
+    },
+    {
+      "id": "sec-cloud-layers",
+      "title": "Cloud Security Shared Layers",
+      "description": "Customer vs provider responsibilities.",
+      "category": "security",
+      "tags": [
+        "cloud",
+        "shared-responsibility",
+        "layers"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+      "featured": false
+    },
+    {
+      "id": "pt-ethics",
+      "title": "Rules of Engagement & Legality",
+      "description": "Only test with written permission. Unauthorized access is a crime.",
+      "category": "pentest",
+      "tags": [
+        "ethics",
+        "legal",
+        "roe"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.eccouncil.org/cybersecurity-exchange/penetration-testing/what-is-penetration-testing/",
+      "featured": true,
+      "body": "PEN TESTING ETHICS (NON-NEGOTIABLE)\n\n✅ Written authorization (scope, dates, systems, contacts)\n✅ Stay in scope — no \"curious\" side quests\n✅ Protect client data you find\n✅ Report responsibly; no public dumps\n❌ Scanning/exploiting networks you don't own or lack permission for\n❌ Using classmates' Wi‑Fi, employers, or random IPs \"for practice\"\n\nPractice safely:\n- Your own lab VMs\n- Intentionally vulnerable labs (DVWA, TryHackMe free rooms, etc.)\n- CTFs and legal ranges\n\nIf unsure: DO NOT TEST.\n"
+    },
+    {
+      "id": "pt-what-is",
+      "title": "What is Penetration Testing?",
+      "description": "Authorized simulated attack to find weaknesses.",
+      "category": "pentest",
+      "tags": [
+        "pentest",
+        "basics"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.nist.gov/itl/applied-cybersecurity/nice/resources/nice-cybersecurity-workforce-framework",
+      "featured": true
+    },
+    {
+      "id": "pt-vs-vuln",
+      "title": "Pen Test vs Vulnerability Scan vs Red Team",
+      "description": "Different depth, goals, and noise levels.",
+      "category": "pentest",
+      "tags": [
+        "vuln-scan",
+        "red-team"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/topics/cyber-threats-and-advisories",
+      "featured": true,
+      "body": "COMPARE\nVulnerability scan: automated findings, breadth, often scheduled\nPen test: human-led exploitation attempts in agreed scope\nRed team: objective-based adversary emulation (stealth, people+process)\n\nAll require permission. All need clear reporting.\n"
+    },
+    {
+      "id": "pt-phases",
+      "title": "Pen Test Phases",
+      "description": "Recon → scanning → exploitation → post-ex → reporting.",
+      "category": "pentest",
+      "tags": [
+        "methodology",
+        "ptesh"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://owasp.org/www-project-web-security-testing-guide/",
+      "featured": true,
+      "body": "COMMON PHASES\n1) Planning & RoE\n2) Reconnaissance (passive/active as allowed)\n3) Scanning & enumeration\n4) Exploitation (only in scope)\n5) Post-exploitation / lateral movement (if allowed)\n6) Evidence & clean-up\n7) Report with risk + remediation\n\nThe report is the product — not the exploit screenshot alone.\n"
+    },
+    {
+      "id": "pt-owasp-wstg",
+      "title": "OWASP Web Security Testing Guide",
+      "description": "How professionals test web apps.",
+      "category": "pentest",
+      "tags": [
+        "web",
+        "owasp"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://owasp.org/www-project-web-security-testing-guide/",
+      "featured": true
+    },
+    {
+      "id": "pt-owasp-top10",
+      "title": "OWASP Top 10 for Testers",
+      "description": "Highest-impact web risks to understand.",
+      "category": "pentest",
+      "tags": [
+        "owasp",
+        "web"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://owasp.org/www-project-top-ten/",
+      "featured": true
+    },
+    {
+      "id": "pt-mitre",
+      "title": "MITRE ATT&CK for Adversary Thinking",
+      "description": "Tactics/techniques language used in reports.",
+      "category": "pentest",
+      "tags": [
+        "mitre",
+        "att&ck"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://attack.mitre.org/",
+      "featured": true
+    },
+    {
+      "id": "pt-recon",
+      "title": "Reconnaissance Basics (Authorized)",
+      "description": "OSINT and scoped discovery concepts.",
+      "category": "pentest",
+      "tags": [
+        "recon",
+        "osint"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://owasp.org/www-community/Vulnerability_Scanning_Tools",
+      "featured": false
+    },
+    {
+      "id": "pt-scanning",
+      "title": "Scanning Concepts (Authorized)",
+      "description": "Ports, services, safe scanning practices.",
+      "category": "pentest",
+      "tags": [
+        "nmap",
+        "scanning"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://nmap.org/book/man.html",
+      "featured": true
+    },
+    {
+      "id": "pt-nmap-ethics",
+      "title": "Nmap: Powerful, Permission Required",
+      "description": "Official reference — lab use only without RoE.",
+      "category": "pentest",
+      "tags": [
+        "nmap"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://nmap.org/",
+      "featured": false
+    },
+    {
+      "id": "pt-web-proxy",
+      "title": "Intercepting Proxies Idea",
+      "description": "How testers inspect HTTP(S) in labs.",
+      "category": "pentest",
+      "tags": [
+        "burp",
+        "zap",
+        "web"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.zaproxy.org/",
+      "featured": false
+    },
+    {
+      "id": "pt-zap",
+      "title": "OWASP ZAP",
+      "description": "Free web app security testing proxy.",
+      "category": "pentest",
+      "tags": [
+        "zap",
+        "web"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.zaproxy.org/",
+      "featured": true
+    },
+    {
+      "id": "pt-burp-comm",
+      "title": "Burp Suite Community",
+      "description": "Popular web testing platform (learn edition).",
+      "category": "pentest",
+      "tags": [
+        "burp",
+        "web"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://portswigger.net/burp/communitydownload",
+      "featured": false
+    },
+    {
+      "id": "pt-metasploit",
+      "title": "Metasploit Framework Overview",
+      "description": "Exploitation framework — lab/authorized only.",
+      "category": "pentest",
+      "tags": [
+        "metasploit"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.metasploit.com/",
+      "featured": false
+    },
+    {
+      "id": "pt-password-attacks",
+      "title": "Password Attack Concepts",
+      "description": "Online vs offline; why MFA + hashing matter.",
+      "category": "pentest",
+      "tags": [
+        "passwords"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html",
+      "featured": false
+    },
+    {
+      "id": "pt-wireless-auth",
+      "title": "Wireless Testing Ethics",
+      "description": "Only your lab AP / written scope — never café Wi‑Fi.",
+      "category": "pentest",
+      "tags": [
+        "wireless",
+        "ethics"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.wifi.org/discover-wi-fi/security",
+      "featured": true,
+      "body": "WIRELESS TESTING RULES\n- Your own AP / isolated lab SSID\n- Or explicit written permission including RF scope\n- Never deauth random networks \"for practice\"\n- Know local law — RF attacks can be serious offenses\n"
+    },
+    {
+      "id": "pt-report",
+      "title": "Writing a Pen Test Report",
+      "description": "Exec summary, findings, risk, fix steps, evidence.",
+      "category": "pentest",
+      "tags": [
+        "reporting"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://owasp.org/www-project-web-security-testing-guide/",
+      "featured": true,
+      "body": "REPORT STRUCTURE\n1) Executive summary (business language)\n2) Scope & methodology\n3) Findings table (severity, affected asset)\n4) Technical details + evidence\n5) Reproduction steps\n6) Remediation guidance\n7) Appendix (tools, timeline)\n\nSeverity should reflect exploitability + business impact.\n"
+    },
+    {
+      "id": "pt-lab-tryhackme",
+      "title": "TryHackMe (Guided Labs)",
+      "description": "Legal hands-on rooms for learning.",
+      "category": "pentest",
+      "tags": [
+        "labs",
+        "practice"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://tryhackme.com/",
+      "featured": true
+    },
+    {
+      "id": "pt-lab-hackthebox",
+      "title": "Hack The Box",
+      "description": "Legal lab platform for skill building.",
+      "category": "pentest",
+      "tags": [
+        "labs",
+        "practice"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.hackthebox.com/",
+      "featured": true
+    },
+    {
+      "id": "pt-lab-dvwa",
+      "title": "DVWA (Damn Vulnerable Web App)",
+      "description": "Intentionally vulnerable app for your lab VM.",
+      "category": "pentest",
+      "tags": [
+        "labs",
+        "web"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://github.com/digininja/DVWA",
+      "featured": false
+    },
+    {
+      "id": "pt-lab-vulnhub",
+      "title": "VulnHub VMs",
+      "description": "Downloadable vulnerable machines for offline labs.",
+      "category": "pentest",
+      "tags": [
+        "labs",
+        "vm"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.vulnhub.com/",
+      "featured": false
+    },
+    {
+      "id": "pt-cisa",
+      "title": "CISA Free Security Resources",
+      "description": "Defensive guidance every tester should know.",
+      "category": "pentest",
+      "tags": [
+        "defense",
+        "cisa"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/topics/cybersecurity-best-practices",
+      "featured": false
+    },
+    {
+      "id": "pt-pentestplus",
+      "title": "CompTIA PenTest+",
+      "description": "Vendor cert path for pentest fundamentals.",
+      "category": "pentest",
+      "tags": [
+        "cert",
+        "pentest+"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.comptia.org/certifications/pentest",
+      "featured": true
+    },
+    {
+      "id": "pt-ceh-note",
+      "title": "CEH / Ethical Hacking Paths",
+      "description": "Popular certs — pair with real labs & ethics.",
+      "category": "pentest",
+      "tags": [
+        "cert",
+        "ceh"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.eccouncil.org/",
+      "featured": false
+    },
+    {
+      "id": "pt-oscp-note",
+      "title": "OSCP-style Learning Mindset",
+      "description": "Hands-on, notes, persistence — advanced path.",
+      "category": "pentest",
+      "tags": [
+        "oscp",
+        "advanced"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.offsec.com/",
+      "featured": false
+    },
+    {
+      "id": "pt-bugbounty-ethics",
+      "title": "Bug Bounty Programs (Rules)",
+      "description": "Only test programs that invite you — read policy.",
+      "category": "pentest",
+      "tags": [
+        "bug-bounty"
+      ],
+      "level": "Advanced",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://bounty-targets.github.io/",
+      "featured": false
+    },
+    {
+      "id": "pt-social-eng",
+      "title": "Social Engineering Awareness",
+      "description": "People layer — phishing simulations need approval.",
+      "category": "pentest",
+      "tags": [
+        "phishing",
+        "people"
+      ],
+      "level": "Beginner",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://www.cisa.gov/secure-our-world/recognize-and-report-phishing",
+      "featured": false
+    },
+    {
+      "id": "pt-tools-list",
+      "title": "Common Pentest Tool Categories",
+      "description": "Recon, scan, proxy, exploit, password, wireless — lab use.",
+      "category": "pentest",
+      "tags": [
+        "tools"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://owasp.org/www-community/Vulnerability_Scanning_Tools",
+      "featured": false,
+      "body": "TOOL CATEGORIES (LAB / AUTHORIZED)\nRecon: OSINT utilities, DNS tooling\nScanning: Nmap, vulnerability scanners\nWeb: ZAP, Burp\nExploitation frameworks: Metasploit (scoped)\nPasswords: offline hash practice in lab only\nNotes: keep a lab journal & never store client secrets insecurely\n"
+    },
+    {
+      "id": "pt-blue-team",
+      "title": "Why Attackers Must Think Like Defenders",
+      "description": "Controls, detection, and purple team mindset.",
+      "category": "pentest",
+      "tags": [
+        "blue-team",
+        "detection"
+      ],
+      "level": "Intermediate",
+      "type": "Guide",
+      "tier": "free",
+      "url": "https://attack.mitre.org/",
+      "featured": false
+    },
+    {
+      "id": "path-hardware-software",
+      "title": "Path: Hardware & Software Foundations",
+      "description": "A+ style path: components, OS, drivers, boot, troubleshooting.",
+      "category": "paths",
+      "tags": [
+        "a+",
+        "hardware",
+        "software",
+        "career"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "#path-hardware-software",
+      "featured": true,
+      "body": "PATH: HARDWARE + SOFTWARE FOUNDATIONS\n\nWeek 1: Components (CPU RAM storage mobo PSU GPU)\nWeek 2: Ports, cables, laptop vs desktop quirks\nWeek 3: BIOS/UEFI, boot chain, drivers\nWeek 4: OS install, updates, filesystems\nWeek 5: Hardware trouble flow + ticket practice\nWeek 6: Build a VM lab and document your PC/lab diagram\n\nLibrary filters: Hardware · Software · Tools (VM wizard)\n"
+    },
+    {
+      "id": "path-security-layers",
+      "title": "Path: Security Layers & Defense in Depth",
+      "description": "Learn stacked controls from physical to identity to data.",
+      "category": "paths",
+      "tags": [
+        "security",
+        "layers",
+        "defense-in-depth"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "#path-security-layers",
+      "featured": true,
+      "body": "PATH: SECURITY LAYERS\n\n1) CIA triad + defense in depth diagram\n2) Identity layer (MFA, least privilege)\n3) Endpoint layer (patch, EDR, disk crypto)\n4) Network layer (segmentation, firewalls)\n5) App + data layers (OWASP, encryption, backups)\n6) Detection (logging) + people/process\n\nPractice: map one real incident story to layers.\nFilter the library: Security (tag: layers)\n"
+    },
+    {
+      "id": "path-ethical-pentest",
+      "title": "Path: Ethical Pen Testing (Legal Labs Only)",
+      "description": "Ethics first, then methodology, web basics, and legal practice platforms.",
+      "category": "paths",
+      "tags": [
+        "pentest",
+        "ethics",
+        "labs"
+      ],
+      "level": "Intermediate",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "#path-ethical-pentest",
+      "featured": true,
+      "body": "PATH: ETHICAL PEN TESTING\n\n0) Ethics & law — never skip\n1) Networking + Linux comfort\n2) Pen test phases & reporting\n3) OWASP Top 10 + WSTG intro\n4) Lab platforms: TryHackMe / HTB / DVWA in YOUR VMs\n5) Tool categories with permission always\n6) Optional certs: PenTest+, then advanced paths\n\nUse library category: Pen Testing\nUse tools: VM Lab Wizard + Network Toolkit\n"
+    },
+    {
+      "id": "pro-hw-sw",
+      "title": "Hardware & Software Master Pack",
+      "description": "Deep component maps, boot diagnostics, driver strategy, and A+ style labs.",
+      "category": "hardware",
+      "tags": [
+        "a+",
+        "hardware",
+        "software",
+        "pack"
+      ],
+      "level": "Intermediate",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "pack": "packs/hardware-software.md",
+      "featured": true
+    },
+    {
+      "id": "pro-sec-layers",
+      "title": "Security Layers Playbook",
+      "description": "Defense-in-depth designs, control catalogs, and architecture review checklists.",
+      "category": "security",
+      "tags": [
+        "defense-in-depth",
+        "layers",
+        "pack"
+      ],
+      "level": "Intermediate",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "pack": "packs/security-layers.md",
+      "featured": true
+    },
+    {
+      "id": "pro-pentest-lab",
+      "title": "Ethical Pen Test Lab Pack",
+      "description": "Legal lab build, methodology checklists, report template, tool map — authorized use only.",
+      "category": "pentest",
+      "tags": [
+        "pentest",
+        "labs",
+        "ethics",
+        "pack"
+      ],
+      "level": "Advanced",
+      "type": "Pack",
+      "tier": "pro",
+      "url": "#pro",
+      "pack": "packs/pentest-lab.md",
       "featured": true
     }
   ]
