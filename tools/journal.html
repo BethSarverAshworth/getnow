@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Field Journal — Troubleshooting & Findings | IT Repository</title>
+    <meta
+      name="description"
+      content="Personal tech journal for troubleshooting steps, lab findings, and incident notes. Templates, search, and export."
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="./tools.css" />
+    <link rel="stylesheet" href="./journal.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../">
+          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <span>IT Repository</span>
+        </a>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="./">Tools</a>
+          <a class="btn btn-ghost" href="./vault.html">Vault</a>
+          <button class="btn btn-primary" type="button" id="btn-new">+ New entry</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container tools-main">
+      <p class="tools-kicker">Personal documentation</p>
+      <h1>Field journal</h1>
+      <p class="tools-lead">
+        Your private log for <strong>troubleshooting trails</strong>, lab discoveries, and “what fixed it”
+        notes. Capture the problem once, write the steps while they’re fresh, and build a library of
+        wins you can reuse on tickets, interviews, and future outages. Entries stay in
+        <strong>this browser</strong> unless you export or copy them into the shared vault.
+      </p>
+
+      <div class="journal-toolbar tool-card">
+        <div class="join-grid">
+          <label class="field">
+            <span>Your name (on entries)</span>
+            <input id="author" type="text" maxlength="40" placeholder="e.g. Beth" />
+          </label>
+          <label class="field">
+            <span>Filter</span>
+            <select id="filter-type">
+              <option value="all">All entry types</option>
+              <option value="troubleshoot">Troubleshooting</option>
+              <option value="lab">Lab / finding</option>
+              <option value="incident">Incident note</option>
+              <option value="learning">Learning / tip</option>
+              <option value="free">Free write</option>
+            </select>
+          </label>
+        </div>
+        <div class="row" style="margin-top: 0.75rem">
+          <label class="field" style="flex: 1; min-width: 200px">
+            <span>Search journal</span>
+            <input id="search" type="search" placeholder="error message, hostname, keyword…" />
+          </label>
+          <button class="btn btn-ghost" type="button" id="btn-export">Export all (Markdown)</button>
+          <button class="btn btn-ghost" type="button" id="btn-import">Import JSON</button>
+          <input type="file" id="import-file" accept="application/json,.json" hidden />
+        </div>
+        <p class="tiny muted" id="stats">0 entries</p>
+      </div>
+
+      <div class="template-row">
+        <span class="tiny muted">Quick start:</span>
+        <button type="button" class="chip-btn" data-template="troubleshoot">Troubleshooting</button>
+        <button type="button" class="chip-btn" data-template="lab">Lab finding</button>
+        <button type="button" class="chip-btn" data-template="incident">Incident</button>
+        <button type="button" class="chip-btn" data-template="learning">Learning tip</button>
+      </div>
+
+      <div id="entry-list" class="entry-list"></div>
+    </main>
+
+    <!-- Editor -->
+    <div class="modal-backdrop" id="editor" aria-hidden="true">
+      <div class="modal vault-modal journal-modal">
+        <header>
+          <h3 id="editor-heading">New journal entry</h3>
+          <button class="icon-btn" type="button" id="editor-close" aria-label="Close">×</button>
+        </header>
+        <div class="editor-body">
+          <div class="join-grid">
+            <label class="field">
+              <span>Title</span>
+              <input id="e-title" type="text" maxlength="160" placeholder="Short name for this issue or finding" />
+            </label>
+            <label class="field">
+              <span>Type</span>
+              <select id="e-type">
+                <option value="troubleshoot">Troubleshooting</option>
+                <option value="lab">Lab / finding</option>
+                <option value="incident">Incident note</option>
+                <option value="learning">Learning / tip</option>
+                <option value="free">Free write</option>
+              </select>
+            </label>
+          </div>
+          <div class="join-grid">
+            <label class="field">
+              <span>System / asset (optional)</span>
+              <input id="e-system" type="text" placeholder="PC name, server, VLAN, app…" />
+            </label>
+            <label class="field">
+              <span>Tags</span>
+              <input id="e-tags" type="text" placeholder="dns, windows, printer, network+" />
+            </label>
+          </div>
+          <label class="field">
+            <span>Severity / priority (optional)</span>
+            <select id="e-severity">
+              <option value="">—</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+              <option value="critical">Critical</option>
+            </select>
+          </label>
+
+          <div id="guided-fields" class="guided"></div>
+
+          <label class="field">
+            <span>Full notes (edit freely)</span>
+            <textarea id="e-body" rows="16" placeholder="Your narrative, commands, screenshots notes, links…"></textarea>
+          </label>
+
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="btn-save">Save entry</button>
+            <button class="btn btn-ghost" type="button" id="btn-copy">Copy as Markdown</button>
+            <button class="btn btn-ghost" type="button" id="btn-template-fill">Insert template structure</button>
+            <button class="btn btn-ghost" type="button" id="btn-delete" style="color: #f87171">Delete</button>
+          </div>
+          <p class="tiny muted">
+            Tip: After you fix something, write the <em>root cause</em> in one sentence — future-you will thank you.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- View -->
+    <div class="modal-backdrop" id="viewer" aria-hidden="true">
+      <div class="modal vault-modal journal-modal">
+        <header>
+          <h3 id="v-title">Entry</h3>
+          <button class="icon-btn" type="button" id="viewer-close" aria-label="Close">×</button>
+        </header>
+        <div class="editor-body">
+          <div class="file-meta" id="v-meta"></div>
+          <pre class="out" id="v-body"></pre>
+          <div class="row">
+            <button class="btn btn-primary" type="button" id="v-edit">Edit</button>
+            <button class="btn btn-ghost" type="button" id="v-copy">Copy Markdown</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>Field journal · Private on this device · Export anytime</div>
+        <a class="btn btn-ghost" href="./vault.html">Share via vault →</a>
+      </div>
+    </footer>
+
+    <script src="./journal.js"></script>
+  </body>
+</html>

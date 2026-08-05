@@ -93,6 +93,24 @@
   ],
   "resources": [
     {
+      "id": "tool-field-journal",
+      "title": "Field Journal — Troubleshooting & Findings",
+      "description": "Personal tech journal with templates for troubleshooting, lab findings, incidents, and tips. Search, export Markdown, private on device.",
+      "category": "tools",
+      "tags": [
+        "journal",
+        "troubleshooting",
+        "documentation",
+        "notes",
+        "personal"
+      ],
+      "level": "Beginner",
+      "type": "Tool",
+      "tier": "free",
+      "url": "./tools/journal.html",
+      "featured": true
+    },
+    {
       "id": "tool-vault-setup",
       "title": "Vault Live Sharing Setup (Supabase)",
       "description": "How to enable free multi-device live sync for the shared filing vault.",
@@ -5843,6 +5861,23 @@
       "url": "#pro",
       "pack": "packs/pentest-lab.md",
       "featured": true
+    },
+    {
+      "id": "path-journaling",
+      "title": "Path: Document Like a Pro",
+      "description": "Build a habit of logging symptoms, root cause, and fixes for tickets and interviews.",
+      "category": "paths",
+      "tags": [
+        "documentation",
+        "journal",
+        "career"
+      ],
+      "level": "Beginner",
+      "type": "Study Plan",
+      "tier": "free",
+      "url": "#path-journaling",
+      "featured": true,
+      "body": "PATH: DOCUMENT LIKE A PRO\n\nAfter every lab or ticket:\n1) Open Field Journal (Tools → Field journal)\n2) Use Troubleshooting or Lab template\n3) Write root cause in ONE sentence\n4) Tag with tech (dns, vlan, windows…)\n5) Weekly: export Markdown for portfolio/backup\n\nInterview gold: \"Here's a recent issue I documented end-to-end.\"\n"
     }
   ]
 }
