@@ -182,7 +182,7 @@
     {
       "id": "tool-hub",
       "title": "All Interactive Tools",
-      "description": "Hub for built-in IT Repository utilities (network + VM lab).",
+      "description": "Hub for built-in GetNow utilities (network + VM lab).",
       "category": "tools",
       "tags": [
         "interactive",

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pay with Zelle — IT Repository Pro</title>
+    <title>Pay with Zelle — GetNow Pro</title>
     <link rel="stylesheet" href="./css/styles.css" />
     <style>
       .pay-wrap {
@@ -95,7 +95,7 @@
       <div class="container header-inner">
         <a class="brand" href="./">
           <div class="brand-mark" aria-hidden="true">⚡</div>
-          <span>IT Repository</span>
+          <span>GetNow</span>
         </a>
         <div class="nav-actions">
           <a class="btn btn-ghost" href="./">Back to library</a>
@@ -124,7 +124,7 @@
             <li>Scan the QR code (or send to the name shown)</li>
             <li>
               Amount: <strong id="amount-text" style="color: var(--text)">$12</strong> · Memo:
-              <strong id="memo-text" style="color: var(--text)">IT Repository Pro</strong>
+              <strong id="memo-text" style="color: var(--text)">GetNow Pro</strong>
             </li>
             <li>
               Message the seller that you paid (name + amount). They will reply with your
@@ -172,7 +172,7 @@
         set("price-label", cfg.priceLabel || "$12");
         set("price-period", cfg.pricePeriod || " one-time");
         set("amount-text", cfg.priceLabel || "$12");
-        set("memo-text", cfg.zelleNote || "IT Repository Pro");
+        set("memo-text", cfg.zelleNote || "GetNow Pro");
         set("zelle-name", cfg.zelleName || "STEVEN ASHWORTH");
         const img = document.getElementById("zelle-qr");
         if (img && cfg.zelleQrImage) img.src = cfg.zelleQrImage;

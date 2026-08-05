@@ -1,4 +1,4 @@
-# IT Repository
+# GetNow
 
 A **free-to-build, free-to-host** tech dream library: **hundreds** of networking, architecture, Linux, Windows, security, cloud, wireless, helpdesk, certs, scripts, tools, and learning-path resources — searchable in one place.
 

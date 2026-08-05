@@ -28,7 +28,7 @@ Copy the production URL (example: `https://it-repository-xxx.vercel.app`).
 cd ~/it-repository
 git init
 git add .
-git commit -m "Launch IT Repository"
+git commit -m "Launch GetNow"
 ```
 
 Create a new repo on github.com, then:
@@ -48,7 +48,7 @@ GitHub → Settings → Pages → Deploy from `main` / root.
 1. Sign up: https://dashboard.stripe.com/register  
 2. Complete basic business details (individual is fine to start).  
 3. **Product catalog → Payment links → New**  
-   - Name: `IT Repository Pro`  
+   - Name: `GetNow Pro`  
    - Price: `$12` monthly **or** `$29` one-time (one-time is simpler for v1)  
 4. **After payment → redirect to**  
    ```

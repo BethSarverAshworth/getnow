@@ -1,9 +1,9 @@
 // ============================================================
-// IT Repository — launch config (edit these to start earning)
+// GetNow — launch config (edit these to start earning)
 // ============================================================
 window.IT_REPO_CONFIG = {
   // Site
-  siteName: "IT Repository",
+  siteName: "GetNow",
   ownerName: "Beth Sarver-Ashworth",
 
   // PRICE shown on site
@@ -18,7 +18,7 @@ window.IT_REPO_CONFIG = {
 
   // Zelle (from your QR)
   zelleName: "STEVEN ASHWORTH",
-  zelleNote: "IT Repository Pro",
+  zelleNote: "GetNow Pro",
   zelleQrImage: "./assets/zelle-qr.jpg",
   // Optional contact after payment (email or social — NOT full phone on the public web if you prefer)
   supportContact: "",
