@@ -32,15 +32,40 @@
     return window.IT_REPO_CONFIG || {};
   }
 
+  function isDeadSupabaseHost(url) {
+    try {
+      return new URL(url).hostname === "ldvfjtqotlzuygcwgtai.supabase.co";
+    } catch {
+      return false;
+    }
+  }
+
+  function isNetworkFail(err) {
+    const m = String((err && err.message) || err || "").toLowerCase();
+    return (
+      m.includes("failed to fetch") ||
+      m.includes("fetch failed") ||
+      m.includes("networkerror") ||
+      m.includes("load failed") ||
+      m.includes("could not resolve")
+    );
+  }
+
   function liveSettings() {
     try {
       const local = JSON.parse(localStorage.getItem("it_vault_supabase") || "null");
-      if (local && local.url && local.anon) return local;
+      if (local && local.url && local.anon) {
+        if (isDeadSupabaseHost(local.url)) {
+          localStorage.removeItem("it_vault_supabase");
+        } else {
+          return local;
+        }
+      }
     } catch {
       /* ignore */
     }
     const c = cfg();
-    if (c.supabaseUrl && c.supabaseAnonKey) {
+    if (c.supabaseUrl && c.supabaseAnonKey && !isDeadSupabaseHost(c.supabaseUrl)) {
       return { url: c.supabaseUrl, anon: c.supabaseAnonKey };
     }
     return null;
@@ -133,15 +158,24 @@
     const live = liveSettings();
     if (!live?.url || !live?.anon) throw new Error("Save URL and anon key first");
     if (!window.supabase?.createClient) throw new Error("Supabase library not loaded");
-    const client = window.supabase.createClient(live.url, live.anon);
-    const { error } = await client.from("vault_rooms").select("room_code").limit(1);
-    if (error) {
-      if (/relation .* does not exist/i.test(error.message) || error.code === "42P01") {
-        throw new Error("Connected, but tables missing — run vault/supabase-schema.sql in SQL Editor");
+    try {
+      const client = window.supabase.createClient(live.url, live.anon);
+      const { error } = await client.from("vault_rooms").select("room_code").limit(1);
+      if (error) {
+        if (/relation .* does not exist/i.test(error.message) || error.code === "42P01") {
+          throw new Error("Connected, but tables missing — run vault/supabase-schema.sql in SQL Editor");
+        }
+        throw new Error(error.message);
       }
-      throw new Error(error.message);
+      return true;
+    } catch (e) {
+      if (isNetworkFail(e)) {
+        throw new Error(
+          "Cannot connect to that database (TypeError: Failed to fetch). The project URL is missing or paused. Vault will use local mode on this device."
+        );
+      }
+      throw e;
     }
-    return true;
   }
 
   function updateModeBanner() {
@@ -184,14 +218,24 @@
     if (!room || invite.length < 16) return false;
 
     if (state.mode === "live" && state.client) {
-      const { data, error } = await state.client
-        .from("vault_rooms")
-        .select("room_code, invite_token")
-        .eq("room_code", room)
-        .eq("invite_token", invite)
-        .maybeSingle();
-      if (error) throw error;
-      return !!data;
+      try {
+        const { data, error } = await state.client
+          .from("vault_rooms")
+          .select("room_code, invite_token")
+          .eq("room_code", room)
+          .eq("invite_token", invite)
+          .maybeSingle();
+        if (error) throw error;
+        return !!data;
+      } catch (e) {
+        if (isNetworkFail(e)) {
+          state.client = null;
+          state.mode = "local";
+          updateModeBanner();
+        } else {
+          throw e;
+        }
+      }
     }
     const pack = readLocalRoom(room);
     return !!(pack && pack.invite === invite);
@@ -963,6 +1007,15 @@
 
   async function boot() {
     initClient();
+    if (state.mode === "live") {
+      try {
+        await testLiveConnection();
+      } catch (e) {
+        console.warn("GetNow vault live sync unavailable:", e);
+        state.client = null;
+        state.mode = "local";
+      }
+    }
     updateModeBanner();
     state.ownerKey = getOwnerKey();
     const saved = localStorage.getItem("it_vault_author");

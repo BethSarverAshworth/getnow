@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="GetNow — free tech library, tools, live chat, news, vault, and Pro packs for IT skills."
+      content="GetNow — a library for IT and cyber students. No more heavy searching on the internet. All your resources in just one spot. $12.99 one-time for Pro."
     />
     <meta name="theme-color" content="#0b0f14" />
-    <meta property="og:title" content="GetNow — Learn · Build · Share" />
+    <meta property="og:title" content="GetNow — a library for IT and cyber students" />
     <meta
       property="og:description"
-      content="GetNow: searchable IT library, live tools, chat, news, and collaboration — free + Pro packs."
+      content="All your resources in just one app: IT library, tools, chat, and cert study."
     />
     <meta property="og:type" content="website" />
-    <title>GetNow — Learn · Build · Share</title>
+    <title>GetNow — all your IT and cyber resources in one spot</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
@@ -24,10 +24,22 @@
           <div class="brand-mark" aria-hidden="true">⚡</div>
           <span>GetNow</span>
         </a>
-        <div class="nav-actions">
+        <button
+          class="nav-toggle"
+          type="button"
+          id="nav-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-actions" id="main-nav">
           <span class="pro-pill" id="pro-status">Free plan</span>
+          <a class="btn btn-ghost" href="./course/">Course</a>
+          <a class="btn btn-ghost" href="./course/calculator.html">Calculator</a>
           <a class="btn btn-ghost" href="./tools/">Tools</a>
-          <a class="btn btn-ghost" href="/tools/chat.html">Chat</a>
+          <a class="btn btn-ghost" href="./tools/chat.html">Chat</a>
           <a class="btn btn-ghost" href="./tools/news.html">News</a>
           <a class="btn btn-ghost" href="./tools/journal.html">Journal</a>
           <a class="btn btn-ghost" href="./tools/vault.html">Vault</a>
@@ -41,12 +53,12 @@
       <section class="hero">
         <div class="container hero-grid">
           <div>
-            <h1>A tech’s dream library — <em>hundreds of resources</em>, one search</h1>
+            <h1>No more heavy searching on the internet. <em>GetNow has all your resources in just one spot.</em></h1>
             <p class="hero-lead">
-              Hardware &amp; software foundations, pen testing (ethical labs), security layers,
-              networking, Linux, Windows, cloud, wireless, helpdesk, certs, tools, and learning paths —
-              built by <strong id="owner-name">Beth Sarver-Ashworth</strong>. Tap a category, search
-              anything, open free resources instantly.
+              A library for IT and cyber students — networking, Linux, Windows, security, cloud,
+              certs, tools, and learning paths — built by
+              <strong id="owner-name">Beth Sarver-Ashworth</strong>.
+              One app. One search. Stop hunting across a dozen tabs.
             </p>
             <div class="hero-stats">
               <div class="stat">
@@ -69,10 +81,10 @@
           </div>
 
           <aside class="pricing-card" id="pro">
-            <h2>Pro Membership</h2>
+            <h2>GetNow Pro</h2>
             <div class="price">
-              <span id="price-label">$12</span>
-              <small id="price-period">/ month</small>
+              <span id="price-label">$12.99</span>
+              <small id="price-period"> one-time</small>
             </div>
             <ul>
               <li>Hardware/software + security layers packs</li>
@@ -82,10 +94,10 @@
               <li>Incident runbooks &amp; script vault</li>
             </ul>
             <button class="btn btn-pro" type="button" id="pro-cta" data-buy-pro>
-              Get Pro — Pay with Zelle
+              Get Pro — Pay by bank
             </button>
             <p class="note">
-              Pay with Zelle (QR). After payment is confirmed, you get a private unlock link.
+              Pay by bank transfer (ACH). After payment is confirmed, you get a private unlock link.
             </p>
           </aside>
         </div>
@@ -93,16 +105,25 @@
 
       <section class="container" id="browse">
         <div class="controls">
-          <div class="search-wrap">
-            <span class="search-icon" aria-hidden="true">🔍</span>
-            <label class="sr-only" for="search">Search resources</label>
-            <input
-              id="search"
-              type="search"
-              placeholder="Search anything: VLAN, PowerShell, Wi‑Fi, Security+, Docker…"
-              autocomplete="off"
-            />
-          </div>
+          <form class="search-row" id="search-form" role="search">
+            <div class="search-wrap">
+              <span class="search-icon" aria-hidden="true">🔍</span>
+              <label class="sr-only" for="search">Search resources</label>
+              <input
+                id="search"
+                type="search"
+                placeholder="Search anything: VLAN, PowerShell, Wi‑Fi, Security+, Docker…"
+                autocomplete="off"
+                enterkeyhint="search"
+              />
+            </div>
+            <button class="btn btn-primary search-btn" type="submit" id="search-btn">
+              Search
+            </button>
+            <button class="btn btn-ghost search-clear" type="button" id="search-clear" hidden>
+              Clear
+            </button>
+          </form>
           <div class="filters">
             <div id="category-filters" aria-label="Filter by category"></div>
           </div>
@@ -125,7 +146,7 @@
         <div class="launch-card">
           <h2>How Pro works</h2>
           <ol>
-            <li>Click <strong>Get Pro</strong> → pay with Zelle (scan QR)</li>
+            <li>Click <strong>Get Pro</strong> → pay by bank transfer (ACH)</li>
             <li>Use memo: <strong>GetNow Pro</strong></li>
             <li>Seller confirms payment and sends your private unlock link</li>
             <li>Open the link once → Pro packs unlock on that browser</li>

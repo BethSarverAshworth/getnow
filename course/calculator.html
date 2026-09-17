@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IT / college math calculator — GetNow Course</title>
+  <link rel="stylesheet" href="./course.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="./index.html">GetNow Course</a>
+      <nav>
+        <a href="./math.html">Math</a>
+        <a href="./math-symbols.html">Symbols</a>
+        <a href="./calculator.html">Calculator</a>
+        <a href="./network-plus.html">Network+</a>
+      </nav>
+    </div>
+  </header>
+  <div class="wrap">
+    <p class="muted">Module 1 · Calculator</p>
+    <h1>College math calculator for IT</h1>
+    <p>Formulas at the level of this course: algebra, PEMDAS, powers, percent, binary, hex, Boolean, and subnet math. Not calculus.</p>
+
+    <div class="card calc-card">
+      <h2 style="margin-top:0">Formula</h2>
+      <p class="note">Use + − * / ^ ( )  ·  sqrt()  ·  25%  ·  2^8  ·  AND OR NOT  ·  example: 2^(32-24)-2</p>
+      <label class="sr" for="expr">Formula</label>
+      <textarea id="expr" rows="2" placeholder="2^(32-24)-2">2^(32-24)-2</textarea>
+      <div class="calc-row">
+        <button class="go" type="button" id="eval-btn">Calculate</button>
+        <button class="toggle" type="button" id="clear-expr">Clear</button>
+      </div>
+      <div class="keys" id="keys"></div>
+      <p class="chips" id="chips"></p>
+      <div id="expr-out" class="calc-out" hidden></div>
+    </div>
+
+    <div class="card calc-card">
+      <h2 style="margin-top:0">Solve for x</h2>
+      <p class="note">Linear equations only, like 3x+7=22 or 4x-9=23.</p>
+      <input id="eq" type="text" value="3x+7=22" />
+      <div class="calc-row">
+        <button class="go" type="button" id="solve-btn">Solve</button>
+      </div>
+      <div id="eq-out" class="calc-out" hidden></div>
+    </div>
+
+    <div class="grid">
+      <div class="card calc-card">
+        <h2 style="margin-top:0">Binary / hex / decimal</h2>
+        <input id="base-in" type="text" placeholder="192 or 11000000 or C0" />
+        <div class="calc-row">
+          <button class="go" type="button" id="base-btn">Convert</button>
+        </div>
+        <div id="base-out" class="calc-out" hidden></div>
+      </div>
+      <div class="card calc-card">
+        <h2 style="margin-top:0">Subnet / prefix</h2>
+        <input id="prefix" type="number" min="0" max="32" value="24" />
+        <div class="calc-row">
+          <button class="go" type="button" id="sub-btn">Size network</button>
+        </div>
+        <div id="sub-out" class="calc-out" hidden></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card calc-card">
+        <h2 style="margin-top:0">Percent</h2>
+        <p class="note">What is A% of B, or A is what percent of B.</p>
+        <label>A <input id="pct-a" type="number" value="70" /></label>
+        <label>B <input id="pct-b" type="number" value="1000" /></label>
+        <div class="calc-row">
+          <button class="go" type="button" id="pct-of">A% of B</button>
+          <button class="toggle" type="button" id="pct-is">A is what % of B</button>
+        </div>
+        <div id="pct-out" class="calc-out" hidden></div>
+      </div>
+      <div class="card calc-card">
+        <h2 style="margin-top:0">Bits and bytes</h2>
+        <p class="note">File size uses 1024. Link speed: divide bits by 8 to get bytes.</p>
+        <label>Value <input id="unit-v" type="number" value="100" /></label>
+        <label>From
+          <select id="unit-from">
+            <option>Mbps</option>
+            <option>Gbps</option>
+            <option>Kbps</option>
+            <option>MB</option>
+            <option>GB</option>
+            <option>KB</option>
+            <option>B</option>
+          </select>
+        </label>
+        <div class="calc-row">
+          <button class="go" type="button" id="unit-btn">Convert</button>
+        </div>
+        <div id="unit-out" class="calc-out" hidden></div>
+      </div>
+    </div>
+
+    <p><a href="./math.html">Math lessons</a> · <a href="./math-symbols.html">Symbols chart</a></p>
+  </div>
+  <script src="./calculator.js"></script>
+  <script>
+    const C = window.GetNowCalc;
+    const expr = document.getElementById("expr");
+    const exprOut = document.getElementById("expr-out");
+    function show(el, html, ok) {
+      el.hidden = false;
+      el.className = "calc-out " + (ok ? "ok" : "bad");
+      el.innerHTML = html;
+    }
+    function runExpr() {
+      try {
+        const v = C.evaluate(expr.value);
+        show(exprOut, "<b>Result:</b> " + C.formatNum(v), true);
+      } catch (e) {
+        show(exprOut, e.message, false);
+      }
+    }
+    document.getElementById("eval-btn").onclick = runExpr;
+    document.getElementById("clear-expr").onclick = () => { expr.value = ""; exprOut.hidden = true; expr.focus(); };
+    expr.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); runExpr(); } });
+
+    const keys = ["7","8","9","/","4","5","6","*","1","2","3","-","0",".","^","+","(",")","sqrt(","="];
+    const keyBox = document.getElementById("keys");
+    keys.forEach((k) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = k;
+      b.onclick = () => {
+        if (k === "=") { runExpr(); return; }
+        expr.value += k;
+        expr.focus();
+      };
+      keyBox.appendChild(b);
+    });
+    const chips = [
+      ["2^(32-24)-2", "usable /24"],
+      ["2^(32-27)-2", "usable /27"],
+      ["5+12/4*2", "PEMDAS"],
+      ["40/160", "percent as decimal"],
+      ["100/8", "Mbps to MB/s"],
+      ["sqrt(16)", "square root"],
+      ["1 AND 0 OR 1", "Boolean"],
+    ];
+    const chipBox = document.getElementById("chips");
+    chips.forEach(([val, label]) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip";
+      b.textContent = label;
+      b.onclick = () => { expr.value = val; runExpr(); };
+      chipBox.appendChild(b);
+    });
+
+    document.getElementById("solve-btn").onclick = () => {
+      const el = document.getElementById("eq-out");
+      try {
+        const r = C.solveLinear(document.getElementById("eq").value);
+        show(el, "<b>" + r.variable + " = " + C.formatNum(r.value) + "</b>", true);
+      } catch (e) { show(el, e.message, false); }
+    };
+
+    document.getElementById("base-btn").onclick = () => {
+      const el = document.getElementById("base-out");
+      try {
+        const n = C.parseIntAuto(document.getElementById("base-in").value);
+        show(el,
+          "<div>Decimal: <b>" + n + "</b></div>" +
+          "<div>Binary: <b>" + C.toBinary(n) + "</b></div>" +
+          "<div>Hex: <b>" + n.toString(16).toUpperCase() + "</b></div>",
+          true);
+      } catch (e) { show(el, e.message, false); }
+    };
+
+    document.getElementById("sub-btn").onclick = () => {
+      const el = document.getElementById("sub-out");
+      try {
+        const s = C.subnet(document.getElementById("prefix").value);
+        show(el,
+          "<div>Mask: <b>" + s.mask + "</b></div>" +
+          "<div>Host bits: <b>" + s.hostBits + "</b></div>" +
+          "<div>Addresses: <b>" + s.total + "</b></div>" +
+          "<div>Usable hosts: <b>" + s.usable + "</b></div>" +
+          "<div class='note'>" + s.note + "</div>",
+          true);
+      } catch (e) { show(el, e.message, false); }
+    };
+
+    document.getElementById("pct-of").onclick = () => {
+      const a = Number(document.getElementById("pct-a").value);
+      const b = Number(document.getElementById("pct-b").value);
+      show(document.getElementById("pct-out"),
+        a + "% of " + b + " = <b>" + C.formatNum(a / 100 * b) + "</b>", true);
+    };
+    document.getElementById("pct-is").onclick = () => {
+      const a = Number(document.getElementById("pct-a").value);
+      const b = Number(document.getElementById("pct-b").value);
+      if (b === 0) { show(document.getElementById("pct-out"), "B cannot be 0", false); return; }
+      show(document.getElementById("pct-out"),
+        a + " is <b>" + C.formatNum(a / b * 100) + "%</b> of " + b, true);
+    };
+
+    document.getElementById("unit-btn").onclick = () => {
+      const v = Number(document.getElementById("unit-v").value);
+      const from = document.getElementById("unit-from").value;
+      const el = document.getElementById("unit-out");
+      if (!Number.isFinite(v)) { show(el, "Enter a number", false); return; }
+      let html = "";
+      if (from.endsWith("bps")) {
+        const bits = v * ({ Kbps: 1e3, Mbps: 1e6, Gbps: 1e9 }[from]);
+        const bytesPerSec = bits / 8;
+        html = v + " " + from + " = <b>" + C.formatNum(bits / 1e6) + " Mbps</b><br>" +
+          "Perfect download ≈ <b>" + C.formatNum(bytesPerSec / (1024 * 1024)) + " MiB/s</b> (bits ÷ 8)";
+      } else {
+        const bytes = v * ({ B: 1, KB: 1024, MB: 1024 ** 2, GB: 1024 ** 3 }[from]);
+        html = v + " " + from + " =<br>" +
+          "<b>" + C.formatNum(bytes) + "</b> bytes<br>" +
+          "<b>" + C.formatNum(bytes * 8) + "</b> bits";
+      }
+      show(el, html, true);
+    };
+  </script>
+</body>
+</html>

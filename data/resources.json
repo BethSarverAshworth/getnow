@@ -93,6 +93,18 @@
   ],
   "resources": [
     {
+      "id": "path-cert-math-course",
+      "title": "GetNow Course — College Math + Network+ / Security+ / CISSP",
+      "description": "Self-paced course: college math for IT, then Network+, Security+, and a CISSP roadmap. Built for Beth’s cert path and Full Sail CompTIA vouchers.",
+      "category": "paths",
+      "tags": ["course", "math", "network+", "security+", "cissp", "comptia"],
+      "level": "Beginner",
+      "type": "Path",
+      "tier": "free",
+      "url": "./course/index.html",
+      "featured": true
+    },
+    {
       "id": "tool-live-chat",
       "title": "Live Chat — Real-Time Collaboration",
       "description": "Chat with people on the site in real time. Channels for networking, security, homelab, certs, plus custom study rooms. Uses free Supabase Live sync.",

@@ -1,5 +1,6 @@
--- IT Repository — Protected Shared Vault (invite-only + personal + staging box)
--- Run in Supabase SQL Editor (can replace older vault_items schema)
+-- GetNow — Protected Shared Vault + Live Chat
+-- Run ALL of this in Supabase SQL Editor (one paste, then Run)
+-- Safe to re-run
 
 -- Rooms: special invite token required
 create table if not exists vault_rooms (
@@ -9,7 +10,7 @@ create table if not exists vault_rooms (
   created_at timestamptz not null default now()
 );
 
--- Personal workspaces (only owner should edit — enforced in app; RLS is open with invite knowledge)
+-- Personal workspaces
 create table if not exists vault_personal (
   id uuid primary key default gen_random_uuid(),
   room_code text not null references vault_rooms(room_code) on delete cascade,
@@ -18,7 +19,7 @@ create table if not exists vault_personal (
   folder text not null default 'notes',
   title text not null,
   content text not null default '',
-  status text not null default 'draft', -- draft | completed
+  status text not null default 'draft',
   tags text not null default '',
   source_staging_id uuid,
   created_at timestamptz not null default now(),
@@ -27,7 +28,7 @@ create table if not exists vault_personal (
 
 create index if not exists vault_personal_room_owner on vault_personal (room_code, owner_key);
 
--- Middle box: proposed work that does NOT change anyone's completed files
+-- Middle box: proposed work
 create table if not exists vault_staging (
   id uuid primary key default gen_random_uuid(),
   room_code text not null references vault_rooms(room_code) on delete cascade,
@@ -43,7 +44,7 @@ create table if not exists vault_staging (
 
 create index if not exists vault_staging_room on vault_staging (room_code);
 
--- Optional: track who dismissed a proposal (so it hides for them only)
+-- Dismissals (hide a proposal for one person only)
 create table if not exists vault_dismissals (
   room_code text not null,
   owner_key text not null,
@@ -51,14 +52,7 @@ create table if not exists vault_dismissals (
   primary key (room_code, owner_key, staging_id)
 );
 
-alter table vault_rooms enable row level security;
-alter table vault_personal enable row level security;
-alter table vault_staging enable row level security;
-alter table vault_dismissals enable row level security;
-
--- Open policies: secrecy is the invite token (share carefully).
--- For stronger security later, move API behind a server with service role.
--- Community tech news shares (optional live board)
+-- Community tech news shares
 create table if not exists tech_news_shares (
   id uuid primary key default gen_random_uuid(),
   title text not null,
@@ -71,9 +65,7 @@ create table if not exists tech_news_shares (
 
 create index if not exists tech_news_shares_created on tech_news_shares (created_at desc);
 
-alter table tech_news_shares enable row level security;
-
--- Live chat messages (Realtime)
+-- Live chat messages
 create table if not exists chat_messages (
   id uuid primary key default gen_random_uuid(),
   room text not null default 'general',
@@ -85,22 +77,38 @@ create table if not exists chat_messages (
 
 create index if not exists chat_messages_room_created on chat_messages (room, created_at desc);
 
+-- Row Level Security
+alter table vault_rooms enable row level security;
+alter table vault_personal enable row level security;
+alter table vault_staging enable row level security;
+alter table vault_dismissals enable row level security;
+alter table tech_news_shares enable row level security;
 alter table chat_messages enable row level security;
 
--- Enable realtime for live chat (safe to re-run)
-do $$ begin
+-- Open policies (invite token is the secrecy). Safe to re-run.
+drop policy if exists vault_rooms_all on vault_rooms;
+create policy vault_rooms_all on vault_rooms for all using (true) with check (true);
+
+drop policy if exists vault_personal_all on vault_personal;
+create policy vault_personal_all on vault_personal for all using (true) with check (true);
+
+drop policy if exists vault_staging_all on vault_staging;
+create policy vault_staging_all on vault_staging for all using (true) with check (true);
+
+drop policy if exists vault_dismissals_all on vault_dismissals;
+create policy vault_dismissals_all on vault_dismissals for all using (true) with check (true);
+
+drop policy if exists tech_news_shares_all on tech_news_shares;
+create policy tech_news_shares_all on tech_news_shares for all using (true) with check (true);
+
+drop policy if exists chat_messages_all on chat_messages;
+create policy chat_messages_all on chat_messages for all using (true) with check (true);
+
+-- Enable Realtime for live chat (safe to re-run)
+do $$
+begin
   alter publication supabase_realtime add table chat_messages;
 exception
   when duplicate_object then null;
   when undefined_object then null;
-end $$;
-
-do $$ begin
-  -- rooms
-  begin create policy vault_rooms_all on vault_rooms for all using (true) with check (true); exception when duplicate_object then null; end;
-  begin create policy vault_personal_all on vault_personal for all using (true) with check (true); exception when duplicate_object then null; end;
-  begin create policy vault_staging_all on vault_staging for all using (true) with check (true); exception when duplicate_object then null; end;
-  begin create policy vault_dismissals_all on vault_dismissals for all using (true) with check (true); exception when duplicate_object then null; end;
-  begin create policy tech_news_shares_all on tech_news_shares for all using (true) with check (true); exception when duplicate_object then null; end;
-  begin create policy chat_messages_all on chat_messages for all using (true) with check (true); exception when duplicate_object then null; end;
 end $$;

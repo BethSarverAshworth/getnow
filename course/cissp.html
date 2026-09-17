@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CISSP roadmap — GetNow Course</title>
+  <link rel="stylesheet" href="./course.css" />
+</head>
+<body data-lesson="cissp.html">
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="./index.html">GetNow Course</a>
+      <nav>
+        <a href="./security-plus.html">Security+</a>
+        <a href="./calculator.html">Calculator</a>
+        <a href="./index.html">Syllabus</a>
+      </nav>
+    </div>
+  </header>
+  <div class="wrap">
+    <p class="muted">Module 4 · Highest cert goal · ISC2 CISSP</p>
+    <h1>CISSP: learn the map, not the dump</h1>
+    <p>CISSP is the highest certification you said you want. It is a management-breadth exam, not a “type Linux commands” exam. Full Sail will not voucher it. You need about five years of paid security work (four with a degree). Until then you can pass the test and be an <strong>Associate of ISC2</strong>.</p>
+    <p>Official: <a href="https://www.isc2.org/certifications/cissp">https://www.isc2.org/certifications/cissp</a></p>
+
+    <h2>Do not start CISSP books yet if Security+ is unfinished</h2>
+    <p>CISSP assumes you already know Network+ and Security+ ideas, then asks “what should a manager choose?” Spend this module learning the eight domains so later study is organized.</p>
+
+    <h2>The eight domains</h2>
+    <table>
+      <tr><th>#</th><th>Domain</th><th>In plain English</th></tr>
+      <tr><td>1</td><td>Security and Risk Management</td><td>Policy, law, ethics, risk, CIA</td></tr>
+      <tr><td>2</td><td>Asset Security</td><td>Classify data, handle it, destroy it</td></tr>
+      <tr><td>3</td><td>Security Architecture and Engineering</td><td>Secure design, crypto, facilities</td></tr>
+      <tr><td>4</td><td>Communication and Network Security</td><td>Secure networks (your Network+ plus design)</td></tr>
+      <tr><td>5</td><td>Identity and Access Management (IAM)</td><td>Who gets in, least privilege</td></tr>
+      <tr><td>6</td><td>Security Assessment and Testing</td><td>Audits, tests, reviews</td></tr>
+      <tr><td>7</td><td>Security Operations</td><td>Monitoring, IR, recovery</td></tr>
+      <tr><td>8</td><td>Software Development Security</td><td>Build software without opening holes</td></tr>
+    </table>
+
+    <h2>How CISSP differs from Security+</h2>
+    <ul>
+      <li>Security+: “What is hashing?” CISSP: “Which control is most appropriate given this risk and budget?”</li>
+      <li>Security+: technician. CISSP: advisor to the business.</li>
+      <li>Security+: CompTIA voucher possible. CISSP: you pay ISC2 later.</li>
+    </ul>
+
+    <h2>Your ladder (honest timeline)</h2>
+    <ol>
+      <li>Now: this course — math, Network+, Security+.</li>
+      <li>Full Sail vouchers when those courses complete (A+/Network+ or Security+/CySA+ depending on degree).</li>
+      <li>Job or internships that count as security work.</li>
+      <li>CySA+ if you are on the analyst path.</li>
+      <li>CISSP when you have the years — or Associate of ISC2 after the exam if the years are short.</li>
+    </ol>
+
+    <h2>Mindset drills (CISSP-style)</h2>
+    <div class="q">
+      <b>Practice.</b> A company can buy cameras or train staff against tailgating, but not both this quarter. What does CISSP want you to do first?
+      <div class="answer">Assess <strong>risk</strong> (likelihood × impact) and business need, then pick the control that reduces the most risk for the cost — not the coolest gadget.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+    <div class="q">
+      <b>Practice.</b> Why is “because the exam dump said C” a bad CISSP strategy?
+      <div class="answer">ISC2 questions change. They test judgment. Learn CIA, risk, and least privilege so you can reason. Dumps also violate exam policy.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>When this module is “done”</h2>
+    <p>You can list the eight domains from memory and explain why CISSP waits until after Security+ and real work. Then go back to <a href="./math.html">math</a> and <a href="./security-plus.html">Security+</a> — that is the work that makes CISSP possible.</p>
+    <p><button class="toggle" id="mark-done" type="button">Mark CISSP roadmap done</button></p>
+  </div>
+  <script src="./lesson.js"></script>
+</body>
+</html>

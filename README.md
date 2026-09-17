@@ -13,16 +13,30 @@ Designed as a product you can monetize later with **Free + Pro** tiers.
 - External links to reputable free IT resources
 - Pro pack placeholders ready for paid gating
 
-## Run locally (required for JSON loading)
+## Open GetNow (easiest → advanced)
 
-Browsers block `fetch()` on raw `file://` pages. Use a tiny local server:
+### Live site (recommended — always works)
+
+**https://getnow-app.vercel.app/**
+
+Or double-click **`OPEN-GetNow.html`** on your Desktop.
+
+### Local on your Mac (one click)
+
+Double-click **`OPEN-GetNow.command`** in this folder  
+(`~/it-repository/OPEN-GetNow.command`).  
+It opens the live site and starts a local backup at http://127.0.0.1:8080/
+
+### Local from Terminal
 
 ```bash
 cd ~/it-repository
 python3 -m http.server 8080
 ```
 
-Open: [http://localhost:8080](http://localhost:8080)
+Then open: [http://127.0.0.1:8080](http://127.0.0.1:8080)
+
+> **Do not** double-click `index.html` in Finder. Browsers block the library on `file://` pages.
 
 ## Add your own resources
 

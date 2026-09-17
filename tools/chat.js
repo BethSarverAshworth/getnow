@@ -17,6 +17,7 @@
   const state = {
     client: null,
     live: false,
+    backend: "none", // supabase | api | local
     room: "general",
     author: "",
     authorKey: "",
@@ -24,6 +25,7 @@
     messages: [],
     lastSend: 0,
     joined: false,
+    pollTimer: null,
   };
 
   const $ = (id) => document.getElementById(id);
@@ -59,15 +61,40 @@
     return k;
   }
 
+  function isNetworkFail(err) {
+    const m = String((err && err.message) || err || "").toLowerCase();
+    return (
+      m.includes("failed to fetch") ||
+      m.includes("fetch failed") ||
+      m.includes("networkerror") ||
+      m.includes("load failed") ||
+      m.includes("could not resolve")
+    );
+  }
+
+  function isDeadSupabaseHost(url) {
+    try {
+      return new URL(url).hostname === "ldvfjtqotlzuygcwgtai.supabase.co";
+    } catch {
+      return false;
+    }
+  }
+
   function liveSettings() {
     try {
       const local = JSON.parse(localStorage.getItem("it_vault_supabase") || "null");
-      if (local?.url && local?.anon) return local;
+      if (local?.url && local?.anon) {
+        if (isDeadSupabaseHost(local.url)) {
+          localStorage.removeItem("it_vault_supabase");
+        } else {
+          return local;
+        }
+      }
     } catch {
       /* ignore */
     }
     const c = window.IT_REPO_CONFIG || {};
-    if (c.supabaseUrl && c.supabaseAnonKey) {
+    if (c.supabaseUrl && c.supabaseAnonKey && !isDeadSupabaseHost(c.supabaseUrl)) {
       return { url: c.supabaseUrl, anon: c.supabaseAnonKey };
     }
     return null;
@@ -98,19 +125,108 @@
     }
   }
 
+  function stopPolling() {
+    if (state.pollTimer) {
+      clearInterval(state.pollTimer);
+      state.pollTimer = null;
+    }
+  }
+
+  function startPolling() {
+    stopPolling();
+    state.pollTimer = setInterval(() => {
+      if (state.backend === "api" && state.joined) {
+        loadHistory().catch(() => {});
+      }
+    }, 2500);
+  }
+
+  async function apiFetchMessages(room) {
+    const res = await fetch("/api/chat?room=" + encodeURIComponent(room), { cache: "no-store" });
+    if (!res.ok) throw new Error("Chat server HTTP " + res.status);
+    const rows = await res.json();
+    return Array.isArray(rows) ? rows : [];
+  }
+
+  async function apiSendMessage(room, author, authorKey, body) {
+    const res = await fetch("/api/chat?room=" + encodeURIComponent(room), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ author, author_key: authorKey, body }),
+    });
+    if (!res.ok) throw new Error("Send failed (HTTP " + res.status + ")");
+    return res.json();
+  }
+
+  function localChatKey(room) {
+    return "it_chat_local_" + room;
+  }
+
+  function localLoadMessages(room) {
+    try {
+      const rows = JSON.parse(localStorage.getItem(localChatKey(room)) || "[]");
+      return Array.isArray(rows) ? rows : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function localSaveMessage(room, row) {
+    const rows = localLoadMessages(room);
+    rows.push(row);
+    const trimmed = rows.slice(-MAX_HISTORY);
+    localStorage.setItem(localChatKey(room), JSON.stringify(trimmed));
+    return trimmed;
+  }
+
   async function testLiveConnection() {
     const live = liveSettings();
     if (!live?.url || !live?.anon) throw new Error("Save URL and anon key first");
     if (!window.supabase?.createClient) throw new Error("Supabase library not loaded (check network)");
-    const client = window.supabase.createClient(live.url, live.anon);
-    const { error } = await client.from("chat_messages").select("id").limit(1);
-    if (error) {
-      if (/relation .* does not exist/i.test(error.message) || error.code === "42P01") {
-        throw new Error("Connected, but chat_messages table missing — run supabase-schema.sql");
+    try {
+      const client = window.supabase.createClient(live.url, live.anon);
+      const { error } = await client.from("chat_messages").select("id").limit(1);
+      if (error) {
+        if (/relation .* does not exist/i.test(error.message) || error.code === "42P01") {
+          throw new Error("Connected, but chat_messages table missing — run supabase-schema.sql");
+        }
+        throw new Error(error.message);
       }
-      throw new Error(error.message);
+      return true;
+    } catch (e) {
+      if (isNetworkFail(e)) {
+        throw new Error(
+          "Cannot connect to that database (TypeError: Failed to fetch). The host is missing or paused."
+        );
+      }
+      throw e;
     }
-    return true;
+  }
+
+  async function chooseBackend() {
+    stopPolling();
+    state.backend = "none";
+    if (initClient()) {
+      try {
+        await testLiveConnection();
+        state.backend = "supabase";
+        state.live = true;
+        return;
+      } catch (e) {
+        console.warn("Supabase chat unavailable:", e);
+        state.client = null;
+        state.live = false;
+      }
+    }
+    try {
+      await apiFetchMessages("general");
+      state.backend = "api";
+      state.live = true;
+      return;
+    } catch {
+      state.backend = "local";
+      state.live = false;
+    }
   }
 
   function openLiveModal() {
@@ -188,25 +304,52 @@
   }
 
   async function loadHistory() {
-    if (!state.client) return;
-    const { data, error } = await state.client
-      .from("chat_messages")
-      .select("*")
-      .eq("room", state.room)
-      .order("created_at", { ascending: false })
-      .limit(MAX_HISTORY);
-    if (error) {
-      if (/relation .* does not exist/i.test(error.message) || error.code === "42P01") {
-        setConn("Run SQL: create chat_messages table", false);
-        $("messages").innerHTML = `<div class="chat-empty">Table missing. In Supabase SQL Editor, re-run vault/supabase-schema.sql (includes chat_messages + realtime).</div>`;
-        return;
+    if (state.backend === "api") {
+      try {
+        state.messages = await apiFetchMessages(state.room);
+        renderMessages();
+        setConn("Live · #" + state.room, true);
+      } catch (e) {
+        setConn("Error: " + e.message, false);
       }
-      setConn("Error: " + error.message, false);
       return;
     }
-    state.messages = (data || []).reverse();
-    renderMessages();
-    setConn("Live · #" + state.room, true);
+    if (state.backend === "local") {
+      state.messages = localLoadMessages(state.room);
+      renderMessages();
+      setConn("This device only · #" + state.room, false);
+      return;
+    }
+    if (!state.client) return;
+    try {
+      const { data, error } = await state.client
+        .from("chat_messages")
+        .select("*")
+        .eq("room", state.room)
+        .order("created_at", { ascending: false })
+        .limit(MAX_HISTORY);
+      if (error) {
+        if (/relation .* does not exist/i.test(error.message) || error.code === "42P01") {
+          setConn("Run SQL: create chat_messages table", false);
+          $("messages").innerHTML = `<div class="chat-empty">Table missing. In Supabase SQL Editor, re-run vault/supabase-schema.sql (includes chat_messages + realtime).</div>`;
+          return;
+        }
+        setConn("Error: " + error.message, false);
+        return;
+      }
+      state.messages = (data || []).reverse();
+      renderMessages();
+      setConn("Live · #" + state.room, true);
+    } catch (e) {
+      if (isNetworkFail(e)) {
+        state.backend = "api";
+        state.client = null;
+        await loadHistory();
+        startPolling();
+        return;
+      }
+      setConn("Error: " + ((e && e.message) || e), false);
+    }
   }
 
   async function unsubscribe() {
@@ -217,7 +360,7 @@
   }
 
   async function subscribe() {
-    if (!state.client) return;
+    if (state.backend !== "supabase" || !state.client) return;
     await unsubscribe();
     state.channel = state.client
       .channel("chat:" + state.room)
@@ -255,31 +398,60 @@
     renderChannels();
     state.messages = [];
     renderMessages();
-    if (!state.live || !state.joined) return;
+    if (!state.joined) return;
     setConn("Loading #" + state.room + "…", true);
     await loadHistory();
-    await subscribe();
+    if (state.backend === "supabase") await subscribe();
+    if (state.backend === "api") startPolling();
   }
 
   async function sendMessage(text) {
-    if (!state.joined || !state.client) return;
+    if (!state.joined) return;
     const body = text.trim().slice(0, 1000);
     if (!body) return;
     const now = Date.now();
     if (now - state.lastSend < MIN_SEND_GAP_MS) return;
     state.lastSend = now;
 
+    if (state.backend === "api") {
+      try {
+        await apiSendMessage(state.room, state.author, state.authorKey, body);
+        await loadHistory();
+      } catch (e) {
+        alert("Send failed: " + e.message);
+      }
+      return;
+    }
+
+    if (state.backend === "local") {
+      const row = {
+        id: uid(),
+        room: state.room,
+        author: state.author,
+        author_key: state.authorKey,
+        body,
+        created_at: new Date().toISOString(),
+      };
+      state.messages = localSaveMessage(state.room, row);
+      renderMessages();
+      return;
+    }
+
+    if (!state.client) return;
     const row = {
       room: state.room,
       author: state.author,
       author_key: state.authorKey,
       body,
     };
-    const { error } = await state.client.from("chat_messages").insert(row);
-    if (error) {
-      alert("Send failed: " + error.message);
+    try {
+      const { error } = await state.client.from("chat_messages").insert(row);
+      if (error) {
+        alert("Send failed: " + error.message);
+      }
+    } catch (e) {
+      alert("Send failed: " + ((e && e.message) || e));
     }
-    // Realtime will append; if realtime lag, optimistic optional — skip to avoid dupes
   }
 
   function enableComposer(on) {
@@ -289,13 +461,12 @@
 
   function updateUiForLive() {
     const offline = $("offline-banner");
-    if (state.live) {
+    if (state.backend === "api" || state.backend === "supabase") {
       offline.classList.add("hidden");
       setConn("Ready — enter a display name", true);
     } else {
       offline.classList.remove("hidden");
-      setConn("Offline — enable Live sync", false);
-      enableComposer(false);
+      setConn("This device only — enter a display name to chat here", false);
     }
   }
 
@@ -366,18 +537,16 @@
           return;
         }
         saveLiveSettings(url, anon);
-        const ok = initClient();
+        await chooseBackend();
         updateUiForLive();
-        if (!ok) {
-          $("live-status").textContent = "Saved, but client did not start. Check keys and reload.";
-          return;
-        }
-        try {
-          await testLiveConnection();
+        if (state.backend === "supabase") {
           $("live-status").textContent = "Live Sync ON. Close this and click Join chat.";
           setConn("Ready — enter a display name", true);
-        } catch (e) {
-          $("live-status").textContent = "Saved, but test failed: " + e.message;
+        } else if (state.backend === "api") {
+          $("live-status").textContent =
+            "Those keys did not connect. Chat is using GetNow's own live server instead.";
+        } else {
+          $("live-status").textContent = "Saved, but the database host could not be reached (Failed to fetch).";
         }
       });
     }
@@ -399,15 +568,19 @@
     }
   }
 
-  // boot
-  const ok = initClient();
-  bind();
-  renderChannels();
-  updateUiForLive();
-  $("room-name").textContent = "# " + state.room;
-  if (!ok) {
-    $("messages").innerHTML = `<div class="chat-empty">Enable Live sync to start real-time chat with others on the site.</div>`;
-  } else {
-    $("messages").innerHTML = `<div class="chat-empty">Enter a display name above, then pick a channel.</div>`;
+  async function boot() {
+    bind();
+    renderChannels();
+    $("room-name").textContent = "# " + state.room;
+    setConn("Connecting…", true);
+    await chooseBackend();
+    updateUiForLive();
+    if (state.backend === "api" || state.backend === "supabase") {
+      $("messages").innerHTML = `<div class="chat-empty">Enter a display name above, then pick a channel.</div>`;
+    } else {
+      $("messages").innerHTML = `<div class="chat-empty">Chat will stay on this device until the live server is reachable. Enter a display name to start.</div>`;
+    }
   }
+
+  boot();
 })();

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Network+ — GetNow Course</title>
+  <link rel="stylesheet" href="./course.css" />
+</head>
+<body data-lesson="network-plus.html">
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="./index.html">GetNow Course</a>
+      <nav>
+        <a href="./math.html">Math</a>
+        <a href="./calculator.html">Calculator</a>
+        <a href="./security-plus.html">Security+</a>
+        <a href="./cissp.html">CISSP</a>
+      </nav>
+    </div>
+  </header>
+  <div class="wrap">
+    <p class="muted">Module 2 · CompTIA Network+ (N10 series)</p>
+    <h1>Network+ fundamentals</h1>
+    <p>Network+ tests whether you can design, configure, and troubleshoot a small-to-medium network in vendor-neutral language. Full Sail ITBS vouchers include this exam after ITE349 / ITE479.</p>
+
+    <h2>1. OSI model (memorize this)</h2>
+    <p>Please Do Not Throw Sausage Pizza Away — Physical, Data Link, Network, Transport, Session, Presentation, Application. Or All People Seem To Need Data Processing (7 down to 1).</p>
+    <table>
+      <tr><th>Layer</th><th>Name</th><th>Job</th><th>Examples</th></tr>
+      <tr><td>7</td><td>Application</td><td>what the user app needs</td><td>HTTP, DNS, SMTP</td></tr>
+      <tr><td>6</td><td>Presentation</td><td>format / encrypt / compress</td><td>TLS, JPEG</td></tr>
+      <tr><td>5</td><td>Session</td><td>start/stop conversations</td><td>RPC, NetBIOS</td></tr>
+      <tr><td>4</td><td>Transport</td><td>ports, reliability</td><td>TCP, UDP</td></tr>
+      <tr><td>3</td><td>Network</td><td>IP addressing, routing</td><td>IP, ICMP, routers</td></tr>
+      <tr><td>2</td><td>Data Link</td><td>MAC, frames, local delivery</td><td>Ethernet, switches</td></tr>
+      <tr><td>1</td><td>Physical</td><td>cables, radio, bits</td><td>fiber, RJ45, Wi-Fi radio</td></tr>
+    </table>
+    <p>TCP/IP model is shorter: Link, Internet, Transport, Application. Same ideas, fewer names.</p>
+    <div class="q">
+      <b>Practice.</b> A switch that forwards by MAC address is mainly which OSI layer?
+      <div class="answer"><strong>Layer 2 (Data Link)</strong>. A router that forwards by IP is Layer 3.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>2. TCP vs UDP</h2>
+    <p><strong>TCP</strong> is connection-oriented: handshake, acknowledgements, retransmission. Use it when every byte matters (web, mail, file copy).</p>
+    <p><strong>UDP</strong> is connectionless and fast. No built-in guarantee. Use it for DNS queries, VoIP, games, DHCP.</p>
+    <div class="q">
+      <b>Practice.</b> Why is DNS often UDP/53 but zone transfers TCP/53?
+      <div class="answer">Small lookups fit in one UDP packet. Big zone files need reliable TCP.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>3. Ports you must know</h2>
+    <table>
+      <tr><th>Port</th><th>Service</th></tr>
+      <tr><td>22</td><td>SSH</td></tr>
+      <tr><td>23</td><td>Telnet (insecure — know it exists)</td></tr>
+      <tr><td>25 / 587</td><td>SMTP mail</td></tr>
+      <tr><td>53</td><td>DNS</td></tr>
+      <tr><td>67 / 68</td><td>DHCP</td></tr>
+      <tr><td>80</td><td>HTTP</td></tr>
+      <tr><td>110 / 143</td><td>POP3 / IMAP</td></tr>
+      <tr><td>161 / 162</td><td>SNMP</td></tr>
+      <tr><td>389 / 636</td><td>LDAP / LDAPS</td></tr>
+      <tr><td>443</td><td>HTTPS</td></tr>
+      <tr><td>3389</td><td>RDP</td></tr>
+    </table>
+
+    <h2>4. IPv4, private ranges, NAT, DHCP, DNS</h2>
+    <p>Private IPv4 (RFC 1918): <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>. These do not route on the public internet. NAT maps many private clients to one (or a few) public IPs.</p>
+    <p><strong>DHCP</strong> hands out IP, mask, gateway, DNS. <strong>DNS</strong> turns names into IPs. If DNS is broken, “the internet is down” even when ping to 8.8.8.8 works.</p>
+    <p><strong>Default gateway</strong> is the router IP on your subnet — first hop out.</p>
+    <div class="q">
+      <b>Practice.</b> Host 192.168.1.50/24, gateway 192.168.1.1. Can it reach 192.168.2.10 without a router?
+      <div class="answer"><strong>No.</strong> Different /24 networks. A router (Layer 3) must forward between them.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>5. Switch vs router vs firewall vs AP</h2>
+    <ul>
+      <li><strong>Switch:</strong> connects devices in a LAN; learns MAC addresses.</li>
+      <li><strong>Router:</strong> connects networks; uses IP; chooses paths.</li>
+      <li><strong>Firewall:</strong> allows or denies traffic by policy (ports, IPs, apps).</li>
+      <li><strong>Access point:</strong> Wi-Fi radio into the wired LAN.</li>
+    </ul>
+    <p>A VLAN is a logical LAN on a switch. Different VLANs need a router (or Layer 3 switch) to talk.</p>
+
+    <h2>6. Wireless</h2>
+    <p>Know 802.11n/ac/ax as Wi-Fi 4/5/6. 2.4 GHz goes farther and is noisier. 5 GHz is faster and shorter range. WPA3 is the current encryption you should prefer over WEP/WPA.</p>
+
+    <h2>7. Troubleshooting method</h2>
+    <ol>
+      <li>Identify the problem (one user or everyone? wired or wireless?)</li>
+      <li>Establish a theory (cable? DHCP? DNS? gateway?)</li>
+      <li>Test the theory</li>
+      <li>Plan and implement a fix</li>
+      <li>Verify and document</li>
+    </ol>
+    <p>Commands: <code>ping</code>, <code>ipconfig</code> / <code>ip a</code>, <code>tracert</code> / <code>traceroute</code>, <code>nslookup</code>, <code>arp -a</code>, <code>netstat</code> / <code>ss</code>.</p>
+    <div class="q">
+      <b>Practice.</b> Ping to 8.8.8.8 works. Browse to google.com fails. What is the first service to suspect?
+      <div class="answer"><strong>DNS</strong> (or the DNS server setting). IP path works; names do not resolve.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>Lab you can do on your Full Sail VMs</h2>
+    <div class="card">
+      <p>From Ubuntu, ping 10.10.229.10 and 10.10.229.11. Run <code>ip addr</code>. SSH to Nginx and Docker. That is real Network+ troubleshooting: addressing, gateway, SSH (port 22), and name vs IP.</p>
+    </div>
+    <p><a href="./math.html">Back: Math</a> · <a href="./security-plus.html">Next: Security+</a></p>
+    <p><button class="toggle" id="mark-done" type="button">Mark Network+ module done</button></p>
+  </div>
+  <script src="./lesson.js"></script>
+</body>
+</html>

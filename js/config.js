@@ -7,32 +7,40 @@ window.IT_REPO_CONFIG = {
   ownerName: "Beth Sarver-Ashworth",
 
   // PRICE shown on site
-  priceLabel: "$12",
+  priceLabel: "$12.99",
   pricePeriod: " one-time",
 
   /**
-   * Payment method: "zelle" | "stripe" | "both"
-   * Zelle = QR + name (manual). Stripe = automatic unlock after checkout.
+   * Payment method: "bank" | "zelle" | "stripe" | "both"
+   * bank = ACH / bank transfer to Beth's account (manual unlock).
+   * stripe = automatic unlock after checkout.
    */
-  paymentMethod: "zelle",
+  paymentMethod: "bank",
 
-  // Zelle (from your QR)
-  zelleName: "STEVEN ASHWORTH",
-  zelleNote: "GetNow Pro",
-  zelleQrImage: "./assets/zelle-qr.jpg",
-  // Optional contact after payment (email or social — NOT full phone on the public web if you prefer)
+  // Bank transfer (ACH) — money goes to THIS account, not Zelle
+  // Fill routingNumber + accountNumber before sharing the pay page widely.
+  bankName: "",
+  accountHolder: "Beth Sarver-Ashworth",
+  routingNumber: "",
+  accountNumber: "",
+  accountType: "Checking",
+  paymentMemo: "GetNow Pro",
+
+  // Optional contact after payment (email or social — NOT full phone on the public web)
   supportContact: "",
 
   /**
+   * Live site: https://getnow-app.vercel.app/
+   *
    * STRIPE PAYMENT LINK (optional later for automatic unlock)
    * Success redirect:
-   *   https://it-repository-cyan.vercel.app/success.html?token=ITPRO-BETH-2026-LAUNCH
+   *   https://getnow-app.vercel.app/success.html?token=ITPRO-BETH-2026-LAUNCH
    */
   stripePaymentLink: "",
 
   /**
-   * After you confirm a Zelle payment, send the buyer this unlock link:
-   *   https://it-repository-cyan.vercel.app/success.html?token=ITPRO-BETH-2026-LAUNCH
+   * After you confirm a bank payment, send the buyer this unlock link:
+   *   https://getnow-app.vercel.app/success.html?token=ITPRO-BETH-2026-LAUNCH
    * Change this token if it ever leaks publicly.
    */
   unlockToken: "ITPRO-BETH-2026-LAUNCH",
@@ -41,12 +49,14 @@ window.IT_REPO_CONFIG = {
   plausibleDomain: "",
 
   /**
-   * SHARED FILING VAULT (multi-party scripts & ideas)
-   * Free setup (~10 min): https://supabase.com → new project → SQL editor →
-   * run the script in vault/supabase-schema.sql → Project Settings → API →
-   * paste URL + anon key below.
+   * SHARED FILING VAULT (optional live sync)
    *
-   * Leave blank to use local + export/import sharing (works offline).
+   * The previous Supabase host ldvfjtqotlzuygcwgtai.supabase.co no longer exists
+   * (DNS NXDOMAIN). Browsers then show TypeError: Failed to fetch.
+   * Leave these blank so GetNow uses its own /api/chat and local vault mode.
+   *
+   * To restore Supabase later: new project → run vault/supabase-schema.sql →
+   * Settings → API → paste Project URL + the JWT anon key (starts with eyJ).
    */
   supabaseUrl: "",
   supabaseAnonKey: "",

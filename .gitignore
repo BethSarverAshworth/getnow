@@ -4,3 +4,9 @@ node_modules
 .env
 .env.*
 *.log
+
+promo/
+package.json
+package-lock.json
+test-results/
+node_modules/

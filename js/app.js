@@ -14,6 +14,9 @@ const els = {
   grid: document.getElementById("resource-grid"),
   count: document.getElementById("result-count"),
   search: document.getElementById("search"),
+  searchForm: document.getElementById("search-form"),
+  searchBtn: document.getElementById("search-btn"),
+  searchClear: document.getElementById("search-clear"),
   categoryFilters: document.getElementById("category-filters"),
   tierFilters: document.getElementById("tier-filters"),
   levelFilters: document.getElementById("level-filters"),
@@ -104,7 +107,7 @@ function closeModal() {
 
 function checkoutOrSetup() {
   const cfg = window.ITRepoAccess.getConfig();
-  const method = (cfg.paymentMethod || "zelle").toLowerCase();
+  const method = (cfg.paymentMethod || "bank").toLowerCase();
 
   // Prefer Stripe auto-checkout when configured
   if (method === "stripe" || method === "both") {
@@ -115,15 +118,15 @@ function checkoutOrSetup() {
     }
   }
 
-  // Default / Zelle: payment instructions + QR
-  if (method === "zelle" || method === "both" || !window.ITRepoAccess.getCheckoutUrl()) {
+  // Bank transfer or Zelle: payment instructions page
+  if (method === "bank" || method === "zelle" || method === "both" || !window.ITRepoAccess.getCheckoutUrl()) {
     window.location.href = "./pay.html";
     return;
   }
 
   openModal(
     "Payments not configured",
-    `Add a Stripe Payment Link or set paymentMethod to "zelle" in js/config.js.`
+    `Add a Stripe Payment Link or set paymentMethod to "bank" in js/config.js.`
   );
 }
 
@@ -133,7 +136,7 @@ async function openProPack(resource) {
       "Pro content locked",
       `${resource.title}\n\n${resource.description}\n\n` +
         `Unlock Pro to read the full pack.\n` +
-        `Click "Get Pro" to pay with Zelle, then open the unlock link you receive after payment.`
+        `Click "Get Pro" to pay by bank transfer, then open the unlock link you receive after payment.`
     );
     return;
   }
@@ -288,6 +291,27 @@ function renderPager(total) {
   `;
 }
 
+function bindNavToggle() {
+  const toggle = document.getElementById("nav-toggle");
+  const nav = document.getElementById("main-nav");
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener("click", () => {
+    const open = !nav.classList.contains("is-open");
+    nav.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  });
+
+  nav.querySelectorAll("a, button").forEach((el) => {
+    el.addEventListener("click", () => {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open menu");
+    });
+  });
+}
+
 function updateProUI() {
   const unlocked = hasPro();
   const cfg = window.ITRepoAccess.getConfig();
@@ -300,7 +324,7 @@ function updateProUI() {
   }
 
   if (els.proCta) {
-    els.proCta.textContent = unlocked ? "Browse Pro packs" : "Get Pro — start earning";
+    els.proCta.textContent = unlocked ? "Browse Pro packs" : "Get Pro — Pay by bank";
   }
 
   if (els.priceLabel && cfg.priceLabel) {
@@ -369,12 +393,57 @@ function updateStats() {
   );
 }
 
+function updateSearchClearVisibility() {
+  if (!els.searchClear) return;
+  const hasQuery = Boolean((els.search?.value || "").trim() || state.query);
+  els.searchClear.hidden = !hasQuery;
+}
+
+function runSearch({ scroll = true } = {}) {
+  state.query = (els.search?.value || "").trim();
+  resetPage();
+  render();
+  updateSearchClearVisibility();
+  if (scroll) {
+    document.getElementById("browse")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById("result-count")?.focus?.();
+  }
+}
+
+function clearSearch() {
+  if (els.search) els.search.value = "";
+  state.query = "";
+  resetPage();
+  render();
+  updateSearchClearVisibility();
+  els.search?.focus();
+}
+
 function bindEvents() {
+  // Live filter as you type
   els.search.addEventListener("input", (e) => {
     state.query = e.target.value.trim();
     resetPage();
     render();
+    updateSearchClearVisibility();
   });
+
+  // Explicit Search button + Enter key
+  if (els.searchForm) {
+    els.searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      runSearch({ scroll: true });
+    });
+  } else if (els.searchBtn) {
+    els.searchBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      runSearch({ scroll: true });
+    });
+  }
+
+  if (els.searchClear) {
+    els.searchClear.addEventListener("click", () => clearSearch());
+  }
 
   els.categoryFilters.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-category]");
@@ -448,7 +517,12 @@ function bindEvents() {
   }
 }
 
+function isFileProtocol() {
+  return window.location.protocol === "file:";
+}
+
 async function init() {
+  bindNavToggle();
   window.ITRepoAccess.tryUnlockFromUrl();
 
   // Clean sensitive query params from address bar after unlock attempt
@@ -456,6 +530,26 @@ async function init() {
     const url = new URL(window.location.href);
     url.search = "";
     window.history.replaceState({}, "", url.pathname);
+  }
+
+  // Double-clicking index.html (file://) cannot load JSON — show a clear fix
+  if (isFileProtocol()) {
+    els.grid.innerHTML = `
+      <div class="empty">
+        <strong>Open GetNow the easy way</strong>
+        <p>Browsers block the library when you open the HTML file directly.</p>
+        <p style="margin-top:0.75rem">
+          <a class="btn btn-primary" href="https://getnow-app.vercel.app/">Open live site</a>
+          &nbsp;
+          <a class="btn btn-ghost" href="http://127.0.0.1:8080/">Try local server</a>
+        </p>
+        <p style="margin-top:1rem;font-size:0.9rem">
+          Or double-click <code>OPEN-GetNow.command</code> in the project folder,
+          or on your Desktop open <code>OPEN-GetNow.html</code>.
+        </p>
+      </div>`;
+    updateProUI();
+    return;
   }
 
   try {
@@ -471,12 +565,23 @@ async function init() {
     renderLevelFilters();
     render();
     bindEvents();
+    updateSearchClearVisibility();
   } catch (err) {
+    const msg = String((err && err.message) || err || "");
+    const netFail = /failed to fetch|fetch failed|networkerror/i.test(msg);
     els.grid.innerHTML = `
       <div class="empty">
-        <strong>Could not load repository data</strong>
-        <p>${escapeHtml(err.message)}. Serve the folder with a local web server (see README).</p>
+        <strong>${netFail ? "Could not connect to the GetNow library" : "Could not load library data"}</strong>
+        <p>${escapeHtml(netFail ? "TypeError: Failed to fetch — open the live site instead of a local file." : msg)}</p>
+        <p style="margin-top:0.75rem">
+          <a class="btn btn-primary" href="https://getnow-app.vercel.app/">Open live GetNow</a>
+        </p>
+        <p style="margin-top:1rem;font-size:0.9rem">
+          Local: run <code>python3 -m http.server 8080</code> in the project folder,
+          then visit <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a>
+        </p>
       </div>`;
+    updateProUI();
   }
 }
 

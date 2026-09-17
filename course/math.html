@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>College math for IT and cyber — GetNow Course</title>
+  <link rel="stylesheet" href="./course.css" />
+</head>
+<body data-lesson="math.html">
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="./index.html">GetNow Course</a>
+      <nav>
+        <a href="./index.html">Syllabus</a>
+        <a href="./math-symbols.html">Symbols</a>
+        <a href="./calculator.html">Calculator</a>
+        <a href="./network-plus.html">Network+</a>
+        <a href="./security-plus.html">Security+</a>
+      </nav>
+    </div>
+  </header>
+  <div class="wrap">
+    <p class="muted">Module 1 · College mathematics</p>
+    <h1>Math you actually need for IT and certs</h1>
+    <p>College math for this path is not calculus first. It is algebra, units, binary, hex, logic, powers of two, and a little probability. That is the math on Network+ and Security+.</p>
+    <p><a href="./math-symbols.html">Open the math symbols and terminology chart</a> if a sign or word is new. Use the <a href="./calculator.html">calculator</a> for formulas, binary, and subnet size.</p>
+
+    <h2>1. Order of operations and formulas</h2>
+    <p>Use PEMDAS: Parentheses, Exponents, Multiply/Divide (left to right), Add/Subtract (left to right).</p>
+    <pre>2 + 3 × 4 = 14    not 20
+(2 + 3) × 4 = 20</pre>
+    <p>IT formulas are the same idea. Example: usable hosts in a subnet:</p>
+    <pre>usable hosts = 2^(32 − prefix) − 2</pre>
+    <p>For a /24: 32 − 24 = 8, 2^8 = 256, minus 2 (network + broadcast) = <strong>254 hosts</strong>.</p>
+    <div class="q">
+      <b>Practice.</b> What is 5 + 12 ÷ 4 × 2?
+      <div class="answer">Divide and multiply left to right: 12 ÷ 4 = 3, 3 × 2 = 6, then 5 + 6 = <strong>11</strong>.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>2. Percent, ratios, and “how much is left”</h2>
+    <p>Percent means “per 100.” 25% = 0.25. Disk and bandwidth questions use this constantly.</p>
+    <pre>used = 40 GB of 160 GB
+percent used = 40 / 160 = 0.25 = 25%</pre>
+    <p>A ratio 1:4 means one part to four parts (5 parts total). If a RAID or staff split is 1:4 of 100 tickets, first person gets 20, second gets 80.</p>
+    <div class="q">
+      <b>Practice.</b> A 1 Gbps link is 70% used. How much is free, in Mbps?
+      <div class="answer">1 Gbps = 1000 Mbps. 70% used = 700 Mbps used. Free = 300 Mbps (30%).</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>3. Bits, bytes, and speed units</h2>
+    <p>Computers count in powers of two. Networking speeds are usually decimal (1000).</p>
+    <table>
+      <tr><th>Unit</th><th>Equals</th><th>Remember</th></tr>
+      <tr><td>bit (b)</td><td>0 or 1</td><td>lowercase b</td></tr>
+      <tr><td>byte (B)</td><td>8 bits</td><td>uppercase B</td></tr>
+      <tr><td>Kbps / Mbps / Gbps</td><td>speed</td><td>network links</td></tr>
+      <tr><td>KB / MB / GB</td><td>size</td><td>files and disks</td></tr>
+    </table>
+    <p>A 100 Mbps download is not 100 MB per second. 100 Mbps ÷ 8 = <strong>12.5 MB/s</strong> in a perfect world.</p>
+    <div class="q">
+      <b>Practice.</b> How many bits in 2 KB? (use 1 KB = 1024 bytes)
+      <div class="answer">2 × 1024 bytes = 2048 bytes × 8 = <strong>16,384 bits</strong>.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>4. Algebra: solve for the missing piece</h2>
+    <p>Whatever you do to one side, do to the other.</p>
+    <pre>3x + 7 = 22
+3x = 15
+x = 5</pre>
+    <p>Bandwidth example: time = size / speed. If a 400 MB file moves at 50 MB/s, time = 400/50 = 8 seconds.</p>
+    <div class="q">
+      <b>Practice.</b> 4x − 9 = 23. Find x.
+      <div class="answer">4x = 32, x = <strong>8</strong>.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>5. Binary and hex (this is exam math)</h2>
+    <p>Decimal is base 10. Binary is base 2. Hex is base 16 (0–9 then A–F).</p>
+    <table>
+      <tr><th>Decimal</th><th>Binary</th><th>Hex</th></tr>
+      <tr><td>0</td><td>0000</td><td>0</td></tr>
+      <tr><td>10</td><td>1010</td><td>A</td></tr>
+      <tr><td>15</td><td>1111</td><td>F</td></tr>
+      <tr><td>16</td><td>0001 0000</td><td>10</td></tr>
+      <tr><td>255</td><td>1111 1111</td><td>FF</td></tr>
+    </table>
+    <p>Powers of two you should memorize: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024.</p>
+    <p>Convert 13 to binary: 8+4+1 = 1101.</p>
+    <p>IPv4 addresses are four decimal octets 0–255. MAC addresses are hex (example 00:1A:2B:3C:4D:5E).</p>
+    <div class="q">
+      <b>Practice.</b> Convert binary 1100 0000 to decimal.
+      <div class="answer">128+64 = <strong>192</strong>. That is why 192.168.x.x starts with 192 (11000000).</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>6. Boolean logic</h2>
+    <p>Firewalls and access control use Boolean logic.</p>
+    <table>
+      <tr><th>Op</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td>AND</td><td>both true</td><td>allow if user=admin AND MFA=yes</td></tr>
+      <tr><td>OR</td><td>either true</td><td>allow if office OR VPN</td></tr>
+      <tr><td>NOT</td><td>flip</td><td>NOT blocked</td></tr>
+      <tr><td>XOR</td><td>one true, not both</td><td>used in some crypto / RAID talk</td></tr>
+    </table>
+    <pre>1 AND 1 = 1
+1 AND 0 = 0
+1 OR 0  = 1
+NOT 1   = 0</pre>
+    <div class="q">
+      <b>Practice.</b> True AND False OR True. If AND happens first: what is the result?
+      <div class="answer">True AND False = False. False OR True = <strong>True</strong>.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>7. Subnet math (Network+ core)</h2>
+    <p>An IPv4 address has 32 bits. The prefix (like /24) is how many bits identify the network.</p>
+    <table>
+      <tr><th>Prefix</th><th>Mask</th><th>Host bits</th><th>Addresses</th><th>Usable hosts</th></tr>
+      <tr><td>/24</td><td>255.255.255.0</td><td>8</td><td>256</td><td>254</td></tr>
+      <tr><td>/25</td><td>255.255.255.128</td><td>7</td><td>128</td><td>126</td></tr>
+      <tr><td>/26</td><td>255.255.255.192</td><td>6</td><td>64</td><td>62</td></tr>
+      <tr><td>/30</td><td>255.255.255.252</td><td>2</td><td>4</td><td>2 (point-to-point)</td></tr>
+    </table>
+    <p>Rule: host bits = 32 − prefix. Total addresses = 2^(host bits). Usable = that minus 2 (except some /31 special cases you can ignore for now).</p>
+    <div class="q">
+      <b>Practice.</b> How many usable hosts on a /27?
+      <div class="answer">32 − 27 = 5 host bits. 2^5 = 32. 32 − 2 = <strong>30 usable hosts</strong>.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>8. Probability and risk (Security+ language)</h2>
+    <p>Risk is roughly <em>likelihood × impact</em>. If a phishing click is “likely” and the impact is “steal all mail,” risk is high even if the tech is simple.</p>
+    <p>If a 4-digit PIN is random, there are 10,000 possibilities (0000–9999). One guess has probability 1/10000.</p>
+    <div class="q">
+      <b>Practice.</b> A coin is fair. Probability of heads twice in a row?
+      <div class="answer">1/2 × 1/2 = <strong>1/4</strong> (25%). Independent events multiply.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>Checkpoint</h2>
+    <p>You are ready for Network+ math when you can: convert 192 to binary, size a /24 and /26, and explain bits vs bytes. Do this module again if any of those are shaky.</p>
+    <p><a href="./network-plus.html">Next: Network+</a></p>
+    <p><button class="toggle" id="mark-done" type="button">Mark math module done</button></p>
+  </div>
+  <script src="./lesson.js"></script>
+</body>
+</html>

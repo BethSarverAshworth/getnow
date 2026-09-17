@@ -107,6 +107,82 @@ a:hover {
   justify-content: flex-end;
 }
 
+/* Hamburger — hidden on desktop */
+.nav-toggle {
+  display: none;
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 1.1rem;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: 0.15s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-actions {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem 1rem;
+    background: rgba(11, 15, 20, 0.97);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  .nav-actions.is-open {
+    display: flex;
+  }
+
+  .nav-actions .btn,
+  .nav-actions .pro-pill {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .header-inner {
+    position: relative;
+    flex-wrap: nowrap;
+  }
+}
+
 .btn {
   appearance: none;
   border: 1px solid transparent;
@@ -275,8 +351,17 @@ a:hover {
   margin: 0.5rem 0 1.25rem;
 }
 
+.search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: stretch;
+}
+
 .search-wrap {
   position: relative;
+  flex: 1 1 220px;
+  min-width: 0;
 }
 
 .search-wrap input {
@@ -307,6 +392,31 @@ a:hover {
   transform: translateY(-50%);
   opacity: 0.7;
   pointer-events: none;
+}
+
+.search-btn {
+  flex: 0 0 auto;
+  border-radius: 12px;
+  padding: 0.9rem 1.25rem;
+  min-height: 3rem;
+}
+
+.search-clear {
+  flex: 0 0 auto;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  min-height: 3rem;
+}
+
+.search-clear[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 520px) {
+  .search-btn,
+  .search-clear {
+    flex: 1 1 auto;
+  }
 }
 
 .filters {

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pay with Zelle — GetNow Pro</title>
+    <title>Pay by bank — GetNow Pro</title>
     <link rel="stylesheet" href="./css/styles.css" />
     <style>
       .pay-wrap {
@@ -49,29 +49,54 @@
         letter-spacing: -0.03em;
         margin: 0.5rem 0 1rem;
       }
-      .qr-box {
-        text-align: center;
+      .bank-rows {
+        display: grid;
+        gap: 0.65rem;
+      }
+      .bank-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
         background: #fff;
-        border-radius: 14px;
-        padding: 1rem;
-        border: 1px solid #e5e7eb;
-      }
-      .qr-box img {
-        width: min(280px, 100%);
-        height: auto;
-        display: block;
-        margin: 0 auto;
-      }
-      .payee {
-        margin: 0.85rem 0 0;
         color: #111;
-        font-weight: 700;
-        font-size: 1.05rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 0.7rem 0.9rem;
       }
-      .memo {
-        margin: 0.35rem 0 0;
-        font-size: 0.9rem;
-        color: #4b5563;
+      .bank-row .label {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #6b7280;
+        margin: 0 0 0.15rem;
+      }
+      .bank-row .value {
+        margin: 0;
+        font-weight: 700;
+        font-size: 1.02rem;
+        word-break: break-all;
+      }
+      .copy-btn {
+        flex-shrink: 0;
+        border: 1px solid #d1d5db;
+        background: #f9fafb;
+        border-radius: 8px;
+        padding: 0.35rem 0.6rem;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+      .copy-btn:hover {
+        background: #eef2ff;
+      }
+      .pending {
+        margin: 0;
+        padding: 0.85rem 1rem;
+        border-radius: 12px;
+        border: 1px dashed #9ca3af;
+        background: #f9fafb;
+        color: #374151;
+        font-size: 0.92rem;
       }
       .warn {
         margin-top: 1rem;
@@ -106,13 +131,14 @@
     <main class="container pay-wrap">
       <div class="pay-grid">
         <section class="pay-card">
-          <h1>Get Pro with Zelle</h1>
+          <h1>Get Pro by bank transfer</h1>
           <p>
             One-time access to Home Lab Blueprints, Interview Bank, Incident Runbooks,
-            and the Script Vault.
+            and the Script Vault. Payment goes to Beth Sarver-Ashworth’s bank account
+            (not Zelle).
           </p>
           <div class="amount">
-            <span id="price-label">$12</span>
+            <span id="price-label">$12.99</span>
             <small id="price-period" style="font-size: 1rem; font-weight: 500; color: var(--muted)"
               > one-time</small
             >
@@ -120,21 +146,21 @@
 
           <h2>How to pay</h2>
           <ol>
-            <li>Open your banking app → Zelle</li>
-            <li>Scan the QR code (or send to the name shown)</li>
+            <li>Open your bank app → Send money / ACH / bank transfer</li>
+            <li>Use the account details on the right</li>
             <li>
-              Amount: <strong id="amount-text" style="color: var(--text)">$12</strong> · Memo:
+              Amount: <strong id="amount-text" style="color: var(--text)">$12.99</strong> · Memo:
               <strong id="memo-text" style="color: var(--text)">GetNow Pro</strong>
             </li>
             <li>
-              Message the seller that you paid (name + amount). They will reply with your
+              Message the seller that you paid (your name + amount). They will reply with your
               <strong style="color: var(--text)">personal unlock link</strong>.
             </li>
           </ol>
 
           <div class="warn">
-            Zelle does not auto-unlock the site. After payment is confirmed, you receive a private
-            unlock link. Do not share that link publicly.
+            Bank transfers do not auto-unlock the site. After payment is confirmed, you receive a
+            private unlock link. Do not share that link publicly.
           </div>
 
           <div class="actions">
@@ -144,18 +170,55 @@
         </section>
 
         <aside class="pay-card">
-          <h2>Scan to pay</h2>
-          <div class="qr-box">
-            <img
-              id="zelle-qr"
-              src="./assets/zelle-qr.jpg"
-              alt="Zelle QR code to pay Steven Ashworth"
-            />
-            <p class="payee" id="zelle-name">STEVEN ASHWORTH</p>
-            <p class="memo">Send Money with Zelle®</p>
+          <h2>Send to this bank account</h2>
+          <div id="bank-ready" class="bank-rows" hidden>
+            <div class="bank-row">
+              <div>
+                <p class="label">Bank</p>
+                <p class="value" id="bank-name"></p>
+              </div>
+            </div>
+            <div class="bank-row">
+              <div>
+                <p class="label">Name on account</p>
+                <p class="value" id="account-holder"></p>
+              </div>
+              <button class="copy-btn" type="button" data-copy="account-holder">Copy</button>
+            </div>
+            <div class="bank-row">
+              <div>
+                <p class="label">Account type</p>
+                <p class="value" id="account-type"></p>
+              </div>
+            </div>
+            <div class="bank-row">
+              <div>
+                <p class="label">Routing number</p>
+                <p class="value" id="routing-number"></p>
+              </div>
+              <button class="copy-btn" type="button" data-copy="routing-number">Copy</button>
+            </div>
+            <div class="bank-row">
+              <div>
+                <p class="label">Account number</p>
+                <p class="value" id="account-number"></p>
+              </div>
+              <button class="copy-btn" type="button" data-copy="account-number">Copy</button>
+            </div>
+            <div class="bank-row">
+              <div>
+                <p class="label">Memo</p>
+                <p class="value" id="bank-memo"></p>
+              </div>
+            </div>
           </div>
+          <p id="bank-pending" class="pending">
+            Bank routing and account numbers are not on this page yet. Message Beth
+            Sarver-Ashworth for the ACH details, then send <strong>$12.99</strong> with memo
+            <strong>GetNow Pro</strong>.
+          </p>
           <p class="note" style="margin-top: 0.9rem">
-            Only send money to people you trust. Confirm the name matches before paying.
+            Only send money to people you trust. Confirm the name on the account before paying.
           </p>
         </aside>
       </div>
@@ -169,13 +232,44 @@
           const el = document.getElementById(id);
           if (el && val != null) el.textContent = val;
         };
-        set("price-label", cfg.priceLabel || "$12");
+        const price = cfg.priceLabel || "$12.99";
+        const memo = cfg.paymentMemo || "GetNow Pro";
+        set("price-label", price);
         set("price-period", cfg.pricePeriod || " one-time");
-        set("amount-text", cfg.priceLabel || "$12");
-        set("memo-text", cfg.zelleNote || "GetNow Pro");
-        set("zelle-name", cfg.zelleName || "STEVEN ASHWORTH");
-        const img = document.getElementById("zelle-qr");
-        if (img && cfg.zelleQrImage) img.src = cfg.zelleQrImage;
+        set("amount-text", price);
+        set("memo-text", memo);
+
+        const routing = (cfg.routingNumber || "").trim();
+        const account = (cfg.accountNumber || "").trim();
+        const ready = document.getElementById("bank-ready");
+        const pending = document.getElementById("bank-pending");
+        if (routing && account) {
+          set("bank-name", cfg.bankName || "U.S. bank");
+          set("account-holder", cfg.accountHolder || "Beth Sarver-Ashworth");
+          set("account-type", cfg.accountType || "Checking");
+          set("routing-number", routing);
+          set("account-number", account);
+          set("bank-memo", memo);
+          if (ready) ready.hidden = false;
+          if (pending) pending.hidden = true;
+        }
+
+        document.querySelectorAll("[data-copy]").forEach((btn) => {
+          btn.addEventListener("click", async () => {
+            const id = btn.getAttribute("data-copy");
+            const el = document.getElementById(id);
+            const text = el ? el.textContent : "";
+            try {
+              await navigator.clipboard.writeText(text);
+              btn.textContent = "Copied";
+              setTimeout(() => {
+                btn.textContent = "Copy";
+              }, 1200);
+            } catch {
+              btn.textContent = "Select & copy";
+            }
+          });
+        });
       })();
     </script>
   </body>

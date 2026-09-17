@@ -37,17 +37,15 @@
       </p>
 
       <div id="offline-banner" class="tool-card offline-banner">
-        <strong>Chat page is online — Live Sync is not connected yet</strong>
+        <strong>Chat is on this device only right now</strong>
         <p class="muted">
-          This is <em>not</em> a 404. The page loaded, but real-time chat needs a free Supabase project
-          once. Click <strong>Connect Live Sync</strong>, paste your Project URL + anon key, run the SQL
-          once, then join a channel.
+          The live GetNow chat server is not reachable from here (local file / offline). Open
+          <a href="https://getnow-app.vercel.app/tools/chat.html">the live site</a> to talk with other people.
+          Optional: you can still connect a Supabase project under <strong>Live sync setup</strong>.
         </p>
         <div class="row">
-          <button class="btn btn-primary" type="button" id="btn-live-setup-2">Connect Live Sync</button>
-          <a class="btn btn-ghost" href="/vault/supabase-schema.sql" target="_blank" rel="noopener"
-            >Open SQL schema</a
-          >
+          <a class="btn btn-primary" href="https://getnow-app.vercel.app/tools/chat.html">Open live chat</a>
+          <button class="btn btn-ghost" type="button" id="btn-live-setup-2">Live sync setup</button>
         </div>
       </div>
 
@@ -137,7 +135,7 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>Live chat · Real-time via Supabase · Collaborate kindly</div>
+        <div>Live chat · Collaborate kindly</div>
         <a class="btn btn-ghost" href="./news.html">News desk</a>
       </div>
     </footer>

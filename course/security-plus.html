@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security+ — GetNow Course</title>
+  <link rel="stylesheet" href="./course.css" />
+</head>
+<body data-lesson="security-plus.html">
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="./index.html">GetNow Course</a>
+      <nav>
+        <a href="./network-plus.html">Network+</a>
+        <a href="./calculator.html">Calculator</a>
+        <a href="./cissp.html">CISSP</a>
+        <a href="./index.html">Syllabus</a>
+      </nav>
+    </div>
+  </header>
+  <div class="wrap">
+    <p class="muted">Module 3 · CompTIA Security+ (SY0 series)</p>
+    <h1>Security+ fundamentals</h1>
+    <p>Security+ is the first security cert most employers recognize. CYBS students get a voucher after CYB349. It is broader than Network+: people, process, and crypto, not only cables.</p>
+
+    <h2>1. CIA triad</h2>
+    <ul>
+      <li><strong>Confidentiality</strong> — only the right people see it (encryption, permissions, MFA).</li>
+      <li><strong>Integrity</strong> — it was not secretly changed (hashes, signatures, backups).</li>
+      <li><strong>Availability</strong> — it is there when needed (redundancy, patches, DDoS defense).</li>
+    </ul>
+    <p>AAA: Authentication (who you are), Authorization (what you may do), Accounting (what you did — logs).</p>
+    <div class="q">
+      <b>Practice.</b> Ransomware encrypts files so the office cannot work. Which CIA letter is hit first?
+      <div class="answer"><strong>Availability</strong> (and often integrity). Confidentiality may also be at risk if data was stolen.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>2. Threat vs vulnerability vs risk vs control</h2>
+    <table>
+      <tr><th>Term</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td>Threat</td><td>something that can cause harm</td><td>phishing email</td></tr>
+      <tr><td>Vulnerability</td><td>weakness that can be used</td><td>unpatched VPN, reused password</td></tr>
+      <tr><td>Risk</td><td>chance × impact</td><td>likely phish + access to payroll</td></tr>
+      <tr><td>Control</td><td>something you do about it</td><td>MFA, training, filtering</td></tr>
+    </table>
+    <p>Controls are preventive, detective, or corrective. A lock is preventive. A camera is detective. A restore from backup is corrective.</p>
+
+    <h2>3. People attacks (social engineering)</h2>
+    <ul>
+      <li><strong>Phishing</strong> — fake email. <strong>Spear phishing</strong> — targeted. <strong>Whaling</strong> — executives.</li>
+      <li><strong>Vishing / smishing</strong> — voice / SMS.</li>
+      <li><strong>Pretexting</strong> — fake story (“I’m from IT…”).</li>
+      <li><strong>Tailgating</strong> — follow someone through a door.</li>
+    </ul>
+    <p>Defense: training, reporting button, never give passwords on the phone, verify out-of-band.</p>
+
+    <h2>4. Malware types</h2>
+    <p>Virus needs a host file. Worm spreads by itself. Trojan pretends to be useful. Ransomware encrypts for payment. Spyware / keyloggers steal. Rootkits hide. Know the names; the exam loves definitions.</p>
+
+    <h2>5. Crypto you must not mix up</h2>
+    <table>
+      <tr><th>Idea</th><th>Reversible?</th><th>Use</th></tr>
+      <tr><td>Encryption</td><td>yes, with a key</td><td>keep secrets</td></tr>
+      <tr><td>Hashing</td><td>no</td><td>integrity, password storage</td></tr>
+      <tr><td>Encoding (Base64)</td><td>yes, no secret</td><td>transport, not security</td></tr>
+      <tr><td>Digital signature</td><td>hash + private key</td><td>prove who sent it + not changed</td></tr>
+    </table>
+    <p><strong>Symmetric</strong> (AES): one shared key, fast. <strong>Asymmetric</strong> (RSA, ECC): public/private pair, used to share keys and sign. TLS uses both.</p>
+    <div class="q">
+      <b>Practice.</b> Should you store passwords with reversible encryption or with a hash + salt?
+      <div class="answer"><strong>Hash + salt</strong> (and a slow algorithm). If stolen, attackers should not get the real passwords easily.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>6. Identity and access</h2>
+    <p>Least privilege: give the minimum access needed. MFA: something you know + have + are. SSO: one login to many apps. Privileged accounts (admin/root) get extra monitoring.</p>
+    <p>Zero Trust: never trust the network location alone. Verify every request.</p>
+
+    <h2>7. Network security (ties to your lab)</h2>
+    <ul>
+      <li>Firewall: allow/deny ports and IPs.</li>
+      <li>VPN: encrypted tunnel (your reverse proxy is not a VPN).</li>
+      <li>Segmentation: VLANs, separate guest Wi-Fi, jump box (your Ubuntu SSH jump is this idea).</li>
+      <li>Disable unused services. Your Nginx VM had firewalld stopped for a lab — that is a tradeoff you must understand for the exam: availability vs security.</li>
+    </ul>
+
+    <h2>8. Incident response (simple order)</h2>
+    <ol>
+      <li>Preparation</li>
+      <li>Identification</li>
+      <li>Containment</li>
+      <li>Eradication</li>
+      <li>Recovery</li>
+      <li>Lessons learned</li>
+    </ol>
+    <p>Do not power-wash evidence before you know policy. Document times and actions.</p>
+    <div class="q">
+      <b>Practice.</b> You confirm malware on one PC. What is containment?
+      <div class="answer">Stop spread: isolate the host from the network, disable the account if needed, keep evidence. Do not immediately reimage if you still need logs — unless policy says otherwise.</div>
+      <button class="toggle" type="button">Show answer</button>
+    </div>
+
+    <h2>Study order for the voucher</h2>
+    <div class="card">
+      <p>Finish Network+ ideas first if IP/ports still feel fuzzy. Then Security+. Official objectives: <a href="https://www.comptia.org/en-us/certifications/security/">CompTIA Security+</a>. After Security+, CySA+ is the analyst exam (CYBS second voucher).</p>
+    </div>
+    <p><a href="./network-plus.html">Back: Network+</a> · <a href="./cissp.html">Next: CISSP roadmap</a></p>
+    <p><button class="toggle" id="mark-done" type="button">Mark Security+ module done</button></p>
+  </div>
+  <script src="./lesson.js"></script>
+</body>
+</html>

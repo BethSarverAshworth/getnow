@@ -117,15 +117,29 @@
       : "n-" + Date.now() + Math.random().toString(36).slice(2);
   }
 
+  function isDeadSupabaseHost(url) {
+    try {
+      return new URL(url).hostname === "ldvfjtqotlzuygcwgtai.supabase.co";
+    } catch {
+      return false;
+    }
+  }
+
   function liveSettings() {
     try {
       const local = JSON.parse(localStorage.getItem("it_vault_supabase") || "null");
-      if (local?.url && local?.anon) return local;
+      if (local?.url && local?.anon) {
+        if (isDeadSupabaseHost(local.url)) {
+          localStorage.removeItem("it_vault_supabase");
+        } else {
+          return local;
+        }
+      }
     } catch {
       /* ignore */
     }
     const c = window.IT_REPO_CONFIG || {};
-    if (c.supabaseUrl && c.supabaseAnonKey) {
+    if (c.supabaseUrl && c.supabaseAnonKey && !isDeadSupabaseHost(c.supabaseUrl)) {
       return { url: c.supabaseUrl, anon: c.supabaseAnonKey };
     }
     return null;
@@ -425,23 +439,29 @@
   // ----- Community shares -----
   async function loadShares() {
     if (state.mode === "live" && state.client) {
-      const { data, error } = await state.client
-        .from("tech_news_shares")
-        .select("*")
-        .order("created_at", { ascending: false })
-        .limit(100);
-      if (!error && data) {
-        state.shares = data.map((r) => ({
-          id: r.id,
-          title: r.title,
-          url: r.url,
-          topic: r.topic,
-          note: r.note || "",
-          author: r.author || "Anonymous",
-          createdAt: r.created_at,
-        }));
-        renderCommunity();
-        return;
+      try {
+        const { data, error } = await state.client
+          .from("tech_news_shares")
+          .select("*")
+          .order("created_at", { ascending: false })
+          .limit(100);
+        if (!error && data) {
+          state.shares = data.map((r) => ({
+            id: r.id,
+            title: r.title,
+            url: r.url,
+            topic: r.topic,
+            note: r.note || "",
+            author: r.author || "Anonymous",
+            createdAt: r.created_at,
+          }));
+          renderCommunity();
+          return;
+        }
+      } catch (e) {
+        console.warn("News live board unavailable:", e);
+        state.mode = "local";
+        state.client = null;
       }
     }
     try {
@@ -455,21 +475,27 @@
 
   async function saveShare(share) {
     if (state.mode === "live" && state.client) {
-      const row = {
-        id: share.id,
-        title: share.title,
-        url: share.url,
-        topic: share.topic,
-        note: share.note || "",
-        author: share.author,
-        created_at: share.createdAt || new Date().toISOString(),
-      };
-      const { error } = await state.client.from("tech_news_shares").upsert(row);
-      if (!error) {
-        await loadShares();
-        return true;
+      try {
+        const row = {
+          id: share.id,
+          title: share.title,
+          url: share.url,
+          topic: share.topic,
+          note: share.note || "",
+          author: share.author,
+          created_at: share.createdAt || new Date().toISOString(),
+        };
+        const { error } = await state.client.from("tech_news_shares").upsert(row);
+        if (!error) {
+          await loadShares();
+          return true;
+        }
+        console.warn("Live share failed, saving locally:", error);
+      } catch (e) {
+        console.warn("Live share failed, saving locally:", e);
+        state.mode = "local";
+        state.client = null;
       }
-      console.warn("Live share failed, saving locally:", error);
     }
     state.shares.unshift(share);
     localStorage.setItem(LOCAL_SHARES, JSON.stringify(state.shares));

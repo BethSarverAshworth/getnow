@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GetNow Course — College Math + IT / Cyber Certs</title>
+  <link rel="stylesheet" href="./course.css" />
+</head>
+<body data-lesson="index.html">
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="./index.html">GetNow Course</a>
+      <nav>
+        <a href="../">Library</a>
+        <a href="./math.html">Math</a>
+        <a href="./math-symbols.html">Symbols</a>
+        <a href="./calculator.html">Calculator</a>
+        <a href="./network-plus.html">Network+</a>
+        <a href="./security-plus.html">Security+</a>
+        <a href="./cissp.html">CISSP</a>
+      </nav>
+    </div>
+  </header>
+  <div class="wrap">
+    <p class="muted">Beth Sarver-Ashworth · self-paced · built for Full Sail IT / Cyber + CompTIA vouchers</p>
+    <h1>College math + cert exam course</h1>
+    <p>
+      This course teaches the math you need for college-style IT work, then the ideas behind
+      <strong>Network+</strong>, <strong>Security+</strong>, and later <strong>CISSP</strong>.
+      Full Sail vouchers are CompTIA only. CISSP is the highest cert to aim at after experience.
+    </p>
+    <div class="progress"><i id="progress-bar"></i></div>
+    <p class="note" id="progress-label">Progress saves in this browser.</p>
+
+    <div class="card">
+      <h2 style="margin-top:0">How to use this</h2>
+      <ol>
+        <li>Do the math module first. Subnetting and binary show up on Network+ and Security+.</li>
+        <li>Then Network+, then Security+. Do not skip to CISSP exam dumps.</li>
+        <li>After each section, try the practice questions before you look at answers.</li>
+        <li>Mark a module done when you can explain it out loud without the page.</li>
+      </ol>
+      <p class="note">Study 45–90 minutes a day. Vouchers come after later Full Sail courses — use that time to actually learn this.</p>
+    </div>
+
+    <h2>Modules</h2>
+    <div class="grid">
+      <a class="mod" href="./math.html">
+        <span class="tag math">College math</span>
+        <b>1. Math for IT and cyber</b>
+        <span>Algebra, percent, binary, hex, Boolean logic, subnet math, probability.</span>
+      </a>
+      <a class="mod" href="./math-symbols.html">
+        <span class="tag math">Cheat sheet</span>
+        <b>1b. Symbols and terms</b>
+        <span>What +, −, ×, /, ^, %, AND, /24, and exam words actually mean.</span>
+      </a>
+      <a class="mod" href="./calculator.html">
+        <span class="tag math">Tool</span>
+        <b>1c. Calculator</b>
+        <span>Formulas, solve for x, binary/hex, subnet size, percent, bits vs bytes.</span>
+      </a>
+      <a class="mod" href="./network-plus.html">
+        <span class="tag cert">CompTIA</span>
+        <b>2. Network+</b>
+        <span>OSI, TCP/IP, IPv4/IPv6, switching, routing, wireless, ports, troubleshooting.</span>
+      </a>
+      <a class="mod" href="./security-plus.html">
+        <span class="tag cert">CompTIA</span>
+        <b>3. Security+</b>
+        <span>CIA, threats, crypto, IAM, risk, incident response — first security exam.</span>
+      </a>
+      <a class="mod" href="./cissp.html">
+        <span class="tag">Highest goal</span>
+        <b>4. CISSP roadmap</b>
+        <span>Eight domains, experience rule, how it differs from Security+. Study later.</span>
+      </a>
+    </div>
+
+    <h2>Suggested 12-week plan</h2>
+    <table>
+      <tr><th>Weeks</th><th>Focus</th><th>Outcome</th></tr>
+      <tr><td>1–2</td><td>Math: algebra, percent, units</td><td>You can solve formulas and convert bits/bytes.</td></tr>
+      <tr><td>3–4</td><td>Math: binary, hex, Boolean, subnets</td><td>You can convert numbers and size a /24 or /25.</td></tr>
+      <tr><td>5–8</td><td>Network+</td><td>You can explain OSI, IP, DNS, DHCP, NAT, and basic troubleshooting.</td></tr>
+      <tr><td>9–12</td><td>Security+</td><td>You can explain CIA, hashing vs encryption, MFA, and incident steps.</td></tr>
+      <tr><td>Later</td><td>CySA+ then CISSP</td><td>Analyst skills, then the highest cert after work experience.</td></tr>
+    </table>
+
+    <h2>Full Sail voucher reminder</h2>
+    <div class="card">
+      <p>ITBS: A+ and Network+ (ITE349 / ITE479). CYBS: Security+ and CySA+ (CYB349 / CYB479). Two vouchers max. CISSP is not included.</p>
+    </div>
+    <button class="toggle" id="mark-done" type="button">Mark syllabus as done</button>
+  </div>
+  <script src="./lesson.js"></script>
+</body>
+</html>
