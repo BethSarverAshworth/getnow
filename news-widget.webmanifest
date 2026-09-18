@@ -2,14 +2,14 @@
   "name": "GetNow Tech News",
   "short_name": "Tech News",
   "description": "Latest tech, security, and IT headlines from GetNow.",
-  "start_url": "/tools/news-widget.html",
-  "scope": "/",
+  "start_url": "./tools/news-widget.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0b0f14",
   "theme_color": "#0b0f14",
   "icons": [
     {
-      "src": "/assets/news-widget-icon.svg",
+      "src": "./assets/news-widget-icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
