@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Tech News</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Tech News" />
+    <meta name="theme-color" content="#0b0f14" />
+    <link rel="manifest" href="/news-widget.webmanifest" />
+    <link rel="icon" href="/assets/news-widget-icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/news-widget-icon.svg" />
+    <style>
+      :root {
+        --bg: #0b0f14;
+        --card: #151c27;
+        --border: #243041;
+        --text: #e8eef7;
+        --muted: #93a4b8;
+        --accent: #3d9cf0;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-height: 100%; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        padding: calc(0.9rem + env(safe-area-inset-top)) 0.9rem calc(1rem + env(safe-area-inset-bottom));
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-bottom: 0.85rem;
+      }
+      h1 {
+        margin: 0;
+        font-size: 1.15rem;
+        letter-spacing: -0.02em;
+      }
+      .kicker {
+        margin: 0.15rem 0 0;
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+      .refresh {
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+      .install {
+        background: rgba(61, 156, 240, 0.12);
+        border: 1px solid rgba(61, 156, 240, 0.35);
+        border-radius: 12px;
+        padding: 0.75rem 0.85rem;
+        margin-bottom: 0.85rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      .install strong { color: var(--text); }
+      .install button {
+        margin-top: 0.45rem;
+        border: 0;
+        background: transparent;
+        color: var(--accent);
+        padding: 0;
+        cursor: pointer;
+        font-size: 0.8rem;
+      }
+      #status {
+        color: var(--muted);
+        font-size: 0.75rem;
+        margin: 0 0 0.65rem;
+      }
+      #list { display: grid; gap: 0.45rem; }
+      .news-item {
+        display: grid;
+        gap: 0.2rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 0.7rem 0.8rem;
+        color: var(--text);
+        text-decoration: none;
+      }
+      .news-item-title {
+        font-size: 0.92rem;
+        font-weight: 650;
+        line-height: 1.3;
+      }
+      .news-item-meta {
+        color: var(--muted);
+        font-size: 0.72rem;
+      }
+      .news-empty { color: var(--muted); font-size: 0.9rem; }
+      footer {
+        margin-top: 1rem;
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+      footer a { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Tech News</h1>
+        <p class="kicker" id="stamp">GetNow live headlines</p>
+      </div>
+      <button class="refresh" type="button" id="refresh">Refresh</button>
+    </header>
+    <div class="install" id="install-tip">
+      <strong>Add this to your Home Screen</strong>
+      <div id="install-steps">Open this page in Safari, tap the Share button, then tap <strong>Add to Home Screen</strong>. On a Mac: Safari → File → Add to Dock.</div>
+      <button type="button" id="dismiss-tip">Got it</button>
+    </div>
+    <p id="status">Loading latest headlines…</p>
+    <div id="list"></div>
+    <footer>
+      <a href="/tools/news.html">Full news desk</a>
+      ·
+      <a href="/">GetNow</a>
+    </footer>
+    <script src="/tools/news-widget.js"></script>
+    <script>
+      (function () {
+        const list = document.getElementById("list");
+        const status = document.getElementById("status");
+        const stamp = document.getElementById("stamp");
+        const tip = document.getElementById("install-tip");
+        if (localStorage.getItem("getnow_news_widget_tip") === "1") tip.hidden = true;
+        document.getElementById("dismiss-tip").onclick = function () {
+          localStorage.setItem("getnow_news_widget_tip", "1");
+          tip.hidden = true;
+        };
+
+        async function load() {
+          status.textContent = "Fetching latest headlines…";
+          try {
+            const items = await window.GetNowNews.loadHeadlines(20);
+            window.GetNowNews.renderList(list, items);
+            const now = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+            status.textContent = items.length
+              ? items.length + " stories · updated " + now
+              : "No headlines loaded. Tap Refresh.";
+            stamp.textContent = "Updated " + now;
+          } catch {
+            status.textContent = "Could not load news. Tap Refresh.";
+          }
+        }
+
+        document.getElementById("refresh").onclick = load;
+        load();
+        setInterval(load, 15 * 60 * 1000);
+      })();
+    </script>
+  </body>
+</html>

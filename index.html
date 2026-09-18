@@ -41,6 +41,7 @@
           <a class="btn btn-ghost" href="./tools/">Tools</a>
           <a class="btn btn-ghost" href="./tools/chat.html">Chat</a>
           <a class="btn btn-ghost" href="./tools/news.html">News</a>
+          <a class="btn btn-ghost" href="./tools/news-widget.html">News widget</a>
           <a class="btn btn-ghost" href="./tools/journal.html">Journal</a>
           <a class="btn btn-ghost" href="./tools/vault.html">Vault</a>
           <a class="btn btn-ghost" href="#browse">Browse</a>
@@ -101,6 +102,21 @@
             </p>
           </aside>
         </div>
+      </section>
+
+      <section class="container home-news" id="tech-news">
+        <div class="home-news-head">
+          <div>
+            <p class="kicker">Live headlines</p>
+            <h2>Tech news</h2>
+          </div>
+          <div class="home-news-actions">
+            <a class="btn btn-primary" href="./tools/news-widget.html">Add to Home Screen</a>
+            <a class="btn btn-ghost" href="./tools/news.html">Full news desk</a>
+          </div>
+        </div>
+        <p class="note" id="home-news-status">Loading latest tech and security stories…</p>
+        <div class="home-news-list" id="home-news-list"></div>
       </section>
 
       <section class="container" id="browse">
@@ -191,6 +207,7 @@
 
     <script src="./js/config.js"></script>
     <script src="./js/access.js"></script>
+    <script src="./tools/news-widget.js"></script>
     <script src="./js/app.js" defer></script>
   </body>
 </html>

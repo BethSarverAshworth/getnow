@@ -312,6 +312,23 @@ function bindNavToggle() {
   });
 }
 
+async function loadHomeNews() {
+  const list = document.getElementById("home-news-list");
+  const status = document.getElementById("home-news-status");
+  if (!list || !window.GetNowNews) return;
+  try {
+    const items = await window.GetNowNews.loadHeadlines(8);
+    window.GetNowNews.renderList(list, items);
+    if (status) {
+      status.textContent = items.length
+        ? "Updated " + new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })
+        : "Headlines could not load. Open the news widget and tap Refresh.";
+    }
+  } catch {
+    if (status) status.textContent = "Headlines could not load right now.";
+  }
+}
+
 function updateProUI() {
   const unlocked = hasPro();
   const cfg = window.ITRepoAccess.getConfig();
@@ -524,6 +541,7 @@ function isFileProtocol() {
 async function init() {
   bindNavToggle();
   window.ITRepoAccess.tryUnlockFromUrl();
+  loadHomeNews();
 
   // Clean sensitive query params from address bar after unlock attempt
   if (window.location.search.includes("token=") || window.location.search.includes("demo_pro=")) {

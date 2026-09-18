@@ -5,6 +5,8 @@
     { "source": "/chat", "destination": "/tools/chat.html" },
     { "source": "/chat/", "destination": "/tools/chat.html" },
     { "source": "/news", "destination": "/tools/news.html" },
+    { "source": "/news-widget", "destination": "/tools/news-widget.html" },
+    { "source": "/widget", "destination": "/tools/news-widget.html" },
     { "source": "/journal", "destination": "/tools/journal.html" },
     { "source": "/vault", "destination": "/tools/vault.html" },
     { "source": "/tools", "destination": "/tools/index.html" },
